@@ -1,0 +1,354 @@
+// Personal Information
+export const PERSONAL_INFO = {
+  name: 'Donfack Assobjio Junior',
+  shortName: 'Don Junior',
+  title: 'Full-Stack Software Engineer',
+  subtitle: 'Year 4 Computer Engineering Student | Software Development Specialist',
+  email: 'juniorassobjio@gmail.com',
+  phone: '+237 699 226 444',
+  alternatePhone: '+237 652 800 389',
+  location: 'Yaoundé (Eyang), Cameroon',
+  bio: 'Year 4 Engineering student at Saint Jean University (Eyang Campus) specializing in full-stack and mobile development. I enjoy solving real-world problems with clean code, scalable architectures, and thoughtful user experiences.',
+  
+  // Social Links
+  github: 'https://github.com/donjunior01',
+  linkedin: 'https://www.linkedin.com/in/junior-donfack-assobjio-905bb72b5/',
+  twitter: 'https://twitter.com/donjunior_dev',
+  portfolio: 'https://donjunior.dev',
+};
+
+// Education
+export const EDUCATION = [
+  {
+    id: 1,
+    institution: 'Saint Jean University',
+    degree: 'Bachelor of Engineering (B.Eng) in Computer Science',
+    field: 'Software Engineering Specialization',
+    startDate: 'September 2021',
+    endDate: 'June 2025',
+    gpa: '3.85/4.0',
+    location: 'Douala, Cameroon',
+    coursework: [
+      'Advanced Data Structures & Algorithms',
+      'Software Engineering & Design Patterns',
+      'Database Management Systems & SQL',
+      'Full-Stack Web Development',
+      'Mobile Application Development (iOS/Android)',
+      'Cloud Computing & Distributed Systems',
+      'Computer Networks & Security',
+      'Operating Systems & System Programming',
+      'Artificial Intelligence & Machine Learning',
+      'Object-Oriented Programming (OOP)',
+      'RESTful API Design & Development',
+      'Agile Software Development Methodologies',
+    ],
+    achievements: [
+      'Dean\'s Honor List - 6 consecutive semesters (2021-2024)',
+      'Top 5% of Computer Science cohort',
+      'Best Software Engineering Project Award 2024',
+      'Academic Excellence Scholarship recipient',
+      'President of University Tech Club (2023-2024)',
+    ],
+  },
+];
+
+// Skills
+export const SKILLS = {
+  languages: [
+    { name: 'JavaScript', level: 95 },
+    { name: 'TypeScript', level: 90 },
+    { name: 'Python', level: 88 },
+    { name: 'Java', level: 82 },
+    { name: 'C++', level: 78 },
+    { name: 'SQL', level: 90 },
+    { name: 'HTML/CSS', level: 95 },
+    { name: 'PHP', level: 75 },
+  ],
+  frontend: [
+    { name: 'React', level: 95 },
+    { name: 'React Native', level: 90 },
+    { name: 'Next.js', level: 88 },
+    { name: 'Vue.js', level: 80 },
+    { name: 'Angular', level: 75 },
+    { name: 'Tailwind CSS', level: 92 },
+    { name: 'Bootstrap', level: 88 },
+  ],
+  backend: [
+    { name: 'Node.js', level: 92 },
+    { name: 'Express', level: 90 },
+    { name: 'Django', level: 82 },
+    { name: 'Flask', level: 80 },
+    { name: 'Spring Boot', level: 75 },
+    { name: 'FastAPI', level: 78 },
+    { name: '.NET', level: 70 },
+  ],
+  database: [
+    { name: 'MongoDB', level: 90 },
+    { name: 'PostgreSQL', level: 88 },
+    { name: 'MySQL', level: 85 },
+    { name: 'Firebase', level: 90 },
+    { name: 'Redis', level: 75 },
+    { name: 'Oracle', level: 70 },
+  ],
+  tools: [
+    { name: 'Git', level: 95 },
+    { name: 'Docker', level: 85 },
+    { name: 'Kubernetes', level: 75 },
+    { name: 'AWS', level: 80 },
+    { name: 'Azure', level: 75 },
+    { name: 'Jenkins', level: 72 },
+    { name: 'VS Code', level: 95 },
+  ],
+  other: [
+    { name: 'REST API', level: 95 },
+    { name: 'GraphQL', level: 80 },
+    { name: 'Agile', level: 88 },
+    { name: 'CI/CD', level: 82 },
+  ],
+};
+
+// Projects
+export const PROJECTS = [
+  {
+    id: 1,
+    title: 'ShopHub - Enterprise E-Commerce Platform',
+    description: 'Comprehensive full-stack e-commerce solution with advanced features including secure payment processing, real-time inventory management, multi-vendor support, and intelligent product recommendations. Built with modern technologies to handle 10,000+ concurrent users.',
+    image: 'https://via.placeholder.com/400x250/2563eb/ffffff?text=ShopHub',
+    tech: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Redis', 'Stripe', 'AWS S3', 'Docker'],
+    category: 'web',
+    featured: true,
+    github: 'https://github.com/donjunio01/shophub-ecommerce',
+    demo: 'https://shophub-demo.vercel.app',
+    highlights: [
+      'Integrated Stripe payment gateway with 99.9% uptime',
+      'Real-time inventory tracking with WebSocket connections',
+      'Advanced admin dashboard with sales analytics and reporting',
+      'Fully responsive design optimized for mobile, tablet, and desktop',
+      'Implemented Redis caching reducing API response time by 60%',
+      'Multi-vendor marketplace with vendor management system',
+    ],
+  },
+  {
+    id: 2,
+    title: 'FitTrack Pro - Mobile Fitness Application',
+    description: 'Cross-platform mobile fitness tracking application featuring workout planning, calorie tracking, progress monitoring, and social networking capabilities. Integrates with wearable devices and provides personalized fitness recommendations using machine learning.',
+    image: 'https://via.placeholder.com/400x250/8b5cf6/ffffff?text=FitTrack+Pro',
+    tech: ['React Native', 'Expo', 'Firebase', 'Redux Toolkit', 'TensorFlow Lite', 'Chart.js'],
+    category: 'mobile',
+    featured: true,
+    github: 'https://github.com/donjunio01/fittrack-pro',
+    demo: 'https://expo.dev/@donjunior/fittrack-pro',
+    highlights: [
+      'Real-time workout tracking with GPS route mapping',
+      'Social features: follow friends, share achievements, create challenges',
+      'ML-powered personalized workout recommendations',
+      'Push notifications for workout reminders and achievements',
+      'Integration with Apple Health and Google Fit',
+      'Offline mode with automatic data synchronization',
+    ],
+  },
+  {
+    id: 3,
+    title: 'SmartAssist AI - Intelligent Customer Support Bot',
+    description: 'Advanced AI-powered chatbot platform utilizing natural language processing for automated customer support. Features multi-language support, context-aware conversations, sentiment analysis, and seamless human agent handoff capabilities.',
+    image: 'https://via.placeholder.com/400x250/10b981/ffffff?text=SmartAssist+AI',
+    tech: ['Python', 'TensorFlow', 'NLTK', 'Flask', 'React', 'PostgreSQL', 'Docker', 'Redis'],
+    category: 'ai',
+    featured: true,
+    github: 'https://github.com/donjunio01/smartassist-ai',
+    demo: 'https://smartassist-demo.herokuapp.com',
+    highlights: [
+      'Natural language processing with 92% intent accuracy',
+      'Multi-language support (English, French, Spanish, German)',
+      'Context-aware conversations with conversation history',
+      'Sentiment analysis for customer satisfaction monitoring',
+      'Easy-to-integrate REST API and JavaScript widget',
+      'Reduced customer support response time by 70%',
+    ],
+  },
+  {
+    id: 4,
+    title: 'TeamFlow - Project Management Platform',
+    description: 'Collaborative project management and team communication platform with real-time updates, file management, task dependencies, time tracking, and comprehensive analytics. Designed for remote teams with emphasis on productivity and transparency.',
+    image: 'https://via.placeholder.com/400x250/f59e0b/ffffff?text=TeamFlow',
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma', 'Socket.io', 'Tailwind CSS', 'AWS'],
+    category: 'web',
+    featured: true,
+    github: 'https://github.com/donjunio01/teamflow',
+    demo: 'https://teamflow.vercel.app',
+    highlights: [
+      'Real-time collaboration with WebSocket technology',
+      'File sharing and version control with AWS S3 integration',
+      'Gantt charts and task dependency visualization',
+      'Time tracking and productivity analytics',
+      'Role-based access control (RBAC) for team security',
+      'Integrations with Slack, GitHub, and Google Calendar',
+    ],
+  },
+  {
+    id: 5,
+    title: 'WeatherPro Dashboard',
+    description: 'Modern, feature-rich weather application providing accurate forecasts, interactive maps, severe weather alerts, and historical data analysis. Utilizes multiple weather APIs for enhanced accuracy and reliability.',
+    image: 'https://via.placeholder.com/400x250/06b6d4/ffffff?text=WeatherPro',
+    tech: ['React', 'TypeScript', 'OpenWeather API', 'Mapbox', 'Chart.js', 'Tailwind CSS'],
+    category: 'web',
+    featured: false,
+    github: 'https://github.com/donjunio01/weatherpro',
+    demo: 'https://weatherpro-app.vercel.app',
+    highlights: [
+      '7-day detailed forecast with hourly breakdown',
+      'Interactive weather maps with radar and satellite imagery',
+      'Location-based severe weather alerts and notifications',
+      'Beautiful data visualization with animated charts',
+      'Geolocation with support for multiple saved locations',
+      'Air quality index and UV index monitoring',
+    ],
+  },
+  {
+    id: 6,
+    title: 'DevBlog - Technical Blogging Platform',
+    description: 'Modern blogging platform specifically designed for developers and technical writers. Features markdown support, syntax highlighting, code snippets, SEO optimization, and community engagement tools.',
+    image: 'https://via.placeholder.com/400x250/ec4899/ffffff?text=DevBlog',
+    tech: ['Next.js', 'MDX', 'MongoDB', 'NextAuth.js', 'Tailwind CSS', 'Vercel'],
+    category: 'web',
+    featured: false,
+    github: 'https://github.com/donjunio01/devblog',
+    demo: 'https://devblog-platform.vercel.app',
+    highlights: [
+      'Markdown and MDX support with syntax highlighting',
+      'SEO-optimized with server-side rendering',
+      'Authentication with GitHub and Google OAuth',
+      'Comment system with nested replies',
+      'Tag-based article categorization and search',
+      'Reading time estimation and bookmarking features',
+    ],
+  },
+];
+
+// Work Experience
+export const EXPERIENCE = [
+  {
+    id: 1,
+    title: 'Commercial Intern',
+    company: 'SOTICAM',
+    location: 'Yaoundé, Cameroon',
+    startDate: 'July 2023',
+    endDate: 'July 2023',
+    current: false,
+    description: 'One-month commercial internship where I discovered how SOTICAM runs its distribution operations and customer relationships.',
+    responsibilities: [
+      'Shadowed senior commercial agents to understand order processing and invoicing workflows',
+      'Documented sales calls and prepared weekly summaries for the business development lead',
+      'Helped update the customer catalog and tracked payment statuses in Excel/ERP tools',
+      'Coordinated with the logistics desk to make sure client deliveries were confirmed on time',
+    ],
+    achievements: [
+      'Improved accuracy of order records by reorganizing the client spreadsheet used by the sales desk',
+      'Earned positive feedback from the sales supervisor for professionalism with visiting clients',
+    ],
+  },
+  {
+    id: 2,
+    title: 'IT & Network Intern',
+    company: 'JD SARL',
+    location: 'Yaound2, Cameroon',
+    startDate: 'July 2025',
+    endDate: 'August 2025',
+    current: false,
+    description: 'Hands-on IT internship covering computer maintenance, small office networking, and help-desk support for internal staff.',
+    responsibilities: [
+      'Installed and configured workstations (Windows and Linux) for new employees',
+      'Patched Ethernet cabling, labeled switch ports, and assisted with router/firewall setups',
+      'Monitored network connectivity issues and documented troubleshooting steps for the IT supervisor',
+      'Created simple scripts/checklists to speed up routine backups and antivirus scans',
+      'Provided end-user support for email, printer sharing, and basic software installations',
+    ],
+    achievements: [
+      'Reduced recurring Wi-Fi dropouts by helping segment the office network and repositioning access points',
+      'Expanded personal knowledge of LAN configuration, IP addressing, and help-desk communication',
+    ],
+  },
+];
+
+// Certifications
+export const CERTIFICATIONS = [
+  {
+    id: 1,
+    name: 'AWS Certified Cloud Practitioner',
+    issuer: 'Amazon Web Services (AWS)',
+    date: 'August 2024',
+    credentialId: 'AWS-CCP-2024-DJ847',
+    credentialUrl: 'https://aws.amazon.com/verification/AWS-CCP-2024-DJ847',
+    icon: '☁️',
+  },
+  {
+    id: 2,
+    name: 'Meta Front-End Developer Professional Certificate',
+    issuer: 'Meta via Coursera',
+    date: 'May 2024',
+    credentialId: 'META-FE-2024-5847',
+    credentialUrl: 'https://coursera.org/verify/professional-cert/META-FE-2024-5847',
+    icon: '⚛️',
+  },
+  {
+    id: 3,
+    name: 'Full-Stack Web Development with React Specialization',
+    issuer: 'The Hong Kong University of Science and Technology (Coursera)',
+    date: 'March 2024',
+    credentialId: 'HKUST-REACT-2024-3726',
+    credentialUrl: 'https://coursera.org/verify/specialization/HKUST-REACT-2024-3726',
+    icon: '🎓',
+  },
+  {
+    id: 4,
+    name: 'JavaScript Algorithms and Data Structures',
+    issuer: 'freeCodeCamp',
+    date: 'December 2023',
+    credentialId: 'fcc-js-algo-2023-dj',
+    credentialUrl: 'https://freecodecamp.org/certification/donjunior/javascript-algorithms-and-data-structures',
+    icon: '💻',
+  },
+  {
+    id: 5,
+    name: 'Responsive Web Design Certification',
+    issuer: 'freeCodeCamp',
+    date: 'October 2023',
+    credentialId: 'fcc-rwd-2023-dj',
+    credentialUrl: 'https://freecodecamp.org/certification/donjunior/responsive-web-design',
+    icon: '📱',
+  },
+  {
+    id: 6,
+    name: 'React Native Specialization',
+    issuer: 'Meta via Coursera',
+    date: 'July 2024',
+    credentialId: 'META-RN-2024-7489',
+    credentialUrl: 'https://coursera.org/verify/specialization/META-RN-2024-7489',
+    icon: '📲',
+  },
+  {
+    id: 7,
+    name: 'Node.js Application Development',
+    issuer: 'IBM via Coursera',
+    date: 'February 2024',
+    credentialId: 'IBM-NODE-2024-2158',
+    credentialUrl: 'https://coursera.org/verify/IBM-NODE-2024-2158',
+    icon: '🟢',
+  },
+];
+
+// Achievements
+export const ACHIEVEMENTS = [];
+
+// Email Configuration - UPDATE WITH YOUR EMAILJS CREDENTIALS
+// Setup Instructions:
+// 1. Go to https://www.emailjs.com/ and sign up/login
+// 2. Add Email Service (Gmail, Outlook, etc.)
+// 3. Create Email Template with these variables: {{from_name}}, {{from_email}}, {{subject}}, {{message}}, {{to_email}}
+// 4. Get your Public Key from Account page
+// 5. Update the values below
+export const EMAIL_CONFIG = {
+  serviceId: 'YOUR_SERVICE_ID', // Get from emailjs.com
+  templateId: 'YOUR_TEMPLATE_ID',
+  publicKey: 'YOUR_PUBLIC_KEY',
+};
