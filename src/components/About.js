@@ -97,8 +97,8 @@ const InfiniteEducationCarousel = ({ education, colors, shadows }) => {
       style={styles.carouselContainer}
       onLayout={(e) => setContainerWidth(e.nativeEvent.layout.width)}
     >
-      <View style={[styles.carouselGradientLeft, { backgroundColor: colors.surface }]} />
-      <View style={[styles.carouselGradientRight, { backgroundColor: colors.surface }]} />
+      <View style={[styles.carouselGradientLeft, Platform.OS === 'web' && { background: `linear-gradient(to right, ${colors.surface}, transparent)` }]} />
+      <View style={[styles.carouselGradientRight, Platform.OS === 'web' && { background: `linear-gradient(to left, ${colors.surface}, transparent)` }]} />
       
       <Animated.View
         style={[
@@ -252,8 +252,8 @@ const InfiniteCategoryCarousel = ({ skills, colors, category }) => {
       style={styles.categoryCarouselContainer}
       onLayout={(e) => setContainerWidth(e.nativeEvent.layout.width)}
     >
-      <View style={[styles.carouselGradientLeft, { backgroundColor: colors.surface }]} />
-      <View style={[styles.carouselGradientRight, { backgroundColor: colors.surface }]} />
+      <View style={[styles.carouselGradientLeft, Platform.OS === 'web' && { background: `linear-gradient(to right, ${colors.surface}, transparent)` }]} />
+      <View style={[styles.carouselGradientRight, Platform.OS === 'web' && { background: `linear-gradient(to left, ${colors.surface}, transparent)` }]} />
       
       <Animated.View
         style={[
@@ -321,6 +321,14 @@ const InfiniteSkillsCarousel = ({ skills, colors }) => {
   const scrollX = useRef(new Animated.Value(0)).current;
   const [containerWidth, setContainerWidth] = useState(0);
   const [shouldLoop, setShouldLoop] = useState(false);
+
+  // #region agent log
+  useEffect(() => {
+    if (containerWidth > 0) {
+      fetch('http://127.0.0.1:7243/ingest/295cb774-e959-4d6b-8ecd-be41df82f8c1',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'InfiniteSkillsCarousel:325',message:'Carousel container layout measured',data:{containerWidth,gradientWidthEach:100,totalGradientWidth:200,visibleContentWidth:containerWidth-200,gradientBlocksPercent:((200/containerWidth)*100).toFixed(1),surfaceColor:colors.surface},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'C'})}).catch(()=>{});
+    }
+  }, [containerWidth, colors.surface]);
+  // #endregion
   
   // Flatten all skills into single array
   const allSkills = [
@@ -468,8 +476,8 @@ const InfiniteSkillsCarousel = ({ skills, colors }) => {
       style={styles.carouselContainer}
       onLayout={(e) => setContainerWidth(e.nativeEvent.layout.width)}
     >
-      <View style={[styles.carouselGradientLeft, { backgroundColor: colors.surface }]} />
-      <View style={[styles.carouselGradientRight, { backgroundColor: colors.surface }]} />
+      <View style={[styles.carouselGradientLeft, Platform.OS === 'web' && { background: `linear-gradient(to right, ${colors.surface}, transparent)` }]} />
+      <View style={[styles.carouselGradientRight, Platform.OS === 'web' && { background: `linear-gradient(to left, ${colors.surface}, transparent)` }]} />
       
       <Animated.View
         style={[
@@ -491,6 +499,12 @@ const About = () => {
   const isMobile = width < 768;
   const isTablet = width >= 768 && width < 1024;
   const [hoveredSkill, setHoveredSkill] = useState(null);
+
+  // #region agent log
+  useEffect(() => {
+    fetch('http://127.0.0.1:7243/ingest/295cb774-e959-4d6b-8ecd-be41df82f8c1',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'About.js:494',message:'About component mounted - screen dimensions',data:{screenWidth:width,isMobile,isTablet,gradientWidth:100,gradientCoveragePercent:((100/width)*100).toFixed(1),platform:Platform.OS},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A,B'})}).catch(()=>{});
+  }, []);
+  // #endregion
 
   // Technology icon mapping
   const getSkillIcon = (skillName) => {
@@ -1133,24 +1147,18 @@ const styles = StyleSheet.create({
     left: 0,
     top: 0,
     bottom: 0,
-    width: 100,
+    width: width < 768 ? 40 : 80,
     zIndex: 10,
-    ...(Platform.OS === 'web' && {
-      background: 'linear-gradient(to right, currentColor, transparent)',
-      opacity: 0.95,
-    }),
+    pointerEvents: 'none',
   },
   carouselGradientRight: {
     position: 'absolute',
     right: 0,
     top: 0,
     bottom: 0,
-    width: 100,
+    width: width < 768 ? 40 : 80,
     zIndex: 10,
-    ...(Platform.OS === 'web' && {
-      background: 'linear-gradient(to left, currentColor, transparent)',
-      opacity: 0.95,
-    }),
+    pointerEvents: 'none',
   },
   // Section Header Enhancements
   sectionTitleContainer: {
