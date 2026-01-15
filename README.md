@@ -123,7 +123,7 @@ Before you begin, ensure you have the following installed:
 
 1. Add to `package.json`:
    ```json
-   "homepage": "https://yourusername.github.io/portfolio"
+   "homepage": "https://donjunior01.github.io/portfolio"
    ```
 
 2. Install gh-pages:
@@ -213,8 +213,8 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 👤 Author
 
 **Donfack Assobjio Junior**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Name](https://linkedin.com/in/yourusername)
+- GitHub: [@donjunior01](https://github.com/donjunior01)
+- LinkedIn: [Your Name](https://linkedin.com/in/donjunior01)
 - Email: your.email@example.com
 
 ## 🙏 Acknowledgments
