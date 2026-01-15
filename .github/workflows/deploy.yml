@@ -33,7 +33,7 @@ jobs:
       - name: Build web app
         run: npx expo export --platform web
 
-      - name: Copy CNAME for custom domain
+      - name: Copy CNAME and 404.html for deployment
         run: |
           cp public/CNAME dist/CNAME 2>/dev/null || echo "No CNAME file"
           cp public/404.html dist/404.html 2>/dev/null || echo "No 404.html file"

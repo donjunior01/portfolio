@@ -322,14 +322,6 @@ const InfiniteSkillsCarousel = ({ skills, colors }) => {
   const [containerWidth, setContainerWidth] = useState(0);
   const [shouldLoop, setShouldLoop] = useState(false);
 
-  // #region agent log
-  useEffect(() => {
-    if (containerWidth > 0) {
-      fetch('http://127.0.0.1:7243/ingest/295cb774-e959-4d6b-8ecd-be41df82f8c1',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'InfiniteSkillsCarousel:325',message:'Carousel container layout measured',data:{containerWidth,gradientWidthEach:100,totalGradientWidth:200,visibleContentWidth:containerWidth-200,gradientBlocksPercent:((200/containerWidth)*100).toFixed(1),surfaceColor:colors.surface},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'C'})}).catch(()=>{});
-    }
-  }, [containerWidth, colors.surface]);
-  // #endregion
-  
   // Flatten all skills into single array
   const allSkills = [
     ...skills.languages,
@@ -499,12 +491,6 @@ const About = () => {
   const isMobile = width < 768;
   const isTablet = width >= 768 && width < 1024;
   const [hoveredSkill, setHoveredSkill] = useState(null);
-
-  // #region agent log
-  useEffect(() => {
-    fetch('http://127.0.0.1:7243/ingest/295cb774-e959-4d6b-8ecd-be41df82f8c1',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'About.js:494',message:'About component mounted - screen dimensions',data:{screenWidth:width,isMobile,isTablet,gradientWidth:100,gradientCoveragePercent:((100/width)*100).toFixed(1),platform:Platform.OS},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A,B'})}).catch(()=>{});
-  }, []);
-  // #endregion
 
   // Technology icon mapping
   const getSkillIcon = (skillName) => {

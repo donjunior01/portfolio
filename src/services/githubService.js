@@ -181,7 +181,7 @@ const generateHighlights = (repo) => {
 export const fetchRepoLanguages = async (repoName) => {
   try {
     const response = await fetch(
-      `${GITHUB_API_BASE}/repos/${GITHUB_USERNAME}/${repoName}/languages`,
+      `${GITHUB_API_BASE}/repos/${GITHUB_CONFIG.username}/${repoName}/languages`,
       {
         headers: {
           'Accept': 'application/vnd.github.v3+json',
