@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { personalInfo, stats, featuredProjects } from '../utils/constants';
-import { downloadCV } from '../utils/helpers';
 
 const Home = () => {
   const [currentRole, setCurrentRole] = useState(0);
@@ -69,9 +68,6 @@ const Home = () => {
                 <Link to="/contact" className="btn-primary">
                   Contact Me
                 </Link>
-                <button onClick={downloadCV} className="btn-secondary">
-                  Download CV
-                </button>
                 <Link
                   to="/projects"
                   className="btn-secondary"

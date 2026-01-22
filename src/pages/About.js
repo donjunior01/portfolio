@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { personalInfo, education, experience, activities, interests, spokenLanguages } from '../utils/constants';
-import { downloadCV } from '../utils/helpers';
 
 const About = () => {
   return (
@@ -74,14 +74,15 @@ const About = () => {
                   solve real-world problems and contribute to innovative projects that make a difference.
                 </p>
               </div>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={downloadCV}
-                className="btn-primary mt-6"
-              >
-                Download My CV
-              </motion.button>
+              <Link to="/contact">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="btn-primary mt-6"
+                >
+                  Contact Me
+                </motion.button>
+              </Link>
             </motion.div>
           </div>
         </div>

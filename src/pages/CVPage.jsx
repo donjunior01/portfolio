@@ -4,6 +4,7 @@ import { useCVContext } from '../context/CVContext';
 import { generateAndDownloadCV, generateCVDataURL } from '../utils/pdfGenerator';
 import { sendCVByEmail, openEmailClient } from '../utils/emailService';
 import { cvData } from '../data/cvData';
+import { cvTranslations } from '../translations/cvTranslations';
 
 const CVPage = () => {
   const {
@@ -32,6 +33,9 @@ const CVPage = () => {
   });
   const [emailStatus, setEmailStatus] = useState({ type: '', message: '' });
   const [progress, setProgress] = useState('');
+
+  // Get current translations
+  const t = cvTranslations[cvLanguage];
 
   // Generate preview when options change
   useEffect(() => {
@@ -128,11 +132,10 @@ const CVPage = () => {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Customize Your <span className="text-gradient">CV</span>
+            {t.pageTitle} <span className="text-gradient">{t.pageTitleHighlight}</span>
           </h1>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Personalize your CV with different themes, languages, and content options.
-            Preview changes in real-time before downloading.
+            {t.pageSubtitle}
           </p>
         </motion.div>
 
@@ -145,7 +148,7 @@ const CVPage = () => {
           >
             {/* Theme Selection */}
             <div className="card p-6">
-              <h3 className="text-xl font-bold mb-4">Theme</h3>
+              <h3 className="text-xl font-bold mb-4">{t.theme}</h3>
               <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => updateTheme('light')}
@@ -156,7 +159,7 @@ const CVPage = () => {
                   }`}
                 >
                   <div className="w-full h-12 bg-white rounded mb-2 border"></div>
-                  <p className="text-sm font-medium">Light</p>
+                  <p className="text-sm font-medium">{t.themeLight}</p>
                 </button>
                 <button
                   onClick={() => updateTheme('dark')}
@@ -167,14 +170,14 @@ const CVPage = () => {
                   }`}
                 >
                   <div className="w-full h-12 bg-gray-900 rounded mb-2"></div>
-                  <p className="text-sm font-medium">Dark</p>
+                  <p className="text-sm font-medium">{t.themeDark}</p>
                 </button>
               </div>
             </div>
 
             {/* Language Selection */}
             <div className="card p-6">
-              <h3 className="text-xl font-bold mb-4">Language</h3>
+              <h3 className="text-xl font-bold mb-4">{t.language}</h3>
               <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => setLanguage('en')}
@@ -185,7 +188,7 @@ const CVPage = () => {
                   }`}
                 >
                   <p className="text-2xl mb-1">🇬🇧</p>
-                  <p className="text-sm font-medium">English</p>
+                  <p className="text-sm font-medium">{t.languageEnglish}</p>
                 </button>
                 <button
                   onClick={() => setLanguage('fr')}
@@ -196,14 +199,14 @@ const CVPage = () => {
                   }`}
                 >
                   <p className="text-2xl mb-1">🇫🇷</p>
-                  <p className="text-sm font-medium">Français</p>
+                  <p className="text-sm font-medium">{t.languageFrench}</p>
                 </button>
               </div>
             </div>
 
             {/* Version Selection */}
             <div className="card p-6">
-              <h3 className="text-xl font-bold mb-4">Version</h3>
+              <h3 className="text-xl font-bold mb-4">{t.version}</h3>
               <div className="space-y-2">
                 <button
                   onClick={() => setVersion('full')}
@@ -213,9 +216,9 @@ const CVPage = () => {
                       : 'border-gray-300 dark:border-gray-700'
                   }`}
                 >
-                  <p className="font-medium">Full CV</p>
+                  <p className="font-medium">{t.versionFull}</p>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Complete with all sections
+                    {t.versionFullDesc}
                   </p>
                 </button>
                 <button
@@ -226,9 +229,9 @@ const CVPage = () => {
                       : 'border-gray-300 dark:border-gray-700'
                   }`}
                 >
-                  <p className="font-medium">Short CV</p>
+                  <p className="font-medium">{t.versionShort}</p>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Condensed version
+                    {t.versionShortDesc}
                   </p>
                 </button>
               </div>
@@ -237,10 +240,10 @@ const CVPage = () => {
             {/* Project Selection */}
             <div className="card p-6">
               <h3 className="text-xl font-bold mb-4">
-                Projects ({selectedProjects.length}/5)
+                {t.projectsTitle} ({selectedProjects.length}/5)
               </h3>
               <div className="space-y-2 max-h-64 overflow-y-auto">
-                {cvData.projects.map((project) => (
+                {cvData.projects[cvLanguage].map((project) => (
                   <label
                     key={project.id}
                     className="flex items-start space-x-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
@@ -269,7 +272,7 @@ const CVPage = () => {
             {/* Optional Sections */}
             {cvVersion === 'full' && (
               <div className="card p-6">
-                <h3 className="text-xl font-bold mb-4">Optional Sections</h3>
+                <h3 className="text-xl font-bold mb-4">{t.optionalSections}</h3>
                 <div className="space-y-3">
                   <label className="flex items-center space-x-3 cursor-pointer">
                     <input
@@ -278,7 +281,7 @@ const CVPage = () => {
                       onChange={() => toggleSection('interests')}
                       className="w-4 h-4"
                     />
-                    <span>Interests</span>
+                    <span>{t.interests}</span>
                   </label>
                   <label className="flex items-center space-x-3 cursor-pointer">
                     <input
@@ -287,7 +290,7 @@ const CVPage = () => {
                       onChange={() => toggleSection('certifications')}
                       className="w-4 h-4"
                     />
-                    <span>Certifications</span>
+                    <span>{t.certifications}</span>
                   </label>
                   <label className="flex items-center space-x-3 cursor-pointer">
                     <input
@@ -296,7 +299,7 @@ const CVPage = () => {
                       onChange={() => toggleSection('extracurricular')}
                       className="w-4 h-4"
                     />
-                    <span>Extracurricular</span>
+                    <span>{t.extracurricular}</span>
                   </label>
                 </div>
               </div>
@@ -312,7 +315,7 @@ const CVPage = () => {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <span>{isGenerating ? progress || 'Generating...' : 'Download CV'}</span>
+                <span>{isGenerating ? progress || t.generating : t.downloadCV}</span>
               </button>
 
               <button
@@ -323,14 +326,14 @@ const CVPage = () => {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span>Send by Email</span>
+                <span>{t.sendByEmail}</span>
               </button>
 
               <button
                 onClick={resetToDefaults}
                 className="w-full btn-secondary"
               >
-                Reset to Defaults
+                {t.resetToDefaults}
               </button>
             </div>
           </motion.div>
@@ -342,13 +345,13 @@ const CVPage = () => {
             className="lg:col-span-2"
           >
             <div className="card p-6">
-              <h3 className="text-xl font-bold mb-4">Preview</h3>
+              <h3 className="text-xl font-bold mb-4">{t.preview}</h3>
               <div className="relative bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden" style={{ height: '800px' }}>
                 {isLoadingPreview ? (
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
                       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-500 mx-auto mb-4"></div>
-                      <p className="text-gray-600 dark:text-gray-400">Generating preview...</p>
+                      <p className="text-gray-600 dark:text-gray-400">{t.generatingPreview}</p>
                     </div>
                   </div>
                 ) : previewUrl ? (
@@ -359,7 +362,7 @@ const CVPage = () => {
                   />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <p className="text-gray-600 dark:text-gray-400">Preview not available</p>
+                    <p className="text-gray-600 dark:text-gray-400">{t.previewNotAvailable}</p>
                   </div>
                 )}
               </div>
@@ -377,7 +380,7 @@ const CVPage = () => {
             className="card p-6 max-w-md w-full"
           >
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-bold">Send CV by Email</h3>
+              <h3 className="text-xl font-bold">{t.sendCVByEmail}</h3>
               <button
                 onClick={() => setShowEmailModal(false)}
                 className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
@@ -390,7 +393,7 @@ const CVPage = () => {
 
             <form onSubmit={handleEmailSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Recipient Email *</label>
+                <label className="block text-sm font-medium mb-2">{t.recipientEmail} *</label>
                 <input
                   type="email"
                   required
@@ -402,7 +405,7 @@ const CVPage = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Recipient Name</label>
+                <label className="block text-sm font-medium mb-2">{t.recipientName}</label>
                 <input
                   type="text"
                   value={emailForm.name}
@@ -413,7 +416,7 @@ const CVPage = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Message</label>
+                <label className="block text-sm font-medium mb-2">{t.message}</label>
                 <textarea
                   value={emailForm.message}
                   onChange={(e) => setEmailForm({ ...emailForm, message: e.target.value })}
@@ -441,14 +444,14 @@ const CVPage = () => {
                   disabled={isGenerating}
                   className="flex-1 btn-primary"
                 >
-                  {isGenerating ? 'Sending...' : 'Send Email'}
+                  {isGenerating ? t.sending : t.sendEmail}
                 </button>
                 <button
                   type="button"
                   onClick={handleOpenEmailClient}
                   className="flex-1 btn-secondary"
                 >
-                  Open Email Client
+                  {t.openEmailClient}
                 </button>
               </div>
             </form>

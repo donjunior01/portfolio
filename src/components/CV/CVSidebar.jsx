@@ -76,10 +76,10 @@ const CVSidebar = ({
       )}
 
       {/* Interests */}
-      {visibleSections.interests && interests.length > 0 && (
+      {visibleSections.interests && interests && interests.length > 0 && (
         <CVSection title={translations.interests} theme={theme} sidebar>
           <Text style={styles.interestsList}>
-            {interests.join(' • ')}
+            {Array.isArray(interests) ? interests.join(' • ') : interests}
           </Text>
         </CVSection>
       )}

@@ -7,13 +7,20 @@ import CVMainContent from './CVMainContent';
 const CVDocument = ({ data, theme, selectedProjects, language, version, visibleSections, translations }) => {
   const styles = createStyles(theme);
   
-  // Filter selected projects
-  const projects = data.projects.filter(p => selectedProjects.includes(p.id));
+  // Filter selected projects with language support
+  const projects = data.projects[language].filter(p => selectedProjects.includes(p.id));
   
-  // Filter experience for short version
+  // Filter experience for short version with language support
   const experience = version === 'short' 
-    ? data.experience.slice(0, 2) 
-    : data.experience;
+    ? data.experience[language].slice(0, 2) 
+    : data.experience[language];
+
+  // Get language-specific data
+  const education = data.education[language];
+  const languagesSpoken = data.languagesSpoken[language];
+  const certifications = data.certifications[language];
+  const interests = data.interests[language];
+  const extracurricular = data.extracurricular[language];
 
   return (
     <Document>
@@ -28,9 +35,9 @@ const CVDocument = ({ data, theme, selectedProjects, language, version, visibleS
           <CVSidebar
             personalInfo={data.personalInfo}
             skills={data.skills}
-            languagesSpoken={data.languagesSpoken}
-            certifications={data.certifications}
-            interests={data.interests}
+            languagesSpoken={languagesSpoken}
+            certifications={certifications}
+            interests={interests}
             theme={theme}
             visibleSections={visibleSections}
             translations={translations}
@@ -39,10 +46,10 @@ const CVDocument = ({ data, theme, selectedProjects, language, version, visibleS
           
           <CVMainContent
             summary={data.summary[language]}
-            education={data.education}
+            education={education}
             experience={experience}
             projects={projects}
-            extracurricular={data.extracurricular}
+            extracurricular={extracurricular}
             theme={theme}
             visibleSections={visibleSections}
             translations={translations}

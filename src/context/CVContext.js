@@ -18,7 +18,7 @@ export const CVProvider = ({ children }) => {
   // CV Configuration State
   const [cvTheme, setCvTheme] = useState(isDark ? 'dark' : 'light');
   const [selectedProjects, setSelectedProjects] = useState(
-    cvData.projects.slice(0, 5).map(p => p.id)
+    cvData.projects.en.slice(0, 5).map(p => p.id)
   );
   const [cvLanguage, setCvLanguage] = useState('en');
   const [cvVersion, setCvVersion] = useState('full'); // 'full' or 'short'
@@ -64,7 +64,7 @@ export const CVProvider = ({ children }) => {
     
     // Adjust settings for short version
     if (version === 'short') {
-      setSelectedProjects(cvData.projects.slice(0, 3).map(p => p.id));
+      setSelectedProjects(cvData.projects.en.slice(0, 3).map(p => p.id));
       setVisibleSections({
         interests: false,
         certifications: false,
@@ -82,7 +82,7 @@ export const CVProvider = ({ children }) => {
 
   const resetToDefaults = () => {
     setCvTheme(isDark ? 'dark' : 'light');
-    setSelectedProjects(cvData.projects.slice(0, 5).map(p => p.id));
+    setSelectedProjects(cvData.projects.en.slice(0, 5).map(p => p.id));
     setCvLanguage('en');
     setCvVersion('full');
     setVisibleSections({
