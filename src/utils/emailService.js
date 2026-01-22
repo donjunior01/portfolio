@@ -8,14 +8,16 @@ import { generateCVBlob } from './pdfGenerator';
  * Setup Instructions:
  * 1. Create account at emailjs.com
  * 2. Add email service (Gmail, Outlook, etc.)
- * 3. Create email template
- * 4. Get Service ID, Template ID, and Public Key
- * 5. Replace the values below
+ * 3. Create email templates
+ * 4. Get Service ID, Template IDs, and Public Key
  */
 const EMAILJS_CONFIG = {
-  serviceId: 'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-  templateId: 'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-  publicKey: 'YOUR_PUBLIC_KEY', // Replace with your EmailJS public key
+  serviceId: 'service_1cxdwvl',
+  templates: {
+    autoReply: 'template_95yojuf', // Auto-reply template for contact form submissions
+    contactUs: 'template_q3qvk36', // Contact form notification template
+  },
+  publicKey: 'BdnnnWu0CJiRXsdQw',
 };
 
 /**
@@ -45,9 +47,9 @@ export const sendCVByEmail = async (params) => {
 
     // Check if EmailJS is configured
     if (
-      EMAILJS_CONFIG.serviceId === 'YOUR_SERVICE_ID' ||
-      EMAILJS_CONFIG.templateId === 'YOUR_TEMPLATE_ID' ||
-      EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY'
+      !EMAILJS_CONFIG.serviceId ||
+      !EMAILJS_CONFIG.templates.contactUs ||
+      !EMAILJS_CONFIG.publicKey
     ) {
       throw new Error(
         'EmailJS is not configured. Please update the credentials in src/utils/emailService.js'
@@ -71,10 +73,10 @@ export const sendCVByEmail = async (params) => {
       reply_to: 'Juniorasobijo@gmail.com',
     };
 
-    // Send email using EmailJS
+    // Send email using EmailJS (using contact template)
     const response = await emailjs.send(
       EMAILJS_CONFIG.serviceId,
-      EMAILJS_CONFIG.templateId,
+      EMAILJS_CONFIG.templates.contactUs,
       templateParams,
       EMAILJS_CONFIG.publicKey
     );
@@ -142,7 +144,96 @@ export const openEmailClient = async (params) => {
   window.location.href = mailtoLink;
 };
 
+/**
+ * Send contact form message
+ * Sends both a notification to you and an auto-reply to the sender
+ * @param {Object} params - Contact form parameters
+ * @param {string} params.name - Sender's name
+ * @param {string} params.email - Sender's email
+ * @param {string} params.subject - Message subject
+ * @param {string} params.message - Message content
+ * @returns {Promise<Object>} Result object
+ */
+export const sendContactForm = async (params) => {
+  const { name, email, subject, message } = params;
+
+  try {
+    // Validate inputs
+    if (!name || !email || !message) {
+      throw new Error('Please fill in all required fields.');
+    }
+
+    if (!isValidEmail(email)) {
+      throw new Error('Please provide a valid email address.');
+    }
+
+    // Check if EmailJS is configured
+    if (
+      !EMAILJS_CONFIG.serviceId ||
+      !EMAILJS_CONFIG.templates.contactUs ||
+      !EMAILJS_CONFIG.templates.autoReply ||
+      !EMAILJS_CONFIG.publicKey
+    ) {
+      throw new Error(
+        'EmailJS is not configured. Please update the credentials in src/utils/emailService.js'
+      );
+    }
+
+    // Prepare template parameters for contact notification
+    const contactParams = {
+      from_name: name,
+      from_email: email,
+      subject: subject || 'New Contact Form Submission',
+      message: message,
+      to_email: 'Juniorasobijo@gmail.com',
+      reply_to: email,
+    };
+
+    // Prepare template parameters for auto-reply
+    const autoReplyParams = {
+      to_name: name,
+      to_email: email,
+      from_name: 'Junior Donfack Assobjio',
+      subject: subject || 'Thank you for contacting me',
+      message: message,
+      reply_to: 'Juniorasobijo@gmail.com',
+    };
+
+    // Send contact notification to you
+    const contactResponse = await emailjs.send(
+      EMAILJS_CONFIG.serviceId,
+      EMAILJS_CONFIG.templates.contactUs,
+      contactParams,
+      EMAILJS_CONFIG.publicKey
+    );
+
+    // Send auto-reply to the sender
+    const autoReplyResponse = await emailjs.send(
+      EMAILJS_CONFIG.serviceId,
+      EMAILJS_CONFIG.templates.autoReply,
+      autoReplyParams,
+      EMAILJS_CONFIG.publicKey
+    );
+
+    if (contactResponse.status === 200 && autoReplyResponse.status === 200) {
+      return {
+        success: true,
+        message: 'Message sent successfully! You will receive a confirmation email shortly.',
+      };
+    } else {
+      throw new Error('Failed to send message. Please try again.');
+    }
+  } catch (error) {
+    console.error('Error sending contact form:', error);
+    return {
+      success: false,
+      message: error.message || 'Failed to send message. Please try again.',
+    };
+  }
+};
+
 export default {
   sendCVByEmail,
+  sendContactForm,
   openEmailClient,
 };
