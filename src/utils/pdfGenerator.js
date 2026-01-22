@@ -116,8 +116,10 @@ export const generateCVDataURL = async (options) => {
   }
 };
 
-export default {
+const pdfGenerator = {
   generateAndDownloadCV,
   generateCVBlob,
   generateCVDataURL,
 };
+
+export default pdfGenerator;

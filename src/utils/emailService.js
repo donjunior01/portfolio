@@ -232,8 +232,10 @@ export const sendContactForm = async (params) => {
   }
 };
 
-export default {
+const emailService = {
   sendCVByEmail,
   sendContactForm,
   openEmailClient,
 };
+
+export default emailService;

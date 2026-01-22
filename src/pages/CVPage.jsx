@@ -7,7 +7,6 @@ import { sendCVByEmail, openEmailClient } from '../utils/emailService';
 import { cvData } from '../data/cvData';
 
 const CVPage = () => {
-  const { isDark } = useTheme();
   const {
     cvTheme,
     selectedProjects,

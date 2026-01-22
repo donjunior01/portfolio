@@ -13,7 +13,7 @@ const Home = () => {
       setCurrentRole((prev) => (prev + 1) % roles.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [roles.length]);
 
   return (
     <div className="min-h-screen">
