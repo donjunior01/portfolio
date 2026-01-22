@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useCVContext } from '../context/CVContext';
-import { useTheme } from '../context/ThemeContext';
 import { generateAndDownloadCV, generateCVDataURL } from '../utils/pdfGenerator';
 import { sendCVByEmail, openEmailClient } from '../utils/emailService';
 import { cvData } from '../data/cvData';
