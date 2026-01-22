@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Don Junior Portfolio",
+    "slug": "donjunior-portfolio",
+    "version": "1.0.0",
+    "orientation": "default",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#2563eb"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.donjunior.portfolio"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#2563eb"
+      },
+      "package": "com.donjunior.portfolio",
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro",
+      "output": "single",
+      "name": "Donfack Assobjio Junior - Portfolio",
+      "shortName": "DJ Portfolio",
+      "description": "Professional portfolio of Donfack Assobjio Junior - Software Engineering Student at Saint Jean University",
+      "backgroundColor": "#ffffff",
+      "themeColor": "#2563eb",
+      "lang": "en"
+    }
+  }
+}
