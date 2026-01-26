@@ -1,11 +1,24 @@
 // Centralized CV data configuration
 export const cvData = {
   personalInfo: {
-    name: 'Junior Donfack Assobjio',
-    title: 'Software Engineering Student | Full Stack Developer',
-    email: 'Juniorasobijo@gmail.com',
-    phone: '+237 652 800 389',
-    location: 'Yaoundé, Cameroon',
+    en: [
+      {
+        name: 'Junior Donfack Assobjio',
+        title: 'Software Engineering Student | Full Stack Developer',
+        email: 'Juniorasobijo@gmail.com',
+        phone: '+237 652 800 389',
+        location: 'Yaounde, Cameroon',
+      },
+    ],
+    fr: [
+      {
+        name: 'Junior Donfack Assobjio',
+        title: 'Étudiant en Génie Logiciel | Développeur Full Stack',
+        email: 'Juniorasobijo@gmail.com',
+        phone: '+237 652 800 389',
+        location: 'Yaoundé, Cameroon',
+      },
+    ],
     linkedin: 'linkedin.com/in/junior-donfack-assobjio-905bb72b5/',
     github: 'github.com/donjunior01',
     gitlab: 'gitlab.com/donjunior01',

@@ -16,6 +16,14 @@ const CVDocument = ({ data, theme, selectedProjects, language, version, visibleS
     : data.experience[language];
 
   // Get language-specific data
+  const personalInfo = {
+    ...data.personalInfo[language][0], // Get the first (and only) item from the language array
+    linkedin: data.personalInfo.linkedin,
+    github: data.personalInfo.github,
+    gitlab: data.personalInfo.gitlab,
+    website: data.personalInfo.website,
+    photoUrl: data.personalInfo.photoUrl,
+  };
   const education = data.education[language];
   const languagesSpoken = data.languagesSpoken[language];
   const certifications = data.certifications[language];
@@ -26,14 +34,14 @@ const CVDocument = ({ data, theme, selectedProjects, language, version, visibleS
     <Document>
       <Page size="A4" style={styles.page}>
         <CVHeader 
-          personalInfo={data.personalInfo}
+          personalInfo={personalInfo}
           theme={theme}
           translations={translations}
         />
         
         <View style={styles.content}>
           <CVSidebar
-            personalInfo={data.personalInfo}
+            personalInfo={personalInfo}
             skills={data.skills}
             languagesSpoken={languagesSpoken}
             certifications={certifications}
