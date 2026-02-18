@@ -45,13 +45,13 @@ const createStyles = (theme) => {
       marginBottom: 8,
     },
     name: {
-      fontSize: 22,
+      fontSize: 18, // Reduced from 22
       fontWeight: 'bold',
       color: primaryColor,
       marginBottom: 3,
     },
     title: {
-      fontSize: 12,
+      fontSize: 10, // Reduced from 12
       color: textColor,
       fontWeight: 'bold',
     },
@@ -64,7 +64,7 @@ const createStyles = (theme) => {
       marginBottom: 2,
     },
     contactItem: {
-      fontSize: 8,
+      fontSize: 7, // Reduced from 8
       color: secondaryTextColor,
       width: '48%',
     },

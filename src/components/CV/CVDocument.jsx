@@ -76,7 +76,7 @@ const createStyles = (theme) => {
       flexDirection: 'column',
       backgroundColor: isDark ? '#0f172a' : '#ffffff',
       fontFamily: 'Helvetica',
-      fontSize: 10,
+      fontSize: 8, // Reduced from 10 to 8 for more content
     },
     content: {
       flexDirection: 'row',

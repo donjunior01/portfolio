@@ -105,11 +105,11 @@ const createStyles = (theme) => {
       marginBottom: 4,
     },
     languageName: {
-      fontSize: 9,
+      fontSize: 8, // Reduced from 9
       color: textColor,
     },
     languageLevel: {
-      fontSize: 8,
+      fontSize: 7, // Reduced from 8
       color: '#cbd5e1',
       fontStyle: 'italic',
     },
@@ -117,7 +117,7 @@ const createStyles = (theme) => {
       marginBottom: 8,
     },
     skillCategoryTitle: {
-      fontSize: 8,
+      fontSize: 7, // Reduced from 8
       fontWeight: 'bold',
       color: '#cbd5e1',
       marginBottom: 3,
@@ -127,16 +127,16 @@ const createStyles = (theme) => {
       marginBottom: 5,
     },
     certName: {
-      fontSize: 9,
+      fontSize: 8, // Reduced from 9
       color: textColor,
       marginBottom: 1,
     },
     certIssuer: {
-      fontSize: 7,
+      fontSize: 6, // Reduced from 7
       color: '#cbd5e1',
     },
     interestsList: {
-      fontSize: 8,
+      fontSize: 7, // Reduced from 8
       color: textColor,
       lineHeight: 1.4,
     },

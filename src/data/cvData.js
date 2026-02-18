@@ -87,6 +87,19 @@ export const cvData = {
         ],
       },
       {
+        title: 'IT Intern (Support and Maintenance)',
+        company: 'OG/OLABS - Octal Academy',
+        location: 'Yaoundé, Cameroon',
+        period: 'November 2021 - February 2022',
+        responsibilities: [
+          'Preventive and corrective maintenance of IT infrastructure',
+          'User assistance and level 1 incident resolution',
+          'Installation and configuration of operating systems and office software',
+          'Assistance in deployment of basic network equipment',
+          'Participation in technical procedure documentation',
+        ],
+      },
+      {
         title: 'Commercial Assistant',
         company: 'SOTICAM',
         location: 'Yaoundé, Cameroon',
@@ -126,6 +139,19 @@ export const cvData = {
           'Support technique quotidien et maintenance des systèmes',
           'Développement d\'une application de gestion des tâches en tant que développeur Full Stack',
           'Résolution de problèmes matériels et logiciels pour plus de 20 employés',
+        ],
+      },
+      {
+        title: 'Stagiaire Informatique (Support et Maintenance)',
+        company: 'OG/OLABS - Octal Academy',
+        location: 'Yaoundé, Cameroun',
+        period: 'Novembre 2021 - Février 2022',
+        responsibilities: [
+          'Maintenance préventive et curative du parc informatique',
+          'Assistance aux utilisateurs et résolution d\'incidents de niveau 1',
+          'Installation et configuration des systèmes d\'exploitation et logiciels bureautiques',
+          'Aide au déploiement des équipements réseaux de base',
+          'Participation à la documentation des procédures techniques',
         ],
       },
       {

@@ -25,7 +25,7 @@ const createStyles = (theme, sidebar) => {
       marginBottom: 10,
     },
     title: {
-      fontSize: 11,
+      fontSize: 9, // Reduced from 11
       fontWeight: 'bold',
       color: titleColor,
       marginBottom: 5,

@@ -33,11 +33,11 @@ const createStyles = (theme) => {
       marginBottom: 2,
     },
     skillName: {
-      fontSize: 8,
+      fontSize: 7, // Reduced from 8
       color: textColor,
     },
     skillLevel: {
-      fontSize: 7,
+      fontSize: 6, // Reduced from 7
       color: '#cbd5e1',
     },
     barContainer: {

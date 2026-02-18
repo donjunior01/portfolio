@@ -45,18 +45,18 @@ const createStyles = (theme) => {
       marginBottom: 2,
     },
     name: {
-      fontSize: 9,
+      fontSize: 8, // Reduced from 9
       fontWeight: 'bold',
       color: textColor,
       flex: 1,
     },
     role: {
-      fontSize: 7,
+      fontSize: 6, // Reduced from 7
       color: secondaryColor,
       fontStyle: 'italic',
     },
     description: {
-      fontSize: 8,
+      fontSize: 7, // Reduced from 8
       color: textColor,
       marginBottom: 3,
       lineHeight: 1.3,
@@ -66,7 +66,7 @@ const createStyles = (theme) => {
       flexWrap: 'wrap',
     },
     techBadge: {
-      fontSize: 7,
+      fontSize: 6, // Reduced from 7
       color: accentColor,
       fontWeight: 'bold',
     },

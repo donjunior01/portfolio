@@ -107,7 +107,7 @@ const createStyles = (theme) => {
       paddingLeft: 15,
     },
     summaryText: {
-      fontSize: 9,
+      fontSize: 8, // Reduced from 9
       color: textColor,
       lineHeight: 1.4,
       textAlign: 'justify',
@@ -121,13 +121,13 @@ const createStyles = (theme) => {
       marginBottom: 2,
     },
     eduTitle: {
-      fontSize: 10,
+      fontSize: 9, // Reduced from 10
       fontWeight: 'bold',
       color: textColor,
       flex: 1,
     },
     eduPeriod: {
-      fontSize: 8,
+      fontSize: 7, // Reduced from 8
       color: secondaryColor,
       fontStyle: 'italic',
     },
@@ -136,12 +136,12 @@ const createStyles = (theme) => {
       marginBottom: 2,
     },
     institutionName: {
-      fontSize: 9,
+      fontSize: 8, // Reduced from 9
       color: accentColor,
       fontWeight: 'bold',
     },
     eduLocation: {
-      fontSize: 8,
+      fontSize: 7, // Reduced from 8
       color: secondaryColor,
     },
     highlights: {
@@ -152,13 +152,13 @@ const createStyles = (theme) => {
       marginBottom: 2,
     },
     bullet: {
-      fontSize: 8,
+      fontSize: 7, // Reduced from 8
       color: accentColor,
       marginRight: 4,
       marginTop: 1,
     },
     highlightText: {
-      fontSize: 8,
+      fontSize: 7, // Reduced from 8
       color: textColor,
       flex: 1,
     },
@@ -166,18 +166,18 @@ const createStyles = (theme) => {
       marginBottom: 5,
     },
     activityRole: {
-      fontSize: 9,
+      fontSize: 8, // Reduced from 9
       fontWeight: 'bold',
       color: textColor,
       marginBottom: 1,
     },
     activityOrg: {
-      fontSize: 8,
+      fontSize: 7, // Reduced from 8
       color: accentColor,
       marginBottom: 2,
     },
     activityDesc: {
-      fontSize: 8,
+      fontSize: 7, // Reduced from 8
       color: textColor,
       lineHeight: 1.3,
     },
