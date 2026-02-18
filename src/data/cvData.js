@@ -87,17 +87,11 @@ export const cvData = {
         ],
       },
       {
-        title: 'IT Intern (Support and Maintenance)',
-        company: 'OG/OLABS - Octal Academy',
+        title: 'School Maintenance Staff',
+        company: 'Saint Jean Ingénieur',
         location: 'Yaoundé, Cameroon',
-        period: 'November 2021 - February 2022',
-        responsibilities: [
-          'Preventive and corrective maintenance of IT infrastructure',
-          'User assistance and level 1 incident resolution',
-          'Installation and configuration of operating systems and office software',
-          'Assistance in deployment of basic network equipment',
-          'Participation in technical procedure documentation',
-        ],
+        period: '2024 - Present',
+        responsibilities: ['Weekly classroom maintenance and sanitation'],
       },
       {
         title: 'Commercial Assistant',
@@ -111,11 +105,17 @@ export const cvData = {
         ],
       },
       {
-        title: 'School Maintenance Staff',
-        company: 'Saint Jean Ingénieur',
+        title: 'IT Intern (Support and Maintenance)',
+        company: 'OG/OLABS - Octal Academy',
         location: 'Yaoundé, Cameroon',
-        period: '2024 - Present',
-        responsibilities: ['Weekly classroom maintenance and sanitation'],
+        period: 'November 2021 - February 2022',
+        responsibilities: [
+          'Preventive and corrective maintenance of IT infrastructure',
+          'User assistance and level 1 incident resolution',
+          'Installation and configuration of operating systems and office software',
+          'Assistance in deployment of basic network equipment',
+          'Participation in technical procedure documentation',
+        ],
       },
       {
         title: 'Furniture Craftsman & Sales',
@@ -282,6 +282,7 @@ export const cvData = {
       { name: 'MySQL', level: 85 },
       { name: 'PostgreSQL', level: 80 },
       { name: 'MongoDB', level: 75 },
+      { name: 'SQLite', level: 80 },
       { name: 'NoSQL', level: 70 },
     ],
     tools: [
@@ -290,6 +291,9 @@ export const cvData = {
       { name: 'VS Code', level: 90 },
       { name: 'IntelliJ IDEA', level: 80 },
       { name: 'Eclipse', level: 75 },
+      { name: 'Figma', level: 75 },
+      { name: 'Adobe XD', level: 70 },
+      { name: 'WordPress', level: 80 },
     ],
     competencies: [
       { name: 'Full Stack Development', level: 85 },
@@ -298,6 +302,7 @@ export const cvData = {
       { name: 'Database Management', level: 80 },
       { name: 'Network Administration', level: 75 },
       { name: 'IT Support', level: 80 },
+      { name: 'Trello', level: 85 },
     ],
   },
 

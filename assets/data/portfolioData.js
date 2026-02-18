@@ -86,6 +86,7 @@ export const SKILLS = {
     { name: 'MongoDB', level: 90 },
     { name: 'PostgreSQL', level: 88 },
     { name: 'MySQL', level: 85 },
+    { name: 'SQLite', level: 80 },
     { name: 'Firebase', level: 90 },
     { name: 'Redis', level: 75 },
     { name: 'Oracle', level: 70 },
@@ -98,12 +99,16 @@ export const SKILLS = {
     { name: 'Azure', level: 75 },
     { name: 'Jenkins', level: 72 },
     { name: 'VS Code', level: 95 },
+    { name: 'Figma', level: 75 },
+    { name: 'Adobe XD', level: 70 },
+    { name: 'WordPress', level: 80 },
   ],
   other: [
     { name: 'REST API', level: 95 },
     { name: 'GraphQL', level: 80 },
     { name: 'Agile', level: 88 },
     { name: 'CI/CD', level: 82 },
+    { name: 'Trello', level: 85 },
   ],
 };
 
@@ -229,6 +234,28 @@ export const PROJECTS = [
 export const EXPERIENCE = [
   {
     id: 1,
+    title: 'IT Intern (Support and Maintenance)',
+    company: 'OG/OLABS - Octal Academy',
+    location: 'Yaoundé, Cameroon',
+    startDate: 'November 2021',
+    endDate: 'February 2022',
+    current: false,
+    description: 'IT internship focused on preventive and corrective maintenance of computer infrastructure, user support, and technical documentation.',
+    responsibilities: [
+      'Preventive and corrective maintenance of IT infrastructure',
+      'User assistance and level 1 incident resolution',
+      'Installation and configuration of operating systems and office software',
+      'Assistance in deployment of basic network equipment',
+      'Participation in technical procedure documentation',
+    ],
+    achievements: [
+      'Demonstrated excellent learning capacity and rigor throughout the internship',
+      'Gained hands-on experience in IT support and maintenance procedures',
+      'Contributed to improving technical documentation processes',
+    ],
+  },
+  {
+    id: 2,
     title: 'Commercial Intern',
     company: 'SOTICAM',
     location: 'Yaoundé, Cameroon',
@@ -248,7 +275,7 @@ export const EXPERIENCE = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: 'IT & Network Intern',
     company: 'JD SARL',
     location: 'Yaound2, Cameroon',
