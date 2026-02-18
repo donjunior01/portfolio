@@ -142,17 +142,11 @@ export const cvData = {
         ],
       },
       {
-        title: 'Stagiaire Informatique (Support et Maintenance)',
-        company: 'OG/OLABS - Octal Academy',
+        title: 'Personnel d\'Entretien Scolaire',
+        company: 'Saint Jean Ingénieur',
         location: 'Yaoundé, Cameroun',
-        period: 'Novembre 2021 - Février 2022',
-        responsibilities: [
-          'Maintenance préventive et curative du parc informatique',
-          'Assistance aux utilisateurs et résolution d\'incidents de niveau 1',
-          'Installation et configuration des systèmes d\'exploitation et logiciels bureautiques',
-          'Aide au déploiement des équipements réseaux de base',
-          'Participation à la documentation des procédures techniques',
-        ],
+        period: '2024 - Présent',
+        responsibilities: ['Entretien et assainissement hebdomadaire des salles de classe'],
       },
       {
         title: 'Assistant Commercial',
@@ -166,11 +160,17 @@ export const cvData = {
         ],
       },
       {
-        title: 'Personnel d\'Entretien Scolaire',
-        company: 'Saint Jean Ingénieur',
+        title: 'Stagiaire Informatique (Support et Maintenance)',
+        company: 'OG/OLABS - Octal Academy',
         location: 'Yaoundé, Cameroun',
-        period: '2024 - Présent',
-        responsibilities: ['Entretien et assainissement hebdomadaire des salles de classe'],
+        period: 'Novembre 2021 - Février 2022',
+        responsibilities: [
+          'Maintenance préventive et curative du parc informatique',
+          'Assistance aux utilisateurs et résolution d\'incidents de niveau 1',
+          'Installation et configuration des systèmes d\'exploitation et logiciels bureautiques',
+          'Aide au déploiement des équipements réseaux de base',
+          'Participation à la documentation des procédures techniques',
+        ],
       },
       {
         title: 'Artisan Menuisier & Ventes',
