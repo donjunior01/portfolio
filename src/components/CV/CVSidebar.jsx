@@ -9,6 +9,7 @@ const CVSidebar = ({
   languagesSpoken, 
   certifications, 
   interests, 
+  extracurricular,
   theme, 
   visibleSections,
   translations,
@@ -70,6 +71,21 @@ const CVSidebar = ({
             <View key={index} style={styles.certItem}>
               <Text style={styles.certName}>{cert.name}</Text>
               <Text style={styles.certIssuer}>{cert.issuer}</Text>
+            </View>
+          ))}
+        </CVSection>
+      )}
+
+      {/* Extracurricular Activities */}
+      {visibleSections.extracurricular && extracurricular && extracurricular.length > 0 && (
+        <CVSection title={translations.extracurricular} theme={theme} sidebar>
+          {extracurricular.map((activity, index) => (
+            <View key={index} style={styles.activityItem}>
+              <Text style={styles.activityRole}>{activity.role}</Text>
+              <Text style={styles.activityOrg}>{activity.organization}</Text>
+              {activity.description && (
+                <Text style={styles.activityDesc}>{activity.description}</Text>
+              )}
             </View>
           ))}
         </CVSection>
@@ -139,6 +155,25 @@ const createStyles = (theme) => {
       fontSize: 8,
       color: textColor,
       lineHeight: 1.4,
+    },
+    activityItem: {
+      marginBottom: 5,
+    },
+    activityRole: {
+      fontSize: 9,
+      color: textColor,
+      marginBottom: 1,
+      fontWeight: 'bold',
+    },
+    activityOrg: {
+      fontSize: 8,
+      color: '#cbd5e1',
+      marginBottom: 2,
+    },
+    activityDesc: {
+      fontSize: 8,
+      color: textColor,
+      lineHeight: 1.3,
     },
   });
 };

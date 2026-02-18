@@ -8,7 +8,6 @@ const CVMainContent = ({
   education, 
   experience, 
   projects, 
-  extracurricular, 
   theme, 
   visibleSections,
   translations 
@@ -72,21 +71,6 @@ const CVMainContent = ({
               theme={theme}
               translations={translations}
             />
-          ))}
-        </CVSection>
-      )}
-
-      {/* Extracurricular Activities */}
-      {visibleSections.extracurricular && extracurricular && extracurricular.length > 0 && (
-        <CVSection title={translations.extracurricular} theme={theme}>
-          {extracurricular.map((activity, index) => (
-            <View key={index} style={styles.activityItem}>
-              <Text style={styles.activityRole}>{activity.role}</Text>
-              <Text style={styles.activityOrg}>{activity.organization}</Text>
-              {activity.description && (
-                <Text style={styles.activityDesc}>{activity.description}</Text>
-              )}
-            </View>
           ))}
         </CVSection>
       )}
@@ -161,25 +145,6 @@ const createStyles = (theme) => {
       fontSize: 8,
       color: textColor,
       flex: 1,
-    },
-    activityItem: {
-      marginBottom: 5,
-    },
-    activityRole: {
-      fontSize: 9,
-      fontWeight: 'bold',
-      color: textColor,
-      marginBottom: 1,
-    },
-    activityOrg: {
-      fontSize: 8,
-      color: accentColor,
-      marginBottom: 2,
-    },
-    activityDesc: {
-      fontSize: 8,
-      color: textColor,
-      lineHeight: 1.3,
     },
   });
 };

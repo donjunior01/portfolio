@@ -17,7 +17,7 @@ import { cvTranslations } from '../translations/cvTranslations';
 export const generateAndDownloadCV = async (options) => {
   const {
     theme = 'light',
-    selectedProjects = cvData.projects.slice(0, 5).map(p => p.id),
+    selectedProjects = cvData.projects.en.slice(0, 5).map(p => p.id),
     language = 'en',
     version = 'full',
     visibleSections = { interests: true, certifications: true, extracurricular: true },
@@ -73,7 +73,7 @@ export const generateAndDownloadCV = async (options) => {
 export const generateCVBlob = async (options) => {
   const {
     theme = 'light',
-    selectedProjects = cvData.projects.slice(0, 5).map(p => p.id),
+    selectedProjects = cvData.projects.en.slice(0, 5).map(p => p.id),
     language = 'en',
     version = 'full',
     visibleSections = { interests: true, certifications: true, extracurricular: true },
