@@ -3,6 +3,12 @@ import { View, Text, StyleSheet } from '@react-pdf/renderer';
 const ExperienceItem = ({ experience, theme, translations }) => {
   const styles = createStyles(theme);
 
+  // Limit responsibilities to fit better on one page
+  const maxResponsibilities = 3;
+  const displayResponsibilities = experience.responsibilities 
+    ? experience.responsibilities.slice(0, maxResponsibilities)
+    : [];
+
   return (
     <View style={styles.item}>
       <View style={styles.header}>
@@ -15,9 +21,9 @@ const ExperienceItem = ({ experience, theme, translations }) => {
           <Text style={styles.location}> • {experience.location}</Text>
         )}
       </View>
-      {experience.responsibilities && experience.responsibilities.length > 0 && (
+      {displayResponsibilities.length > 0 && (
         <View style={styles.responsibilities}>
-          {experience.responsibilities.map((resp, index) => (
+          {displayResponsibilities.map((resp, index) => (
             <View key={index} style={styles.responsibilityItem}>
               <Text style={styles.bullet}>•</Text>
               <Text style={styles.responsibilityText}>{resp}</Text>
@@ -37,56 +43,57 @@ const createStyles = (theme) => {
 
   return StyleSheet.create({
     item: {
-      marginBottom: 8,
+      marginBottom: 6, // Reduced margin
+      pageBreakInside: 'avoid', // Prevent breaking items
     },
     header: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'flex-start',
-      marginBottom: 2,
+      marginBottom: 1, // Reduced margin
     },
     title: {
-      fontSize: 9, // Reduced from 10
+      fontSize: 8.5, // Further reduced
       fontWeight: 'bold',
       color: textColor,
       flex: 1,
     },
     period: {
-      fontSize: 7, // Reduced from 8
+      fontSize: 6.5, // Further reduced
       color: secondaryColor,
       fontStyle: 'italic',
     },
     company: {
       flexDirection: 'row',
-      marginBottom: 3,
+      marginBottom: 2, // Reduced margin
     },
     companyName: {
-      fontSize: 8, // Reduced from 9
+      fontSize: 7.5, // Further reduced
       color: accentColor,
       fontWeight: 'bold',
     },
     location: {
-      fontSize: 7, // Reduced from 8
+      fontSize: 6.5, // Further reduced
       color: secondaryColor,
     },
     responsibilities: {
-      marginTop: 2,
+      marginTop: 1, // Reduced margin
     },
     responsibilityItem: {
       flexDirection: 'row',
-      marginBottom: 2,
+      marginBottom: 1, // Reduced margin
     },
     bullet: {
-      fontSize: 7, // Reduced from 8
+      fontSize: 6.5, // Further reduced
       color: accentColor,
-      marginRight: 4,
-      marginTop: 1,
+      marginRight: 3, // Reduced margin
+      marginTop: 0.5,
     },
     responsibilityText: {
-      fontSize: 7, // Reduced from 8
+      fontSize: 6.5, // Further reduced
       color: textColor,
       flex: 1,
-      lineHeight: 1.3,
+      lineHeight: 1.2, // Tighter line height
     },
   });
 };

@@ -36,37 +36,38 @@ const createStyles = (theme) => {
 
   return StyleSheet.create({
     item: {
-      marginBottom: 7,
+      marginBottom: 5, // Reduced margin
+      pageBreakInside: 'avoid', // Prevent breaking items
     },
     header: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'flex-start',
-      marginBottom: 2,
+      marginBottom: 1, // Reduced margin
     },
     name: {
-      fontSize: 8, // Reduced from 9
+      fontSize: 7.5, // Further reduced
       fontWeight: 'bold',
       color: textColor,
       flex: 1,
     },
     role: {
-      fontSize: 6, // Reduced from 7
+      fontSize: 5.5, // Further reduced
       color: secondaryColor,
       fontStyle: 'italic',
     },
     description: {
-      fontSize: 7, // Reduced from 8
+      fontSize: 6.5, // Further reduced
       color: textColor,
-      marginBottom: 3,
-      lineHeight: 1.3,
+      marginBottom: 2, // Reduced margin
+      lineHeight: 1.2, // Tighter line height
     },
     techContainer: {
       flexDirection: 'row',
       flexWrap: 'wrap',
     },
     techBadge: {
-      fontSize: 6, // Reduced from 7
+      fontSize: 5.5, // Further reduced
       color: accentColor,
       fontWeight: 'bold',
     },
