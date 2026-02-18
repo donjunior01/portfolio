@@ -49,6 +49,13 @@ export const experience = [
     type: 'Internship',
   },
   {
+    title: 'IT Intern (Support and Maintenance)',
+    company: 'OG/OLABS - Octal Academy',
+    period: 'Nov 2021 - Feb 2022',
+    description: 'IT infrastructure maintenance, user support, system installation and configuration, network troubleshooting, hardware diagnostics, software management, user training, and security operations',
+    type: 'Internship',
+  },
+  {
     title: 'School Cleaner',
     company: 'Saint Jean Ingénieur',
     period: '2024 - Present',
@@ -97,6 +104,7 @@ export const skills = {
     { name: 'MySQL', level: 85 },
     { name: 'PostgreSQL', level: 80 },
     { name: 'MongoDB', level: 75 },
+    { name: 'SQLite', level: 80 },
     { name: 'NoSQL', level: 70 },
   ],
   tools: [
@@ -105,6 +113,9 @@ export const skills = {
     { name: 'VS Code', level: 90 },
     { name: 'IntelliJ', level: 80 },
     { name: 'Eclipse', level: 75 },
+    { name: 'Figma', level: 75 },
+    { name: 'Adobe XD', level: 70 },
+    { name: 'WordPress', level: 80 },
   ],
   competencies: [
     { name: 'Full Stack Development', level: 85 },
@@ -114,6 +125,7 @@ export const skills = {
     { name: 'Networking', level: 75 },
     { name: 'IT Support', level: 80 },
     { name: 'Problem Solving', level: 90 },
+    { name: 'Trello', level: 85 },
   ],
 };
 

@@ -32,7 +32,7 @@ const CVDocument = ({ data, theme, selectedProjects, language, version, visibleS
 
   return (
     <Document>
-      <Page size="A4" style={styles.page} wrap={false}>
+      <Page size="A4" style={styles.page} wrap={true}>
         <CVHeader 
           personalInfo={personalInfo}
           theme={theme}
@@ -76,17 +76,13 @@ const createStyles = (theme) => {
       flexDirection: 'column',
       backgroundColor: isDark ? '#0f172a' : '#ffffff',
       fontFamily: 'Helvetica',
-      fontSize: 8,
-      padding: 0, // Remove default padding
-      margin: 0, // Remove default margin
-      minHeight: '100vh', // Ensure full page height
-      maxHeight: '100vh', // Prevent overflow to second page
+      fontSize: 10,
+      padding: 0, // Remove default padding to prevent overflow
+      margin: 0, // Remove default margin to prevent overflow
     },
     content: {
       flexDirection: 'row',
       flex: 1,
-      height: '100%', // Use full available height
-      overflow: 'hidden', // Prevent content overflow
     },
   });
 };

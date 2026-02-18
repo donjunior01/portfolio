@@ -15,12 +15,6 @@ const CVMainContent = ({
 }) => {
   const styles = createStyles(theme);
 
-  // Limit content for better single-page fit
-  const maxExperience = 4; // Limit experience items
-  const maxProjects = 3;   // Limit project items
-  const displayExperience = experience.slice(0, maxExperience);
-  const displayProjects = projects ? projects.slice(0, maxProjects) : [];
-
   return (
     <View style={styles.mainContent}>
       {/* Professional Summary */}
@@ -44,7 +38,7 @@ const CVMainContent = ({
             </View>
             {edu.highlights && edu.highlights.length > 0 && (
               <View style={styles.highlights}>
-                {edu.highlights.slice(0, 2).map((highlight, idx) => (
+                {edu.highlights.map((highlight, idx) => (
                   <View key={idx} style={styles.highlightItem}>
                     <Text style={styles.bullet}>•</Text>
                     <Text style={styles.highlightText}>{highlight}</Text>
@@ -58,7 +52,7 @@ const CVMainContent = ({
 
       {/* Professional Experience */}
       <CVSection title={translations.experience} theme={theme}>
-        {displayExperience.map((exp, index) => (
+        {experience.map((exp, index) => (
           <ExperienceItem 
             key={index} 
             experience={exp} 
@@ -69,9 +63,9 @@ const CVMainContent = ({
       </CVSection>
 
       {/* Key Projects */}
-      {displayProjects && displayProjects.length > 0 && (
+      {projects && projects.length > 0 && (
         <CVSection title={translations.projects} theme={theme}>
-          {displayProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <ProjectItem 
               key={index} 
               project={project} 
@@ -85,7 +79,7 @@ const CVMainContent = ({
       {/* Extracurricular Activities */}
       {visibleSections.extracurricular && extracurricular && extracurricular.length > 0 && (
         <CVSection title={translations.extracurricular} theme={theme}>
-          {extracurricular.slice(0, 2).map((activity, index) => (
+          {extracurricular.map((activity, index) => (
             <View key={index} style={styles.activityItem}>
               <Text style={styles.activityRole}>{activity.role}</Text>
               <Text style={styles.activityOrg}>{activity.organization}</Text>
@@ -109,89 +103,83 @@ const createStyles = (theme) => {
   return StyleSheet.create({
     mainContent: {
       width: '65%',
-      padding: 10, // Reduced padding
-      paddingLeft: 12,
-      paddingTop: 8,
-      flex: 1,
-      overflow: 'hidden', // Prevent overflow
+      padding: 12,
+      paddingLeft: 15,
     },
     summaryText: {
-      fontSize: 7.5, // Further reduced
+      fontSize: 9,
       color: textColor,
-      lineHeight: 1.3, // Tighter line height
+      lineHeight: 1.4,
       textAlign: 'justify',
     },
     educationItem: {
-      marginBottom: 6, // Reduced margin
-      pageBreakInside: 'avoid', // Prevent breaking items across pages
+      marginBottom: 8,
     },
     eduHeader: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginBottom: 1,
+      marginBottom: 2,
     },
     eduTitle: {
-      fontSize: 8.5, // Slightly reduced
+      fontSize: 10,
       fontWeight: 'bold',
       color: textColor,
       flex: 1,
     },
     eduPeriod: {
-      fontSize: 6.5, // Reduced
+      fontSize: 8,
       color: secondaryColor,
       fontStyle: 'italic',
     },
     eduInstitution: {
       flexDirection: 'row',
-      marginBottom: 1,
+      marginBottom: 2,
     },
     institutionName: {
-      fontSize: 7.5, // Reduced
+      fontSize: 9,
       color: accentColor,
       fontWeight: 'bold',
     },
     eduLocation: {
-      fontSize: 6.5, // Reduced
+      fontSize: 8,
       color: secondaryColor,
     },
     highlights: {
-      marginTop: 1,
+      marginTop: 2,
     },
     highlightItem: {
       flexDirection: 'row',
-      marginBottom: 1,
+      marginBottom: 2,
     },
     bullet: {
-      fontSize: 6.5, // Reduced
+      fontSize: 8,
       color: accentColor,
-      marginRight: 3,
-      marginTop: 0.5,
+      marginRight: 4,
+      marginTop: 1,
     },
     highlightText: {
-      fontSize: 6.5, // Reduced
+      fontSize: 8,
       color: textColor,
       flex: 1,
-      lineHeight: 1.2,
     },
     activityItem: {
-      marginBottom: 4, // Reduced margin
-      pageBreakInside: 'avoid',
+      marginBottom: 5,
     },
     activityRole: {
-      fontSize: 7.5, // Reduced
+      fontSize: 9,
       fontWeight: 'bold',
       color: textColor,
-      marginBottom: 0.5,
-    },
-    activityOrg: {
-      fontSize: 6.5, // Reduced
-      color: accentColor,
       marginBottom: 1,
     },
+    activityOrg: {
+      fontSize: 8,
+      color: accentColor,
+      marginBottom: 2,
+    },
     activityDesc: {
-      fontSize: 6.5, // Reduced
+      fontSize: 8,
       color: textColor,
-      lineHeight: 1.2,
+      lineHeight: 1.3,
     },
   });
 };

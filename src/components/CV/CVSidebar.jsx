@@ -96,51 +96,49 @@ const createStyles = (theme) => {
     sidebar: {
       width: '35%',
       backgroundColor: sidebarBg,
-      padding: 10, // Reduced padding
-      paddingTop: 8,
+      padding: 12,
       color: textColor,
-      overflow: 'hidden', // Prevent overflow
     },
     languageItem: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginBottom: 3, // Reduced margin
+      marginBottom: 4,
     },
     languageName: {
-      fontSize: 7.5, // Reduced
+      fontSize: 9,
       color: textColor,
     },
     languageLevel: {
-      fontSize: 6.5, // Reduced
+      fontSize: 8,
       color: '#cbd5e1',
       fontStyle: 'italic',
     },
     skillCategory: {
-      marginBottom: 6, // Reduced margin
+      marginBottom: 8,
     },
     skillCategoryTitle: {
-      fontSize: 6.5, // Reduced
+      fontSize: 8,
       fontWeight: 'bold',
       color: '#cbd5e1',
-      marginBottom: 2,
+      marginBottom: 3,
       textTransform: 'uppercase',
     },
     certItem: {
-      marginBottom: 4, // Reduced margin
+      marginBottom: 5,
     },
     certName: {
-      fontSize: 7.5, // Reduced
+      fontSize: 9,
       color: textColor,
-      marginBottom: 0.5,
+      marginBottom: 1,
     },
     certIssuer: {
-      fontSize: 6, // Reduced
+      fontSize: 7,
       color: '#cbd5e1',
     },
     interestsList: {
-      fontSize: 6.5, // Reduced
+      fontSize: 8,
       color: textColor,
-      lineHeight: 1.3,
+      lineHeight: 1.4,
     },
   });
 };

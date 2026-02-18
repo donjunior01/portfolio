@@ -25,31 +25,31 @@ const createStyles = (theme) => {
 
   return StyleSheet.create({
     skillItem: {
-      marginBottom: 3, // Reduced margin
+      marginBottom: 5,
     },
     skillHeader: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginBottom: 1, // Reduced margin
+      marginBottom: 2,
     },
     skillName: {
-      fontSize: 6.5, // Further reduced
+      fontSize: 8,
       color: textColor,
     },
     skillLevel: {
-      fontSize: 5.5, // Further reduced
+      fontSize: 7,
       color: '#cbd5e1',
     },
     barContainer: {
-      height: 3, // Reduced height
+      height: 4,
       backgroundColor: barBg,
-      borderRadius: 1.5,
+      borderRadius: 2,
       overflow: 'hidden',
     },
     barFill: {
       height: '100%',
       backgroundColor: barFill,
-      borderRadius: 1.5,
+      borderRadius: 2,
     },
   });
 };

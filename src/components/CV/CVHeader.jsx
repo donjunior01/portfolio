@@ -38,35 +38,33 @@ const createStyles = (theme) => {
   return StyleSheet.create({
     header: {
       backgroundColor: isDark ? '#1e293b' : '#f8fafc',
-      padding: 10, // Reduced padding
-      paddingTop: 8,
-      paddingBottom: 8,
-      borderBottom: `1.5px solid ${primaryColor}`, // Thinner border
+      padding: 15,
+      borderBottom: `2px solid ${primaryColor}`,
     },
     nameSection: {
-      marginBottom: 5, // Reduced margin
+      marginBottom: 8,
     },
     name: {
-      fontSize: 16, // Further reduced
+      fontSize: 22,
       fontWeight: 'bold',
       color: primaryColor,
-      marginBottom: 2, // Reduced margin
+      marginBottom: 3,
     },
     title: {
-      fontSize: 9, // Further reduced
+      fontSize: 12,
       color: textColor,
       fontWeight: 'bold',
     },
     contactSection: {
-      marginTop: 3, // Reduced margin
+      marginTop: 5,
     },
     contactRow: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginBottom: 1, // Reduced margin
+      marginBottom: 2,
     },
     contactItem: {
-      fontSize: 6.5, // Further reduced
+      fontSize: 8,
       color: secondaryTextColor,
       width: '48%',
     },

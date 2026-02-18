@@ -30,7 +30,7 @@ export const generateAndDownloadCV = async (options) => {
     // Get translations
     const translations = cvTranslations[language];
 
-    // Create the PDF document with optimized settings
+    // Create the PDF document with optimized settings to prevent blank pages
     if (onProgress) onProgress('Generating PDF...');
     
     const blob = await pdf(
@@ -42,12 +42,7 @@ export const generateAndDownloadCV = async (options) => {
         version,
         visibleSections,
         translations,
-      }),
-      {
-        // Optimize PDF generation to prevent blank pages
-        compress: true,
-        pageBreakBefore: false,
-      }
+      })
     ).toBlob();
 
     // Generate filename
@@ -96,12 +91,7 @@ export const generateCVBlob = async (options) => {
         version,
         visibleSections,
         translations,
-      }),
-      {
-        // Optimize PDF generation to prevent blank pages
-        compress: true,
-        pageBreakBefore: false,
-      }
+      })
     ).toBlob();
 
     return blob;

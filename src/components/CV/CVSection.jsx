@@ -22,21 +22,20 @@ const createStyles = (theme, sidebar) => {
 
   return StyleSheet.create({
     section: {
-      marginBottom: 7, // Reduced margin
-      pageBreakInside: 'avoid', // Prevent section breaks
+      marginBottom: 10,
     },
     title: {
-      fontSize: 8, // Reduced from 9
+      fontSize: 11,
       fontWeight: 'bold',
       color: titleColor,
-      marginBottom: 3, // Reduced margin
-      paddingBottom: 2, // Reduced padding
-      borderBottom: `1px solid ${borderColor}`, // Thinner border
+      marginBottom: 5,
+      paddingBottom: 3,
+      borderBottom: `1.5px solid ${borderColor}`,
       textTransform: 'uppercase',
-      letterSpacing: 0.3, // Reduced letter spacing
+      letterSpacing: 0.5,
     },
     content: {
-      marginTop: 2, // Reduced margin
+      marginTop: 3,
     },
   });
 };
