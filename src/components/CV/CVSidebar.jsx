@@ -130,7 +130,7 @@ const createStyles = (theme) => {
       fontStyle: 'italic',
     },
     skillCategory: {
-      marginBottom: 8,
+      marginBottom: 6,
     },
     skillCategoryTitle: {
       fontSize: 8,
@@ -140,7 +140,7 @@ const createStyles = (theme) => {
       textTransform: 'uppercase',
     },
     certItem: {
-      marginBottom: 5,
+      marginBottom: 4,
     },
     certName: {
       fontSize: 9,
@@ -157,7 +157,7 @@ const createStyles = (theme) => {
       lineHeight: 1.4,
     },
     activityItem: {
-      marginBottom: 5,
+      marginBottom: 4,
     },
     activityRole: {
       fontSize: 9,

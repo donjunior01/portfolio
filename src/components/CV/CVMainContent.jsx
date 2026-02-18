@@ -97,7 +97,7 @@ const createStyles = (theme) => {
       textAlign: 'justify',
     },
     educationItem: {
-      marginBottom: 8,
+      marginBottom: 6,
     },
     eduHeader: {
       flexDirection: 'row',

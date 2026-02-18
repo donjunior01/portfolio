@@ -36,7 +36,7 @@ const createStyles = (theme) => {
 
   return StyleSheet.create({
     item: {
-      marginBottom: 7,
+      marginBottom: 5,
     },
     header: {
       flexDirection: 'row',
@@ -58,7 +58,7 @@ const createStyles = (theme) => {
     description: {
       fontSize: 8,
       color: textColor,
-      marginBottom: 3,
+      marginBottom: 2,
       lineHeight: 1.3,
     },
     techContainer: {

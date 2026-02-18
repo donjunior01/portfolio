@@ -37,7 +37,7 @@ const createStyles = (theme) => {
 
   return StyleSheet.create({
     item: {
-      marginBottom: 8,
+      marginBottom: 6,
     },
     header: {
       flexDirection: 'row',
@@ -58,7 +58,7 @@ const createStyles = (theme) => {
     },
     company: {
       flexDirection: 'row',
-      marginBottom: 3,
+      marginBottom: 2,
     },
     companyName: {
       fontSize: 9,
@@ -74,7 +74,7 @@ const createStyles = (theme) => {
     },
     responsibilityItem: {
       flexDirection: 'row',
-      marginBottom: 2,
+      marginBottom: 1.5,
     },
     bullet: {
       fontSize: 8,
