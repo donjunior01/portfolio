@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
 
 const GITHUB_ACCOUNTS = ['donjunior01', 'DONJUNIOR916'];
-const GITLAB_USERNAME = 'donjunior01';
 
-// GitHub repo names to hide from the live feed (non-project or meta repos)
+// GitLab user IDs for both accounts
+const GITLAB_USER_IDS = [26455293, 26455308]; // donjunior01, DONJUNIOR916
+
+// GitHub repo names to hide (non-project or meta repos)
 const GITHUB_EXCLUDE = new Set([
   'portfolio',
   '-atelierGit1_donfack_assobjio_junior',
 ]);
 
-// GitLab repo paths to hide (case-insensitive match)
+// GitLab repo paths to hide (case-insensitive)
 const GITLAB_EXCLUDE_LOWER = new Set([
   'ateliergit1_donfack_assobjio_junior',
 ]);
@@ -30,6 +32,22 @@ const normalizeGithubRepo = (repo) => ({
   isPrivate: repo.private === true,
 });
 
+const normalizeGitlabRepo = (repo) => ({
+  id: `gitlab-${repo.id}`,
+  name: repo.name,
+  description: repo.description || 'No description available',
+  language: repo.languages ? Object.keys(repo.languages)[0] : 'Unknown',
+  stars: repo.star_count || 0,
+  forks: repo.forks_count || 0,
+  url: repo.web_url,
+  homepage: repo.web_url,
+  updated: repo.last_activity_at,
+  created: repo.created_at,
+  source: 'GitLab',
+  topics: repo.topics || [],
+  isPrivate: repo.visibility !== 'public',
+});
+
 const useGitHubRepos = () => {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -45,49 +63,46 @@ const useGitHubRepos = () => {
         const githubResponses = await Promise.all(
           GITHUB_ACCOUNTS.map(username =>
             fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100&type=all`)
-              .then(r => (r.ok ? r.json() : []))
+              .then(r => r.ok ? r.json() : [])
               .catch(() => [])
           )
         );
 
-        // Merge repos from all accounts, deduplicate by repo id
-        const seenIds = new Set();
+        // Deduplicate by repo id across all accounts
+        const seenGithubIds = new Set();
         const githubData = githubResponses
           .flat()
           .filter(repo => {
             if (GITHUB_EXCLUDE.has(repo.name)) return false;
-            if (seenIds.has(repo.id)) return false;
-            seenIds.add(repo.id);
+            if (seenGithubIds.has(repo.id)) return false;
+            seenGithubIds.add(repo.id);
             return true;
           })
           .map(normalizeGithubRepo);
 
-        // Fetch GitLab projects
+        // Fetch GitLab owned projects + contributed projects for each user ID
         let gitlabData = [];
         try {
-          const gitlabResponse = await fetch(
-            `https://gitlab.com/api/v4/users/${GITLAB_USERNAME}/projects?per_page=100&order_by=last_activity_at`
-          );
-          if (gitlabResponse.ok) {
-            const raw = await gitlabResponse.json();
-            gitlabData = raw
-              .filter(repo => !GITLAB_EXCLUDE_LOWER.has(repo.path.toLowerCase()))
-              .map(repo => ({
-                id: `gitlab-${repo.id}`,
-                name: repo.name,
-                description: repo.description || 'No description available',
-                language: repo.languages ? Object.keys(repo.languages)[0] : 'Unknown',
-                stars: repo.star_count || 0,
-                forks: repo.forks_count || 0,
-                url: repo.web_url,
-                homepage: repo.web_url,
-                updated: repo.last_activity_at,
-                created: repo.created_at,
-                source: 'GitLab',
-                topics: repo.topics || [],
-                isPrivate: repo.visibility !== 'public',
-              }));
-          }
+          const gitlabFetches = GITLAB_USER_IDS.flatMap(id => [
+            fetch(`https://gitlab.com/api/v4/users/${id}/projects?per_page=100&order_by=last_activity_at`)
+              .then(r => r.ok ? r.json() : []).catch(() => []),
+            fetch(`https://gitlab.com/api/v4/users/${id}/contributed_projects?per_page=100`)
+              .then(r => r.ok ? r.json() : []).catch(() => []),
+          ]);
+
+          const gitlabResponses = await Promise.all(gitlabFetches);
+          const seenGitlabIds = new Set();
+
+          gitlabData = gitlabResponses
+            .flat()
+            .filter(repo => {
+              if (GITLAB_EXCLUDE_LOWER.has(repo.path.toLowerCase())) return false;
+              if (repo.visibility === 'private') return false;
+              if (seenGitlabIds.has(repo.id)) return false;
+              seenGitlabIds.add(repo.id);
+              return true;
+            })
+            .map(normalizeGitlabRepo);
         } catch (gitlabError) {
           console.warn('GitLab fetch failed:', gitlabError);
         }

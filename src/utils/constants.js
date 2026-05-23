@@ -175,6 +175,22 @@ export const featuredProjects = [
     featured: true,
     github: 'https://github.com/DONJUNIOR916/Information-System-Modelling-projects',
   },
+  {
+    title: 'SERUCA — Smart Event Recommendation',
+    description: 'AI-powered microservices platform for personalized university campus event recommendations, using machine learning on student preferences and interaction patterns',
+    technologies: ['Java', 'Spring Boot', 'TypeScript', 'PostgreSQL', 'Docker', 'AI/ML'],
+    type: 'AI / Full Stack',
+    featured: true,
+    github: 'https://gitlab.com/AkongaManuel/seruca',
+  },
+  {
+    title: 'RetailCloud — Billing Management System',
+    description: 'Full-stack retail billing platform with automated VAT, discount and shipping calculations, microservices architecture, Angular frontend, and GitLab CI/CD pipeline on VPS',
+    technologies: ['Java', 'Spring Boot', 'Angular', 'PostgreSQL', 'Docker', 'CI/CD'],
+    type: 'Full Stack / DevOps',
+    featured: true,
+    github: 'https://gitlab.com/elsa-web/retail-cloud_ci-cd_kana_mbakop_leonce_elsa-donfack_assobjio_junior',
+  },
 ];
 
 export const allProjects = [
