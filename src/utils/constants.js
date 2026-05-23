@@ -167,6 +167,14 @@ export const featuredProjects = [
     featured: true,
     github: 'https://github.com/donjunior01/dijkstra_virsualisation',
   },
+  {
+    title: 'Football Management System (UML)',
+    description: 'UML design diagrams and information system modelling for a football management system',
+    technologies: ['UML', 'System Design'],
+    type: 'Modelling',
+    featured: true,
+    github: 'https://github.com/DONJUNIOR916/Information-System-Modelling-projects',
+  },
 ];
 
 export const allProjects = [
@@ -184,6 +192,27 @@ export const allProjects = [
     technologies: ['Java', 'HTML', 'CSS'],
     type: 'Full Stack',
     github: 'https://github.com/Astera-Lainey/OnlineShoppingApp-ISJ_Inge3_ISI_Group_3-Java_Web',
+  },
+  {
+    title: 'SJI BTP 2025 ISI3 Group 7',
+    description: 'School Java project — SJI BTP 2025 ISI3 English-speaking group 7',
+    technologies: ['Java'],
+    type: 'School Project',
+    github: 'https://github.com/DONJUNIOR916/Sji_btp_2025_isi3_en_g7',
+  },
+  {
+    title: 'SJI ISI3 Group 3 Web',
+    description: 'Group web project — SJI ISI3 English-speaking group 3',
+    technologies: ['HTML', 'CSS'],
+    type: 'School Project',
+    github: 'https://github.com/Aichatou18/sji_ing3isi_-group3-_web_-English-speaking-',
+  },
+  {
+    title: 'D.A.J',
+    description: 'Personal HTML project',
+    technologies: ['HTML'],
+    type: 'Personal',
+    github: 'https://github.com/DONJUNIOR916/D.A.J',
   },
   {
     title: 'Tic-Tac-Toe (SDL2)',
