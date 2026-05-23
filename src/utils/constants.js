@@ -172,6 +172,20 @@ export const featuredProjects = [
 export const allProjects = [
   ...featuredProjects,
   {
+    title: 'Banking System (Java)',
+    description: 'Standalone application simulating a full banking system with account management and transactions',
+    technologies: ['Java'],
+    type: 'Full Stack',
+    github: 'https://github.com/NinjaShadowBoy/BankingSystemWithJava',
+  },
+  {
+    title: 'Online Shopping App',
+    description: 'Group project: Java web-based online shopping platform with product catalog and order management',
+    technologies: ['Java', 'HTML', 'CSS'],
+    type: 'Full Stack',
+    github: 'https://github.com/Astera-Lainey/OnlineShoppingApp-ISJ_Inge3_ISI_Group_3-Java_Web',
+  },
+  {
     title: 'Tic-Tac-Toe (SDL2)',
     description: 'Advanced SDL2 Tic-Tac-Toe game with multiple board sizes and AI opponents',
     technologies: ['C++', 'SDL2'],
