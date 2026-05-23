@@ -60,6 +60,7 @@ const useGitHubRepos = () => {
             created: repo.created_at,
             source: 'GitHub',
             topics: repo.topics || [],
+            isPrivate: repo.private === true,
           }));
 
         // Normalize GitLab repos (filter out excluded repos)
@@ -78,6 +79,7 @@ const useGitHubRepos = () => {
             created: repo.created_at,
             source: 'GitLab',
             topics: repo.topics || [],
+            isPrivate: repo.visibility !== 'public',
           }));
 
         // Combine and sort by updated date
