@@ -136,66 +136,47 @@ export const spokenLanguages = [
 
 export const featuredProjects = [
   {
-    title: 'Real Estate Management',
-    description: 'Full-stack real estate management system with property listings, user authentication, and admin dashboard',
-    technologies: ['Angular', 'Java', 'Spring Boot', 'MySQL'],
+    title: 'Task Management App',
+    description: 'Enterprise task management application with task creation, assignment, follow-up, and delivery confirmation workflows',
+    technologies: ['HTML', 'CSS', 'JavaScript'],
     type: 'Full Stack',
     featured: true,
+    github: 'https://github.com/donjunior01/taskManagement-',
   },
   {
-    title: 'Agricultural Management',
-    description: 'Comprehensive agricultural management platform for farm operations, crop tracking, and resource management',
-    technologies: ['Angular', 'Java', 'Spring Boot'],
+    title: 'Immunization Management System',
+    description: 'Group healthcare application for disease and vaccination management, tracking immunization records and patient schedules',
+    technologies: ['SCSS', 'Angular', 'Java'],
     type: 'Full Stack',
     featured: true,
+    github: 'https://github.com/donjunior01/Immunization-Management-Sytem-group5-project-',
   },
   {
-    title: 'Hotel Management',
-    description: 'Complete hotel management system with booking, room management, and customer service features',
-    technologies: ['JavaScript', 'HTML5', 'CSS3'],
+    title: 'Ticket Tracker',
+    description: 'Single-screen application to manage and track support tickets efficiently',
+    technologies: ['JavaScript', 'HTML', 'CSS'],
     type: 'Full Stack',
     featured: true,
+    github: 'https://github.com/donjunior01/TicketTracker',
   },
   {
-    title: 'Immunization System',
-    description: 'Healthcare application for tracking immunization records and vaccination schedules',
-    technologies: ['Angular', 'Java'],
-    type: 'Full Stack',
+    title: 'Dijkstra Visualisation',
+    description: "Interactive visualisation of Dijkstra's shortest-path algorithm on weighted graphs",
+    technologies: ['Python'],
+    type: 'Algorithm',
     featured: true,
+    github: 'https://github.com/donjunior01/dijkstra_virsualisation',
   },
 ];
 
 export const allProjects = [
   ...featuredProjects,
   {
-    title: 'Task Management',
-    description: 'Individual project for managing tasks and productivity',
-    technologies: ['Java'],
-    type: 'Individual',
-  },
-  {
-    title: 'Ticket Tracker',
-    description: 'Support ticket tracking system for customer service',
-    technologies: ['TypeScript'],
-    type: 'Assistant',
-  },
-  {
-    title: 'Online Shopping',
-    description: 'E-commerce platform with shopping cart and payment integration',
-    technologies: ['Java'],
-    type: 'Assistant',
-  },
-  {
-    title: 'Dijkstra Algorithm',
-    description: 'Implementation of shortest path algorithm for graph traversal',
-    technologies: ['Python'],
-    type: 'Algorithm',
-  },
-  {
-    title: 'Tic-Tac-Toe',
-    description: 'Classic game implementation with AI opponent',
-    technologies: ['C++'],
+    title: 'Tic-Tac-Toe (SDL2)',
+    description: 'Advanced SDL2 Tic-Tac-Toe game with multiple board sizes and AI opponents',
+    technologies: ['C++', 'SDL2'],
     type: 'Game',
+    github: 'https://github.com/donjunior01/dl2-tic-tac-toe',
   },
 ];
 

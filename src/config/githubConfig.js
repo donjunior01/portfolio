@@ -10,8 +10,8 @@ export const GITHUB_CONFIG = {
   
   // Repositories to exclude (by name)
   excludeRepos: [
-    // Add repo names to exclude, e.g.:
-    // 'repo-to-exclude',
+    'portfolio',
+    '-atelierGit1_donfack_assobjio_junior',
   ],
   
   // Repositories to feature (by name) - these will be marked as featured
