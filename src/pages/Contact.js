@@ -240,9 +240,12 @@ const Contact = () => {
               transition={{ duration: 0.8 }}
             >
               <div className="glass-card">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                   Send Me a Message
                 </h2>
+                <p className="text-sm text-cyan-600 dark:text-cyan-400 font-medium mb-6">
+                  {personalInfo.internshipTarget}
+                </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name */}

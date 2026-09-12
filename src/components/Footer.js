@@ -12,8 +12,11 @@ const Footer = () => {
           {/* About Section */}
           <div>
             <h3 className="text-2xl font-bold text-gradient mb-4">JDA</h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <p className="text-gray-600 dark:text-gray-400 mb-2">
               {personalInfo.tagline}
+            </p>
+            <p className="text-cyan-600 dark:text-cyan-400 font-medium text-sm mb-4">
+              {personalInfo.internshipTarget}
             </p>
             <div className="flex space-x-4">
               <a

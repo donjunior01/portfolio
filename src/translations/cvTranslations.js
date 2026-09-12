@@ -33,6 +33,7 @@ export const cvTranslations = {
     versionShortDesc: 'Condensed version',
     projectsTitle: 'Projects',
     experienceTitle: 'Experience',
+    internshipTarget: 'Seeking 6-month final-year internship — 2027',
     optionalSections: 'Optional Sections',
     
     // Actions
@@ -107,6 +108,7 @@ export const cvTranslations = {
     versionShortDesc: 'Version condensée',
     projectsTitle: 'Projets',
     experienceTitle: 'Expérience',
+    internshipTarget: 'Recherche stage de fin d\'études — 6 mois, 2027',
     optionalSections: 'Sections Optionnelles',
     
     // Actions

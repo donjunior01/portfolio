@@ -55,10 +55,19 @@ const Home = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-xl"
+                className="text-lg text-gray-600 dark:text-gray-400 mb-6 max-w-xl"
               >
                 {personalInfo.tagline}
               </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.55 }}
+                className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-600 dark:text-cyan-400 font-semibold text-sm"
+              >
+                <span role="img" aria-hidden="true">🎓</span>
+                <span>{personalInfo.internshipTarget}</span>
+              </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

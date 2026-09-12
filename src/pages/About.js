@@ -70,8 +70,7 @@ const About = () => {
                 </p>
                 <p>
                   I'm now on exchange at UTBM (Belfort, France), specializing in Computer Vision and
-                  Robotics with an eye toward perception and autonomous systems. I'm currently seeking a
-                  2027 internship in France.
+                  Robotics with an eye toward perception and autonomous systems. {personalInfo.internshipTarget}.
                 </p>
               </div>
               <Link to="/contact">

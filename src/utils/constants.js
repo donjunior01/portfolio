@@ -13,9 +13,12 @@ const isj = cvData.education[EN][1];
 
 export const personalInfo = {
   name: cvData.personalInfo[EN][0].name,
-  role: 'Engineering Student | Computer Vision & Robotics @ UTBM | Full Stack Developer',
+  role: 'Engineering Student | Computer Vision & Robotics @ UTBM | Full Stack Developer | Seeking 6-month final-year internship 2027',
   tagline:
-    'Full-stack developer (Java/Spring Boot, Angular/React) specializing in Computer Vision and Robotics at UTBM — seeking a 2027 internship in France.',
+    'Full-stack developer (Java/Spring Boot, Angular/React) specializing in Computer Vision and Robotics at UTBM.',
+  // Long formulation for site prose (Home hero, About closing line, Contact availability line).
+  // Keep in sync with cvData.js's personalInfo internshipTarget (short CV-header formulation).
+  internshipTarget: 'Seeking a 6-month final-year engineering internship in France, 2027',
   school: `UTBM, ${utbm.location} — exchange ${utbm.period.replace(/\s/g, '')} · ${isj.institution}, ${isj.location}`,
   email: cvData.personalInfo[EN][0].email,
   phone: cvData.personalInfo[EN][0].phone,

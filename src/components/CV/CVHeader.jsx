@@ -5,12 +5,16 @@ const SEP = '  •  ';
 
 const CVHeader = ({ personalInfo }) => {
   const hasPhoto = Boolean(personalInfo.photoUrl);
+  const hasInternshipTarget = Boolean(personalInfo.internshipTarget);
 
   return (
     <View style={styles.header}>
       <View style={[styles.identity, { width: hasPhoto ? 370 : CV_PAGE.contentWidth, paddingRight: hasPhoto ? 10 : 0 }]}>
         <Text style={styles.name}>{personalInfo.formalName}</Text>
-        <Text style={styles.subtitle}>{personalInfo.title}</Text>
+        <Text style={hasInternshipTarget ? styles.subtitleTight : styles.subtitle}>{personalInfo.title}</Text>
+        {hasInternshipTarget && (
+          <Text style={styles.internshipTarget}>{personalInfo.internshipTarget}</Text>
+        )}
         <Text style={styles.contactLine}>
           {personalInfo.location}{SEP}{personalInfo.phone}
         </Text>
@@ -51,6 +55,18 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 10.5,
     fontWeight: 'normal',
+    color: CV_COLORS.accent,
+    marginBottom: 5,
+  },
+  subtitleTight: {
+    fontSize: 10.5,
+    fontWeight: 'normal',
+    color: CV_COLORS.accent,
+    marginBottom: 1,
+  },
+  internshipTarget: {
+    fontSize: 10.5,
+    fontWeight: 'bold',
     color: CV_COLORS.accent,
     marginBottom: 5,
   },
