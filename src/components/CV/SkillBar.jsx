@@ -1,13 +1,16 @@
 import { View, Text, StyleSheet } from '@react-pdf/renderer';
 
-const SkillBar = ({ skill, theme }) => {
-  const styles = createStyles(theme);
+const SkillBar = ({ skill, theme, translations }) => {
+  const styles = createStyles(theme, skill.inProgress);
   const percentage = skill.level;
 
   return (
     <View style={styles.skillItem}>
       <View style={styles.skillHeader}>
-        <Text style={styles.skillName}>{skill.name}</Text>
+        <Text style={styles.skillName}>
+          {skill.name}
+          {skill.inProgress ? ` (${translations.inProgress})` : ''}
+        </Text>
         <Text style={styles.skillLevel}>{percentage}%</Text>
       </View>
       <View style={styles.barContainer}>
@@ -17,7 +20,7 @@ const SkillBar = ({ skill, theme }) => {
   );
 };
 
-const createStyles = (theme) => {
+const createStyles = (theme, inProgress) => {
   const isDark = theme === 'dark';
   const textColor = '#ffffff';
   const barBg = 'rgba(255, 255, 255, 0.2)';
@@ -26,6 +29,7 @@ const createStyles = (theme) => {
   return StyleSheet.create({
     skillItem: {
       marginBottom: 5,
+      opacity: inProgress ? 0.65 : 1,
     },
     skillHeader: {
       flexDirection: 'row',
@@ -35,6 +39,7 @@ const createStyles = (theme) => {
     skillName: {
       fontSize: 8,
       color: textColor,
+      fontStyle: inProgress ? 'italic' : 'normal',
     },
     skillLevel: {
       fontSize: 7,

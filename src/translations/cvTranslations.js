@@ -68,6 +68,7 @@ export const cvTranslations = {
     period: 'Period',
     company: 'Company',
     institution: 'Institution',
+    inProgress: 'in progress',
   },
   fr: {
     // CV Page UI
@@ -138,6 +139,7 @@ export const cvTranslations = {
     period: 'Période',
     company: 'Entreprise',
     institution: 'Institution',
+    inProgress: 'en cours',
   },
 };
 

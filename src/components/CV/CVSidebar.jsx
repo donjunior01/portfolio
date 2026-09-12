@@ -43,22 +43,31 @@ const CVSidebar = ({
         <View style={styles.skillCategory}>
           <Text style={styles.skillCategoryTitle}>Languages</Text>
           {displaySkills.languages.map((skill, index) => (
-            <SkillBar key={index} skill={skill} theme={theme} />
+            <SkillBar key={index} skill={skill} theme={theme} translations={translations} />
           ))}
         </View>
 
         <View style={styles.skillCategory}>
           <Text style={styles.skillCategoryTitle}>Frameworks</Text>
           {displaySkills.frameworks.map((skill, index) => (
-            <SkillBar key={index} skill={skill} theme={theme} />
+            <SkillBar key={index} skill={skill} theme={theme} translations={translations} />
           ))}
         </View>
+
+        {skills.vision && skills.vision.length > 0 && (
+          <View style={styles.skillCategory}>
+            <Text style={styles.skillCategoryTitle}>Vision</Text>
+            {skills.vision.map((skill, index) => (
+              <SkillBar key={index} skill={skill} theme={theme} translations={translations} />
+            ))}
+          </View>
+        )}
 
         {version === 'full' && (
           <View style={styles.skillCategory}>
             <Text style={styles.skillCategoryTitle}>Databases</Text>
             {displaySkills.databases.map((skill, index) => (
-              <SkillBar key={index} skill={skill} theme={theme} />
+              <SkillBar key={index} skill={skill} theme={theme} translations={translations} />
             ))}
           </View>
         )}
