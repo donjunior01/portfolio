@@ -2,7 +2,7 @@ export const personalInfo = {
   name: 'Junior Donfack Assobjio',
   role: 'Software Engineering Student (Year 4) | Full Stack Developer',
   tagline: 'Passionate about building scalable software solutions with aspirations in machine learning, robotics, and cryptography',
-  school: 'Saint Jean Ingénieur, Yaoundé, Cameroon',
+  school: 'Institut Saint Jean, Yaoundé, Cameroon',
   email: 'Juniorasobijo@gmail.com',
   phone: '+237 652 800 389',
   location: 'Yaoundé, Cameroon',
@@ -21,7 +21,7 @@ export const stats = [
 export const education = [
   {
     degree: 'BSc Software Engineering',
-    institution: 'Saint Jean Ingénieur',
+    institution: 'Institut Saint Jean',
     period: '2022 - 2027',
     location: 'Yaoundé, Cameroon',
   },
@@ -57,7 +57,7 @@ export const experience = [
   },
   {
     title: 'School Cleaner',
-    company: 'Saint Jean Ingénieur',
+    company: 'Institut Saint Jean',
     period: '2024 - Present',
     description: 'Weekly class maintenance and facility upkeep',
     type: 'Part-time',
