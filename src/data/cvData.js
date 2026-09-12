@@ -69,14 +69,6 @@ export const cvData = {
           'Focus on Software Architecture and Database Management',
         ],
       },
-      {
-        title: 'GCE Advanced Level',
-        institution: 'NESCAS',
-        location: 'Cameroon',
-        period: '2019 - 2021',
-        highlights: [],
-        includeInCV: false,
-      },
     ],
     fr: [
       {
@@ -106,14 +98,6 @@ export const cvData = {
           'Spécialisation en Développement Full Stack',
           'Focus sur l\'Architecture Logicielle et la Gestion de Bases de Données',
         ],
-      },
-      {
-        title: 'GCE Advanced Level',
-        institution: 'NESCAS',
-        location: 'Cameroun',
-        period: '2019 - 2021',
-        highlights: [],
-        includeInCV: false,
       },
     ],
   },
