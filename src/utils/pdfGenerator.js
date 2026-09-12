@@ -11,6 +11,7 @@ import { cvTranslations } from '../translations/cvTranslations';
  * @param {Array} options.selectedProjects - Array of project IDs to include
  * @param {string} options.language - 'en' or 'fr'
  * @param {string} options.version - 'full' or 'short'
+ * @param {string} options.profile - 'vision' or 'software'
  * @param {Object} options.visibleSections - Object with section visibility flags
  * @param {Function} options.onProgress - Optional callback for progress updates
  */
@@ -20,6 +21,7 @@ export const generateAndDownloadCV = async (options) => {
     selectedProjects = cvData.projects.en.slice(0, 5).map(p => p.id),
     language = 'en',
     version = 'full',
+    profile = 'vision',
     visibleSections = { interests: true, certifications: true, extracurricular: true },
     onProgress = null,
   } = options;
@@ -32,7 +34,7 @@ export const generateAndDownloadCV = async (options) => {
 
     // Create the PDF document with optimized settings to prevent blank pages
     if (onProgress) onProgress('Generating PDF...');
-    
+
     const blob = await pdf(
       CVDocument({
         data: cvData,
@@ -40,6 +42,7 @@ export const generateAndDownloadCV = async (options) => {
         selectedProjects,
         language,
         version,
+        profile,
         visibleSections,
         translations,
       })
@@ -76,6 +79,7 @@ export const generateCVBlob = async (options) => {
     selectedProjects = cvData.projects.en.slice(0, 5).map(p => p.id),
     language = 'en',
     version = 'full',
+    profile = 'vision',
     visibleSections = { interests: true, certifications: true, extracurricular: true },
   } = options;
 
@@ -89,6 +93,7 @@ export const generateCVBlob = async (options) => {
         selectedProjects,
         language,
         version,
+        profile,
         visibleSections,
         translations,
       })

@@ -3,26 +3,21 @@ import CVSection from './CVSection';
 import ExperienceItem from './ExperienceItem';
 import ProjectItem from './ProjectItem';
 
-const CVMainContent = ({ 
-  summary, 
-  education, 
-  experience, 
-  projects, 
-  theme, 
+const CVMainContent = ({
+  summary,
+  education,
+  experience,
+  projects,
+  theme,
   visibleSections,
-  translations 
+  translations,
+  sectionOrder,
 }) => {
   const styles = createStyles(theme);
 
-  return (
-    <View style={styles.mainContent}>
-      {/* Professional Summary */}
-      <CVSection title={translations.summary} theme={theme}>
-        <Text style={styles.summaryText}>{summary}</Text>
-      </CVSection>
-
-      {/* Education */}
-      <CVSection title={translations.education} theme={theme}>
+  const sections = {
+    education: (
+      <CVSection key="education" title={translations.education} theme={theme}>
         {education.map((edu, index) => (
           <View key={index} style={styles.educationItem}>
             <View style={styles.eduHeader}>
@@ -48,32 +43,41 @@ const CVMainContent = ({
           </View>
         ))}
       </CVSection>
-
-      {/* Professional Experience */}
-      <CVSection title={translations.experience} theme={theme}>
+    ),
+    experience: (
+      <CVSection key="experience" title={translations.experience} theme={theme}>
         {experience.map((exp, index) => (
-          <ExperienceItem 
-            key={index} 
-            experience={exp} 
+          <ExperienceItem
+            key={index}
+            experience={exp}
             theme={theme}
             translations={translations}
           />
         ))}
       </CVSection>
+    ),
+    projects: projects && projects.length > 0 && (
+      <CVSection key="projects" title={translations.projects} theme={theme}>
+        {projects.map((project, index) => (
+          <ProjectItem
+            key={index}
+            project={project}
+            theme={theme}
+            translations={translations}
+          />
+        ))}
+      </CVSection>
+    ),
+  };
 
-      {/* Key Projects */}
-      {projects && projects.length > 0 && (
-        <CVSection title={translations.projects} theme={theme}>
-          {projects.map((project, index) => (
-            <ProjectItem 
-              key={index} 
-              project={project} 
-              theme={theme}
-              translations={translations}
-            />
-          ))}
-        </CVSection>
-      )}
+  return (
+    <View style={styles.mainContent}>
+      {/* Professional Summary */}
+      <CVSection title={translations.summary} theme={theme}>
+        <Text style={styles.summaryText}>{summary}</Text>
+      </CVSection>
+
+      {sectionOrder.map((key) => sections[key])}
     </View>
   );
 };

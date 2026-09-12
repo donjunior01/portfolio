@@ -3,10 +3,13 @@ import { Document, Page, View, StyleSheet } from '@react-pdf/renderer';
 import CVHeader from './CVHeader';
 import CVSidebar from './CVSidebar';
 import CVMainContent from './CVMainContent';
+import { getSectionOrder } from '../../utils/cvSectionOrder';
 
-const CVDocument = ({ data, theme, selectedProjects, language, version, visibleSections, translations }) => {
+const CVDocument = ({ data, theme, selectedProjects, language, version, visibleSections, translations, profile = 'vision' }) => {
   const styles = createStyles(theme);
-  
+
+  const sectionOrder = getSectionOrder(profile, language);
+
   // Filter selected projects with language support
   const projects = data.projects[language].filter(p => selectedProjects.includes(p.id));
   
@@ -61,6 +64,7 @@ const CVDocument = ({ data, theme, selectedProjects, language, version, visibleS
             theme={theme}
             visibleSections={visibleSections}
             translations={translations}
+            sectionOrder={sectionOrder}
           />
         </View>
       </Page>

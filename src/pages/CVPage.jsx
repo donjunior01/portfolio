@@ -9,12 +9,14 @@ import { cvTranslations } from '../translations/cvTranslations';
 const CVPage = () => {
   const {
     cvTheme,
+    cvProfile,
     selectedProjects,
     cvLanguage,
     cvVersion,
     visibleSections,
     isGenerating,
     updateTheme,
+    setProfile,
     toggleProject,
     setLanguage,
     setVersion,
@@ -47,6 +49,7 @@ const CVPage = () => {
           selectedProjects,
           language: cvLanguage,
           version: cvVersion,
+          profile: cvProfile,
           visibleSections,
         });
         setPreviewUrl(url);
@@ -60,7 +63,7 @@ const CVPage = () => {
     // Debounce preview generation
     const timer = setTimeout(generatePreview, 500);
     return () => clearTimeout(timer);
-  }, [cvTheme, selectedProjects, cvLanguage, cvVersion, visibleSections]);
+  }, [cvTheme, selectedProjects, cvLanguage, cvVersion, cvProfile, visibleSections]);
 
   const handleDownload = async () => {
     setIsGenerating(true);
@@ -71,6 +74,7 @@ const CVPage = () => {
         selectedProjects,
         language: cvLanguage,
         version: cvVersion,
+        profile: cvProfile,
         visibleSections,
         onProgress: setProgress,
       });
@@ -97,6 +101,7 @@ const CVPage = () => {
           selectedProjects,
           language: cvLanguage,
           version: cvVersion,
+          profile: cvProfile,
           visibleSections,
         },
       });
@@ -200,6 +205,39 @@ const CVPage = () => {
                 >
                   <p className="text-2xl mb-1">🇫🇷</p>
                   <p className="text-sm font-medium">{t.languageFrench}</p>
+                </button>
+              </div>
+            </div>
+
+            {/* Profile Selection */}
+            <div className="card p-6">
+              <h3 className="text-xl font-bold mb-4">{t.profile}</h3>
+              <div className="space-y-2">
+                <button
+                  onClick={() => setProfile('vision')}
+                  className={`w-full p-3 rounded-lg border-2 text-left transition-all ${
+                    cvProfile === 'vision'
+                      ? 'border-cyan-500 bg-cyan-50 dark:bg-cyan-900/20'
+                      : 'border-gray-300 dark:border-gray-700'
+                  }`}
+                >
+                  <p className="font-medium">{t.profileVision}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {t.profileVisionDesc}
+                  </p>
+                </button>
+                <button
+                  onClick={() => setProfile('software')}
+                  className={`w-full p-3 rounded-lg border-2 text-left transition-all ${
+                    cvProfile === 'software'
+                      ? 'border-cyan-500 bg-cyan-50 dark:bg-cyan-900/20'
+                      : 'border-gray-300 dark:border-gray-700'
+                  }`}
+                >
+                  <p className="font-medium">{t.profileSoftware}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {t.profileSoftwareDesc}
+                  </p>
                 </button>
               </div>
             </div>

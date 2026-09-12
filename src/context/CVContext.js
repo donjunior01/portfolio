@@ -4,6 +4,12 @@ import { useTheme } from './ThemeContext';
 
 const CVContext = createContext();
 
+const getDefaultProjectsForProfile = (profile) =>
+  cvData.projects.en
+    .filter((p) => p.profiles && p.profiles.includes(profile))
+    .slice(0, 5)
+    .map((p) => p.id);
+
 export const useCVContext = () => {
   const context = useContext(CVContext);
   if (!context) {
@@ -17,8 +23,9 @@ export const CVProvider = ({ children }) => {
   
   // CV Configuration State
   const [cvTheme, setCvTheme] = useState(isDark ? 'dark' : 'light');
+  const [cvProfile, setCvProfile] = useState('vision'); // 'vision' or 'software'
   const [selectedProjects, setSelectedProjects] = useState(
-    cvData.projects.en.slice(0, 5).map(p => p.id)
+    getDefaultProjectsForProfile('vision')
   );
   const [cvLanguage, setCvLanguage] = useState('en');
   const [cvVersion, setCvVersion] = useState('full'); // 'full' or 'short'
@@ -59,12 +66,20 @@ export const CVProvider = ({ children }) => {
     setCvLanguage(lang);
   };
 
+  const setProfile = (profile) => {
+    setCvProfile(profile);
+    const defaults = getDefaultProjectsForProfile(profile);
+    setSelectedProjects(
+      cvVersion === 'short' ? defaults.slice(0, 3) : defaults
+    );
+  };
+
   const setVersion = (version) => {
     setCvVersion(version);
     
     // Adjust settings for short version
     if (version === 'short') {
-      setSelectedProjects(cvData.projects.en.slice(0, 3).map(p => p.id));
+      setSelectedProjects(getDefaultProjectsForProfile(cvProfile).slice(0, 3));
       setVisibleSections({
         interests: false,
         certifications: false,
@@ -82,7 +97,8 @@ export const CVProvider = ({ children }) => {
 
   const resetToDefaults = () => {
     setCvTheme(isDark ? 'dark' : 'light');
-    setSelectedProjects(cvData.projects.en.slice(0, 5).map(p => p.id));
+    setCvProfile('vision');
+    setSelectedProjects(getDefaultProjectsForProfile('vision'));
     setCvLanguage('en');
     setCvVersion('full');
     setVisibleSections({
@@ -118,6 +134,7 @@ export const CVProvider = ({ children }) => {
 
   const value = {
     cvTheme,
+    cvProfile,
     selectedProjects,
     cvLanguage,
     cvVersion,
@@ -126,6 +143,7 @@ export const CVProvider = ({ children }) => {
     githubProjects,
     gitlabProjects,
     updateTheme,
+    setProfile,
     toggleProject,
     setLanguage,
     setVersion,
