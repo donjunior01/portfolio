@@ -21,10 +21,10 @@ const CVHeader = ({ personalInfo }) => {
             {personalInfo.location}{SEP}{personalInfo.phone}
           </Text>
           <Text style={styles.contactLine}>
-            {personalInfo.email}{SEP}linkedin.com/in/junior-donfack-assobjio
+            {personalInfo.email}{SEP}{personalInfo.linkedin}
           </Text>
           <Text style={styles.contactLine}>
-            github.com/donjunior01{SEP}gitlab.com/donjunior01{SEP}donjunior01.github.io/portfolio
+            {personalInfo.github}{SEP}{personalInfo.gitlab}{SEP}{personalInfo.website}
           </Text>
         </View>
 

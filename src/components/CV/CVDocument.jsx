@@ -47,6 +47,10 @@ const CVDocument = ({ data, selectedProjects, selectedExperience, language, visi
     headline: rawPersonalInfo.headlines?.[profile],
     formalName: data.personalInfo.formalName,
     photoUrl: data.personalInfo.photoUrl,
+    linkedin: data.personalInfo.linkedin,
+    github: data.personalInfo.github,
+    gitlab: data.personalInfo.gitlab,
+    website: data.personalInfo.website,
   };
 
   // The reference CV shows only the UTBM + Institut Saint Jean entries
