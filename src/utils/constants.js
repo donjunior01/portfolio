@@ -4,7 +4,7 @@ export const personalInfo = {
   tagline: 'Passionate about building scalable software solutions with aspirations in machine learning, robotics, and cryptography',
   school: 'Institut Saint Jean, Yaoundé, Cameroon',
   email: 'Juniorasobijo@gmail.com',
-  phone: '+237 652 800 389',
+  phone: '+33 7 58 78 09 26',
   location: 'Yaoundé, Cameroon',
   linkedin: 'https://www.linkedin.com/in/junior-donfack-assobjio-905bb72b5/',
   github: 'https://github.com/donjunior01',
