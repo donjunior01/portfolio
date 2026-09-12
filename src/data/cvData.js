@@ -8,6 +8,10 @@ export const cvData = {
           vision: 'Computer Science Engineering Student — Computer Vision & Robotics',
           software: 'Computer Science Engineering Student — Software Engineering & Full-Stack Development',
         },
+        headlines: {
+          software: 'Backend developer: I designed and shipped, on my own, the secured REST API of a multi-tenant management SaaS (Spring Boot 3, Java 21, MySQL 8) — JWT/Argon2id authentication, five-role RBAC, OHADA regulatory compliance. Also comfortable with microservices architecture (PostgreSQL, Redis, Docker, GitHub Actions CI) and Angular/React frontends.',
+          vision: 'Full-stack developer specialising in computer vision at UTBM (Artificial Vision track). Hands-on OpenCV work in image and real-time video processing, solid algorithmic foundations (minimax with alpha-beta pruning, Dijkstra, C++11), and production experience in Java/Spring Boot backends.',
+        },
         internshipTarget: 'Seeking 6-month final-year internship — 2027',
         email: 'junior.donfack-assobjio@utbm.fr',
         phone: '+33 7 58 78 09 26',
@@ -20,6 +24,10 @@ export const cvData = {
         titles: {
           vision: 'Élève-ingénieur en informatique — Vision artificielle & robotique',
           software: 'Élève-ingénieur en informatique — Génie logiciel & développement full-stack',
+        },
+        headlines: {
+          software: 'Développeur back-end : j\'ai conçu et livré seul l\'API REST sécurisée d\'un SaaS de gestion multi-tenant (Spring Boot 3, Java 21, MySQL 8) — authentification JWT/Argon2id, RBAC à cinq rôles, conformité réglementaire OHADA. Également à l\'aise en architecture microservices (PostgreSQL, Redis, Docker, CI GitHub Actions) et en front Angular/React.',
+          vision: 'Développeur full-stack en spécialisation vision par ordinateur à l\'UTBM (filière Vision artificielle). Pratique d\'OpenCV en traitement d\'image et vidéo temps réel, bases algorithmiques solides (minimax avec élagage alpha-bêta, Dijkstra, C++11) et expérience du back-end Java/Spring Boot en production.',
         },
         internshipTarget: 'Recherche stage de fin d\'études — 6 mois, 2027',
         email: 'junior.donfack-assobjio@utbm.fr',
@@ -264,8 +272,32 @@ export const cvData = {
   // Controls the order projects render in on the CV for a given profile.
   // Ids not listed here render after the ordered ones, in their natural array order.
   projectOrder: {
-    vision: ['basic-cv', 'tictactoe', 'dijkstra', 'seruca'],
-    software: ['seruca', 'task-management', 'immunization'],
+    vision: ['basic-cv', 'tictactoe', 'dijkstra'],
+    software: ['task-management', 'immunization'],
+  },
+
+  // SERUCA is a supervised/team project, not a personal one — it renders in the
+  // "Experience & Supervised Projects" CV section instead of Key Projects.
+  // See src/components/CV/CVDocument.jsx.
+  supervisedProject: {
+    en: {
+      title: 'Backend Contributor — SERUCA (Team Project)',
+      company: 'Institut Saint Jean',
+      location: 'Yaoundé, Cameroon',
+      period: '2025 - 2026',
+      responsibilities: [
+        'Hybrid recommendation engine using TF-IDF similarity, collaborative filtering and content-based filtering',
+      ],
+    },
+    fr: {
+      title: 'Contributeur Back-End — SERUCA (Projet d\'Équipe)',
+      company: 'Institut Saint Jean',
+      location: 'Yaoundé, Cameroun',
+      period: '2025 - 2026',
+      responsibilities: [
+        'Moteur de recommandation hybride : similarité TF-IDF, filtrage collaboratif et filtrage par contenu',
+      ],
+    },
   },
 
   projects: {
@@ -379,7 +411,8 @@ export const cvData = {
           ],
         },
         github: 'https://gitlab.com/AkongaManuel/seruca',
-        profiles: ['vision', 'software'],
+        profiles: [],
+        movedToExperience: true,
       },
       {
         id: 'retailcloud',
@@ -532,7 +565,8 @@ export const cvData = {
           ],
         },
         github: 'https://gitlab.com/AkongaManuel/seruca',
-        profiles: ['vision', 'software'],
+        profiles: [],
+        movedToExperience: true,
       },
       {
         id: 'retailcloud',
@@ -674,7 +708,7 @@ export const cvData = {
   languagesSpoken: {
     en: [
       { name: 'French', level: 'working language' },
-      { name: 'English', level: '[CEFR level] (Linguaskill Business preparation, UV LE03)' },
+      { name: 'English', level: '[CEFR level] (Linguaskill Business preparation, LE03)' },
     ],
     fr: [
       { name: 'Français', level: 'langue de travail' },
@@ -700,8 +734,8 @@ export const cvData = {
   },
 
   interests: {
-    en: ['Financial market analysis (SMC/ICT methodology)', 'Open-source development'],
-    fr: ['Analyse des marchés financiers (méthodologie SMC/ICT)', 'Développement open source'],
+    en: ['Football', 'Travel', 'Open-source development'],
+    fr: ['Football', 'Voyages', 'Développement open source'],
   },
 
   extracurricular: {

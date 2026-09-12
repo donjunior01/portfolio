@@ -19,22 +19,32 @@ Font.register({
 const CVDocument = ({ data, selectedProjects, selectedExperience, language, visibleSections, translations, profile = 'vision' }) => {
   const sectionOrder = getSectionOrder(profile, language);
 
-  // Filter selected projects with language support, then order per profile
+  // Filter selected projects with language support, then order per profile.
+  // SERUCA (movedToExperience) never appears here — it renders in the
+  // Experience & Supervised Projects section instead, to avoid repeating it.
   const projectOrder = data.projectOrder?.[profile] || [];
   const projects = data.projects[language]
-    .filter((p) => selectedProjects.includes(p.id))
+    .filter((p) => selectedProjects.includes(p.id) && !p.movedToExperience)
     .sort((a, b) => {
       const ia = projectOrder.indexOf(a.id);
       const ib = projectOrder.indexOf(b.id);
       return (ia === -1 ? Infinity : ia) - (ib === -1 ? Infinity : ib);
     });
 
-  const experience = data.experience[language].filter((e) => selectedExperience.includes(e.id));
+  // SERUCA is a supervised academic team project, not a personal project or a
+  // formal job — it's appended unconditionally so the section always has at
+  // least Axe-Tech + SERUCA, regardless of the selectedExperience checkboxes.
+  const supervisedProject = data.supervisedProject?.[language];
+  const experience = [
+    ...data.experience[language].filter((e) => selectedExperience.includes(e.id)),
+    ...(supervisedProject ? [supervisedProject] : []),
+  ];
 
   const rawPersonalInfo = data.personalInfo[language][0];
   const personalInfo = {
     ...rawPersonalInfo,
     title: rawPersonalInfo.titles[profile],
+    headline: rawPersonalInfo.headlines?.[profile],
     formalName: data.personalInfo.formalName,
     photoUrl: data.personalInfo.photoUrl,
   };

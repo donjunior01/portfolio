@@ -10,7 +10,7 @@ const CVSection = ({ title, children }) => (
 
 const styles = StyleSheet.create({
   section: {
-    marginTop: 5,
+    marginTop: 4,
   },
   title: {
     fontSize: 10.5,
@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
     color: CV_COLORS.accent,
     textTransform: 'uppercase',
     letterSpacing: 1,
-    paddingBottom: 2,
-    marginBottom: 2,
+    paddingBottom: 1.5,
+    marginBottom: 1.5,
     borderBottom: `0.75pt solid ${CV_COLORS.accent}`,
   },
 });

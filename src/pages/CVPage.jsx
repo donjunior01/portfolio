@@ -252,7 +252,7 @@ const CVPage = () => {
                 {t.projectsTitle} ({selectedProjects.length}/5)
               </h3>
               <div className="space-y-2 max-h-64 overflow-y-auto">
-                {cvData.projects[cvLanguage].map((project) => (
+                {cvData.projects[cvLanguage].filter((project) => !project.movedToExperience).map((project) => (
                   <label
                     key={project.id}
                     className="flex items-start space-x-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"

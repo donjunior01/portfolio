@@ -23,13 +23,13 @@ export const CV_PAGE = {
 // bullets, used by education, experience, and project entries alike.
 export const entryStyles = {
   container: {
-    marginBottom: 2,
+    marginBottom: 1.5,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    paddingVertical: 0.3,
+    paddingVertical: 0.15,
   },
   title: {
     fontSize: 10,
@@ -70,7 +70,7 @@ export const entryStyles = {
   bulletRow: {
     flexDirection: 'row',
     paddingLeft: 3.5,
-    marginBottom: 0.4,
+    marginBottom: 0.2,
   },
   bulletMark: {
     fontSize: 9.5,

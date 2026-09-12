@@ -6,28 +6,35 @@ const SEP = '  •  ';
 const CVHeader = ({ personalInfo }) => {
   const hasPhoto = Boolean(personalInfo.photoUrl);
   const hasInternshipTarget = Boolean(personalInfo.internshipTarget);
+  const hasHeadline = Boolean(personalInfo.headline);
 
   return (
-    <View style={styles.header}>
-      <View style={[styles.identity, { width: hasPhoto ? 370 : CV_PAGE.contentWidth, paddingRight: hasPhoto ? 10 : 0 }]}>
-        <Text style={styles.name}>{personalInfo.formalName}</Text>
-        <Text style={hasInternshipTarget ? styles.subtitleTight : styles.subtitle}>{personalInfo.title}</Text>
-        {hasInternshipTarget && (
-          <Text style={styles.internshipTarget}>{personalInfo.internshipTarget}</Text>
+    <View>
+      <View style={styles.header}>
+        <View style={[styles.identity, { width: hasPhoto ? 370 : CV_PAGE.contentWidth, paddingRight: hasPhoto ? 10 : 0 }]}>
+          <Text style={styles.name}>{personalInfo.formalName}</Text>
+          <Text style={hasInternshipTarget ? styles.subtitleTight : styles.subtitle}>{personalInfo.title}</Text>
+          {hasInternshipTarget && (
+            <Text style={styles.internshipTarget}>{personalInfo.internshipTarget}</Text>
+          )}
+          <Text style={styles.contactLine}>
+            {personalInfo.location}{SEP}{personalInfo.phone}
+          </Text>
+          <Text style={styles.contactLine}>
+            {personalInfo.email}{SEP}linkedin.com/in/junior-donfack-assobjio
+          </Text>
+          <Text style={styles.contactLine}>
+            github.com/donjunior01{SEP}gitlab.com/donjunior01{SEP}donjunior01.github.io/portfolio
+          </Text>
+        </View>
+
+        {hasPhoto && (
+          <Image style={styles.photo} src={personalInfo.photoUrl} />
         )}
-        <Text style={styles.contactLine}>
-          {personalInfo.location}{SEP}{personalInfo.phone}
-        </Text>
-        <Text style={styles.contactLine}>
-          {personalInfo.email}{SEP}linkedin.com/in/junior-donfack-assobjio
-        </Text>
-        <Text style={styles.contactLine}>
-          github.com/donjunior01{SEP}gitlab.com/donjunior01{SEP}donjunior01.github.io/portfolio
-        </Text>
       </View>
 
-      {hasPhoto && (
-        <Image style={styles.photo} src={personalInfo.photoUrl} />
+      {hasHeadline && (
+        <Text style={styles.headline}>{personalInfo.headline}</Text>
       )}
     </View>
   );
@@ -73,7 +80,15 @@ const styles = StyleSheet.create({
   contactLine: {
     fontSize: 9,
     color: CV_COLORS.muted,
-    marginBottom: 1.5,
+    marginBottom: 1,
+  },
+  headline: {
+    fontSize: 9.5,
+    color: CV_COLORS.body,
+    lineHeight: 1.25,
+    marginBottom: 4,
+    marginTop: 3,
+    width: CV_PAGE.contentWidth,
   },
 });
 

@@ -73,12 +73,9 @@ const CVMainContent = ({
     ),
     languages: (
       <CVSection key="languages" title={translations.languages}>
-        {languagesSpoken.map((lang, index) => (
-          <View key={index} style={entryStyles.container}>
-            <Text style={entryStyles.plainTitle}>{lang.name}</Text>
-            <Text style={entryStyles.subtitle}>{lang.level}</Text>
-          </View>
-        ))}
+        <Text style={entryStyles.paragraph}>
+          {languagesSpoken.map((lang) => `${lang.name} — ${lang.level}`).join('  •  ')}
+        </Text>
       </CVSection>
     ),
     interests: interests && interests.length > 0 && (
@@ -126,7 +123,7 @@ const styles = StyleSheet.create({
   },
   skillRow: {
     flexDirection: 'row',
-    paddingVertical: 0.8,
+    paddingVertical: 0.5,
   },
   skillLabel: {
     width: 115,

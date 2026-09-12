@@ -9,7 +9,12 @@ const getDefaultProjectsForProfile = (profile) =>
     .slice(0, 5)
     .map((p) => p.id);
 
-const getAllExperienceIds = () => cvData.experience.en.map((e) => e.id);
+// Default to Axe-Tech only: combined with the always-appended SERUCA
+// supervised project (see CVDocument.jsx), this gives the "Experience &
+// Supervised Projects" section its target 2 entries out of the box. The
+// other four (JD SARL, SOTICAM, OG/OLABS, Furniture) stay available to
+// add back manually via the checkboxes.
+const getDefaultExperienceIds = () => ['axe-tech'];
 
 export const useCVContext = () => {
   const context = useContext(CVContext);
@@ -25,7 +30,7 @@ export const CVProvider = ({ children }) => {
   const [selectedProjects, setSelectedProjects] = useState(
     getDefaultProjectsForProfile('vision')
   );
-  const [selectedExperience, setSelectedExperience] = useState(getAllExperienceIds());
+  const [selectedExperience, setSelectedExperience] = useState(getDefaultExperienceIds());
   const [cvLanguage, setCvLanguage] = useState('en');
   const [cvVersion, setCvVersion] = useState('full'); // 'full' or 'short'
   const [visibleSections, setVisibleSections] = useState({
@@ -96,7 +101,7 @@ export const CVProvider = ({ children }) => {
   const resetToDefaults = () => {
     setCvProfile('vision');
     setSelectedProjects(getDefaultProjectsForProfile('vision'));
-    setSelectedExperience(getAllExperienceIds());
+    setSelectedExperience(getDefaultExperienceIds());
     setCvLanguage('en');
     setCvVersion('full');
     setVisibleSections({
