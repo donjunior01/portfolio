@@ -25,6 +25,8 @@ export const cvData = {
         location: 'Belfort, France',
       },
     ],
+    // Surname-first, all-caps surname formatting for the CV header, per French CV convention
+    formalName: 'DONFACK ASSOBJIO Junior',
     linkedin: 'linkedin.com/in/junior-donfack-assobjio',
     github: 'github.com/donjunior01',
     gitlab: 'gitlab.com/donjunior01',

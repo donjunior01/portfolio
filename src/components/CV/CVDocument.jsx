@@ -1,43 +1,47 @@
-import React from 'react';
-import { Document, Page, View, StyleSheet } from '@react-pdf/renderer';
+import { Document, Page, View, Font, StyleSheet } from '@react-pdf/renderer';
 import CVHeader from './CVHeader';
-import CVSidebar from './CVSidebar';
 import CVMainContent from './CVMainContent';
 import { getSectionOrder } from '../../utils/cvSectionOrder';
+import { CV_FONT, CV_PAGE } from './cvStyles';
+import CarlitoRegular from '../../assets/fonts/Carlito-Regular.ttf';
+import CarlitoBold from '../../assets/fonts/Carlito-Bold.ttf';
+import CarlitoItalic from '../../assets/fonts/Carlito-Italic.ttf';
 
-const CVDocument = ({ data, theme, selectedProjects, language, version, visibleSections, translations, profile = 'vision' }) => {
-  const styles = createStyles(theme);
+Font.register({
+  family: CV_FONT,
+  fonts: [
+    { src: CarlitoRegular, fontWeight: 'normal', fontStyle: 'normal' },
+    { src: CarlitoBold, fontWeight: 'bold', fontStyle: 'normal' },
+    { src: CarlitoItalic, fontWeight: 'normal', fontStyle: 'italic' },
+  ],
+});
 
+const CVDocument = ({ data, selectedProjects, language, visibleSections, translations, profile = 'vision' }) => {
   const sectionOrder = getSectionOrder(profile, language);
 
   // Filter selected projects with language support, then order per profile
   const projectOrder = data.projectOrder?.[profile] || [];
   const projects = data.projects[language]
-    .filter(p => selectedProjects.includes(p.id))
+    .filter((p) => selectedProjects.includes(p.id))
     .sort((a, b) => {
       const ia = projectOrder.indexOf(a.id);
       const ib = projectOrder.indexOf(b.id);
       return (ia === -1 ? Infinity : ia) - (ib === -1 ? Infinity : ib);
     });
 
-  // Filter experience for short version with language support
-  const experience = version === 'short'
-    ? data.experience[language].slice(0, 2)
-    : data.experience[language];
+  const experience = data.experience[language];
 
-  // Get language-specific data
   const rawPersonalInfo = data.personalInfo[language][0];
   const personalInfo = {
     ...rawPersonalInfo,
     title: rawPersonalInfo.titles[profile],
-    linkedin: data.personalInfo.linkedin,
-    github: data.personalInfo.github,
-    gitlab: data.personalInfo.gitlab,
-    website: data.personalInfo.website,
+    formalName: data.personalInfo.formalName,
     photoUrl: data.personalInfo.photoUrl,
   };
-  // The exact reference CV shows only the UTBM + Institut Saint Jean entries
-  const education = data.education[language].filter(e => e.includeInCV !== false);
+
+  // The reference CV shows only the UTBM + Institut Saint Jean entries
+  const education = data.education[language].filter((e) => e.includeInCV !== false);
+  const skillGroups = data.skillsByProfile?.[profile]?.[language];
   const languagesSpoken = data.languagesSpoken[language];
   const certifications = data.certifications[language];
   const interests = data.interests[language];
@@ -45,34 +49,19 @@ const CVDocument = ({ data, theme, selectedProjects, language, version, visibleS
 
   return (
     <Document>
-      <Page size="A4" style={styles.page} wrap={true}>
-        <CVHeader 
-          personalInfo={personalInfo}
-          theme={theme}
-          translations={translations}
-        />
-        
-        <View style={styles.content}>
-          <CVSidebar
-            personalInfo={personalInfo}
-            skills={data.skills}
-            skillsByProfile={data.skillsByProfile?.[profile]?.[language]}
-            languagesSpoken={languagesSpoken}
-            certifications={certifications}
-            interests={interests}
-            extracurricular={extracurricular}
-            theme={theme}
-            visibleSections={visibleSections}
-            translations={translations}
-            version={version}
-          />
+      <Page size="A4" style={styles.page}>
+        <View style={styles.contentWrapper}>
+          <CVHeader personalInfo={personalInfo} />
 
           <CVMainContent
-            summary={data.summary[language]}
             education={education}
             experience={experience}
             projects={projects}
-            theme={theme}
+            skillGroups={skillGroups}
+            languagesSpoken={languagesSpoken}
+            interests={interests}
+            certifications={certifications}
+            extracurricular={extracurricular}
             visibleSections={visibleSections}
             translations={translations}
             sectionOrder={sectionOrder}
@@ -84,23 +73,19 @@ const CVDocument = ({ data, theme, selectedProjects, language, version, visibleS
   );
 };
 
-const createStyles = (theme) => {
-  const isDark = theme === 'dark';
-  
-  return StyleSheet.create({
-    page: {
-      flexDirection: 'column',
-      backgroundColor: isDark ? '#0f172a' : '#ffffff',
-      fontFamily: 'Helvetica',
-      fontSize: 10,
-      padding: 0, // Remove default padding to prevent overflow
-      margin: 0, // Remove default margin to prevent overflow
-    },
-    content: {
-      flexDirection: 'row',
-      flex: 1,
-    },
-  });
-};
+const styles = StyleSheet.create({
+  page: {
+    fontFamily: CV_FONT,
+    fontSize: 9.5,
+    backgroundColor: '#ffffff',
+    paddingTop: CV_PAGE.marginTop,
+    paddingBottom: CV_PAGE.marginBottom,
+    paddingLeft: CV_PAGE.marginLeft,
+    paddingRight: CV_PAGE.marginRight,
+  },
+  contentWrapper: {
+    width: CV_PAGE.contentWidth,
+  },
+});
 
 export default CVDocument;

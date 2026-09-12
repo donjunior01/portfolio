@@ -1,43 +1,27 @@
 import { View, Text, StyleSheet } from '@react-pdf/renderer';
+import { CV_COLORS } from './cvStyles';
 
-const CVSection = ({ title, theme, sidebar = false, children }) => {
-  const styles = createStyles(theme, sidebar);
+const CVSection = ({ title, children }) => (
+  <View style={styles.section}>
+    <Text style={styles.title}>{title}</Text>
+    <View>{children}</View>
+  </View>
+);
 
-  return (
-    <View style={styles.section}>
-      <Text style={styles.title}>{title}</Text>
-      <View style={styles.content}>{children}</View>
-    </View>
-  );
-};
-
-const createStyles = (theme, sidebar) => {
-  const isDark = theme === 'dark';
-  const titleColor = sidebar 
-    ? '#ffffff' 
-    : (isDark ? '#06b6d4' : '#2563eb');
-  const borderColor = sidebar 
-    ? '#ffffff' 
-    : (isDark ? '#06b6d4' : '#2563eb');
-
-  return StyleSheet.create({
-    section: {
-      marginBottom: 3,
-    },
-    title: {
-      fontSize: 10,
-      fontWeight: 'bold',
-      color: titleColor,
-      marginBottom: 2,
-      paddingBottom: 1,
-      borderBottom: `1px solid ${borderColor}`,
-      textTransform: 'uppercase',
-      letterSpacing: 0.5,
-    },
-    content: {
-      marginTop: 1,
-    },
-  });
-};
+const styles = StyleSheet.create({
+  section: {
+    marginTop: 5,
+  },
+  title: {
+    fontSize: 10.5,
+    fontWeight: 'bold',
+    color: CV_COLORS.accent,
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+    paddingBottom: 2,
+    marginBottom: 2,
+    borderBottom: `0.75pt solid ${CV_COLORS.accent}`,
+  },
+});
 
 export default CVSection;

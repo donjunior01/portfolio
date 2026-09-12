@@ -1,94 +1,64 @@
-import React from 'react';
 import { View, Text, Image, StyleSheet } from '@react-pdf/renderer';
+import { CV_COLORS, CV_PAGE } from './cvStyles';
 
-const CVHeader = ({ personalInfo, theme, translations }) => {
+const SEP = '  •  ';
+
+const CVHeader = ({ personalInfo }) => {
   const hasPhoto = Boolean(personalInfo.photoUrl);
-  const styles = createStyles(theme, hasPhoto);
 
   return (
     <View style={styles.header}>
-      <View style={styles.topRow}>
-        <View style={styles.nameSection}>
-          <Text style={styles.name}>{personalInfo.name}</Text>
-          <Text style={styles.title}>{personalInfo.title}</Text>
-        </View>
-
-        {hasPhoto && (
-          <Image style={styles.photo} src={personalInfo.photoUrl} />
-        )}
+      <View style={[styles.identity, { width: hasPhoto ? 370 : CV_PAGE.contentWidth, paddingRight: hasPhoto ? 10 : 0 }]}>
+        <Text style={styles.name}>{personalInfo.formalName}</Text>
+        <Text style={styles.subtitle}>{personalInfo.title}</Text>
+        <Text style={styles.contactLine}>
+          {personalInfo.location}{SEP}{personalInfo.phone}
+        </Text>
+        <Text style={styles.contactLine}>
+          {personalInfo.email}{SEP}linkedin.com/in/junior-donfack-assobjio
+        </Text>
+        <Text style={styles.contactLine}>
+          github.com/donjunior01{SEP}gitlab.com/donjunior01{SEP}donjunior01.github.io/portfolio
+        </Text>
       </View>
 
-      <View style={styles.contactSection}>
-        <View style={styles.contactRow}>
-          <Text style={styles.contactItem}>{personalInfo.email}</Text>
-          <Text style={styles.contactItem}>{personalInfo.phone}</Text>
-        </View>
-        <View style={styles.contactRow}>
-          <Text style={styles.contactItem}>{personalInfo.location}</Text>
-          <Text style={styles.contactItem}>{personalInfo.website}</Text>
-        </View>
-        <View style={styles.contactRow}>
-          <Text style={styles.contactItem}>{personalInfo.linkedin}</Text>
-          <Text style={styles.contactItem}>{personalInfo.github}</Text>
-        </View>
-      </View>
+      {hasPhoto && (
+        <Image style={styles.photo} src={personalInfo.photoUrl} />
+      )}
     </View>
   );
 };
 
-const createStyles = (theme, hasPhoto) => {
-  const isDark = theme === 'dark';
-  const primaryColor = isDark ? '#06b6d4' : '#2563eb';
-  const textColor = isDark ? '#ffffff' : '#1e293b';
-  const secondaryTextColor = isDark ? '#cbd5e1' : '#64748b';
-
-  return StyleSheet.create({
-    header: {
-      backgroundColor: isDark ? '#1e293b' : '#f8fafc',
-      padding: 10,
-      borderBottom: `2px solid ${primaryColor}`,
-    },
-    topRow: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'flex-start',
-    },
-    nameSection: {
-      flex: 1,
-      marginBottom: 4,
-      paddingRight: hasPhoto ? 15 : 0,
-    },
-    photo: {
-      width: 55,
-      height: 68,
-      borderRadius: 4,
-      objectFit: 'cover',
-    },
-    name: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      color: primaryColor,
-      marginBottom: 2,
-    },
-    title: {
-      fontSize: 10.5,
-      color: textColor,
-      fontWeight: 'bold',
-    },
-    contactSection: {
-      marginTop: 3,
-    },
-    contactRow: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginBottom: 2,
-    },
-    contactItem: {
-      fontSize: 8,
-      color: secondaryTextColor,
-      width: '48%',
-    },
-  });
-};
+const styles = StyleSheet.create({
+  header: {
+    flexDirection: 'row',
+  },
+  identity: {
+    flexDirection: 'column',
+  },
+  photo: {
+    width: 95,
+    height: 118,
+    borderRadius: 3,
+    objectFit: 'cover',
+  },
+  name: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: CV_COLORS.name,
+    marginBottom: 1,
+  },
+  subtitle: {
+    fontSize: 10.5,
+    fontWeight: 'normal',
+    color: CV_COLORS.accent,
+    marginBottom: 5,
+  },
+  contactLine: {
+    fontSize: 9,
+    color: CV_COLORS.muted,
+    marginBottom: 1.5,
+  },
+});
 
 export default CVHeader;

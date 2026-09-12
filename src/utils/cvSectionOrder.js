@@ -1,22 +1,23 @@
 /**
- * Determines the order of the Education / Projects / Experience sections
- * in the main CV content, based on the selected profile and language.
+ * Determines the full order of CV body sections (after the header), based
+ * on the selected profile and language.
  *
  * French CVs conventionally list education before experience for a
- * student, regardless of profile.
+ * student, regardless of profile. Skills always comes first (right after
+ * the header), and Languages / Interests always come last.
  *
  * @param {'vision'|'software'} profile
  * @param {'en'|'fr'} language
- * @returns {Array<'education'|'projects'|'experience'>}
+ * @returns {Array<'skills'|'education'|'projects'|'experience'|'languages'|'interests'>}
  */
 export const getSectionOrder = (profile, language) => {
-  if (language === 'fr') {
-    return ['education', 'projects', 'experience'];
-  }
+  const middle = language === 'fr'
+    ? ['education', 'projects', 'experience']
+    : profile === 'software'
+      ? ['experience', 'projects', 'education']
+      : ['education', 'projects', 'experience'];
 
-  return profile === 'software'
-    ? ['experience', 'projects', 'education']
-    : ['education', 'projects', 'experience'];
+  return ['skills', ...middle, 'languages', 'interests'];
 };
 
 /**
