@@ -1,4 +1,6 @@
 // Centralized CV data configuration
+import profilePhoto from '../assets/images/profile-photo.jpg';
+
 export const cvData = {
   personalInfo: {
     en: [
@@ -41,7 +43,7 @@ export const cvData = {
     github: 'github.com/donjunior01',
     gitlab: 'gitlab.com/donjunior01',
     website: 'donjunior01.github.io/portfolio',
-    photoUrl: null, // Optional - can be added later
+    photoUrl: profilePhoto,
   },
 
   summary: {

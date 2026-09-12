@@ -11,7 +11,11 @@ const CVHeader = ({ personalInfo }) => {
   return (
     <View>
       <View style={styles.header}>
-        <View style={[styles.identity, { width: hasPhoto ? 370 : CV_PAGE.contentWidth, paddingRight: hasPhoto ? 10 : 0 }]}>
+        {hasPhoto && (
+          <Image style={styles.photo} src={personalInfo.photoUrl} />
+        )}
+
+        <View style={[styles.identity, { width: hasPhoto ? 370 : CV_PAGE.contentWidth, paddingLeft: hasPhoto ? 10 : 0 }]}>
           <Text style={styles.name}>{personalInfo.formalName}</Text>
           <Text style={hasInternshipTarget ? styles.subtitleTight : styles.subtitle}>{personalInfo.title}</Text>
           {hasInternshipTarget && (
@@ -27,10 +31,6 @@ const CVHeader = ({ personalInfo }) => {
             github.com/donjunior01{SEP}gitlab.com/donjunior01{SEP}donjunior01.github.io/portfolio
           </Text>
         </View>
-
-        {hasPhoto && (
-          <Image style={styles.photo} src={personalInfo.photoUrl} />
-        )}
       </View>
 
       {hasHeadline && (
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   photo: {
     width: 95,
-    height: 118,
+    height: 88,
     borderRadius: 3,
     objectFit: 'cover',
   },
