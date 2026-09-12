@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { personalInfo, education, experience, activities, interests, spokenLanguages } from '../utils/constants';
+import aboutPhoto from '../assets/images/profile-photo.jpg';
 
 const About = () => {
   return (
@@ -37,14 +38,12 @@ const About = () => {
             >
               <div className="relative w-full aspect-square max-w-md mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl blur-3xl opacity-20"></div>
-                <div className="relative glass-card rounded-2xl p-8 flex items-center justify-center h-full">
-                  <div className="text-center">
-                    <div className="text-8xl mb-4">👨‍💻</div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                      {personalInfo.name}
-                    </h3>
-                    <p className="text-cyan-500 font-semibold">{personalInfo.role.split('|')[0].trim()}</p>
-                  </div>
+                <div className="relative rounded-2xl overflow-hidden h-full shadow-2xl border-4 border-white/20 dark:border-white/10">
+                  <img
+                    src={aboutPhoto}
+                    alt={personalInfo.name}
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
               </div>
             </motion.div>
