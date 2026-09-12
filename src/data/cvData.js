@@ -123,6 +123,7 @@ export const cvData = {
         company: 'Axe-Tech SARL',
         location: 'Douala, Cameroon (Remote)',
         period: 'May - August 2026',
+        type: 'internship',
         project: 'Kamba — multi-tenant, OHADA-compliant business management SaaS for Cameroonian SMEs',
         responsibilities: {
           vision: [
@@ -194,6 +195,7 @@ export const cvData = {
         company: 'Axe-Tech SARL',
         location: 'Douala, Cameroun (à distance)',
         period: 'Mai - Août 2026',
+        type: 'internship',
         project: 'Kamba — SaaS de gestion d\'entreprise multi-tenant conforme OHADA pour PME camerounaises',
         responsibilities: {
           vision: [
@@ -433,6 +435,15 @@ export const cvData = {
         github: 'https://github.com/donjunior01/portfolio',
         profiles: ['software'],
       },
+      {
+        id: 'daj',
+        name: 'D.A.J',
+        tech: ['HTML'],
+        role: 'Individual Developer',
+        highlights: ['Personal HTML project'],
+        github: 'https://github.com/DONJUNIOR916/D.A.J',
+        profiles: [],
+      },
     ],
     fr: [
       {
@@ -597,6 +608,15 @@ export const cvData = {
         ],
         github: 'https://github.com/donjunior01/portfolio',
         profiles: ['software'],
+      },
+      {
+        id: 'daj',
+        name: 'D.A.J',
+        tech: ['HTML'],
+        role: 'Développeur Individuel',
+        highlights: ['Projet HTML personnel'],
+        github: 'https://github.com/DONJUNIOR916/D.A.J',
+        profiles: [],
       },
     ],
   },

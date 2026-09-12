@@ -1,242 +1,135 @@
+// The portfolio site derives its facts from cvData.js (the CV generator's data)
+// so the two never contradict each other. Only presentational-only extras that
+// don't correspond to a CV fact (category labels, short display badges) are
+// hand-curated here.
+import { cvData } from '../data/cvData';
+import { resolveByProfile } from './cvSectionOrder';
+
+const EN = 'en';
+const SITE_PROFILE = 'vision'; // default profile used when flattening profile-dependent CV fields for the site
+
+const utbm = cvData.education[EN][0];
+const isj = cvData.education[EN][1];
+
 export const personalInfo = {
-  name: 'Junior Donfack Assobjio',
-  role: 'Software Engineering Student (Year 4) | Full Stack Developer',
-  tagline: 'Passionate about building scalable software solutions with aspirations in machine learning, robotics, and cryptography',
-  school: 'Institut Saint Jean, Yaoundé, Cameroon',
-  email: 'Juniorasobijo@gmail.com',
-  phone: '+33 7 58 78 09 26',
-  location: 'Yaoundé, Cameroon',
-  linkedin: 'https://www.linkedin.com/in/junior-donfack-assobjio-905bb72b5/',
-  github: 'https://github.com/donjunior01',
-  gitlab: 'https://gitlab.com/donjunior01',
+  name: cvData.personalInfo[EN][0].name,
+  role: 'Engineering Student | Computer Vision & Robotics @ UTBM | Full Stack Developer',
+  tagline:
+    'Full-stack developer (Java/Spring Boot, Angular/React) specializing in Computer Vision and Robotics at UTBM — seeking a 2027 internship in France.',
+  school: `UTBM, ${utbm.location} — exchange ${utbm.period.replace(/\s/g, '')} · ${isj.institution}, ${isj.location}`,
+  email: cvData.personalInfo[EN][0].email,
+  phone: cvData.personalInfo[EN][0].phone,
+  location: cvData.personalInfo[EN][0].location,
+  linkedin: `https://www.${cvData.personalInfo.linkedin}`,
+  github: `https://${cvData.personalInfo.github}`,
+  gitlab: `https://${cvData.personalInfo.gitlab}`,
 };
+
+const internshipsCount = cvData.experience[EN].filter((e) => e.type === 'internship').length;
+const technologiesCount = new Set(
+  Object.values(cvData.skills).flat().map((s) => s.name)
+).size;
 
 export const stats = [
   { label: 'Years Study', value: '4+' },
-  { label: 'Projects', value: '15+' },
-  { label: 'Technologies', value: '10+' },
-  { label: 'Internships', value: '3' },
+  { label: 'Projects', value: `${cvData.projects[EN].length}` },
+  { label: 'Technologies', value: `${technologiesCount}+` },
+  { label: 'Internships', value: `${internshipsCount}` },
 ];
 
-export const education = [
-  {
-    degree: 'BSc Software Engineering',
-    institution: 'Institut Saint Jean',
-    period: '2022 - 2027',
-    location: 'Yaoundé, Cameroon',
-  },
-  {
-    degree: 'GCE A/L',
-    institution: 'NESCAS',
-    period: '2019 - 2021',
-    location: 'Cameroon',
-  },
-];
+// Only entries flagged for the site (includeInCV: false keeps GCE out of the CV,
+// but it still belongs on the site's education timeline).
+export const education = cvData.education[EN].map((edu) => ({
+  degree: edu.title,
+  institution: edu.institution,
+  period: edu.period,
+  location: edu.location,
+}));
 
-export const experience = [
-  {
-    title: 'IT Assistant',
-    company: 'JD SARL',
-    period: 'Jul - Aug 2024',
-    description: 'Network setup, technical support, and developed a task management application',
-    type: 'Internship',
-  },
-  {
-    title: 'Commercial Assistant',
-    company: 'SOTICAM',
-    period: 'Jun - Aug 2023',
-    description: 'Order management, inventory control, and sales support',
-    type: 'Internship',
-  },
-  {
-    title: 'IT Intern (Support and Maintenance)',
-    company: 'OG/OLABS - Octal Academy',
-    period: 'Nov 2021 - Feb 2022',
-    description: 'IT infrastructure maintenance, user support, system installation and configuration, network troubleshooting, hardware diagnostics, software management, user training, and security operations',
-    type: 'Internship',
-  },
-  {
-    title: 'School Cleaner',
-    company: 'Institut Saint Jean',
-    period: '2024 - Present',
-    description: 'Weekly class maintenance and facility upkeep',
-    type: 'Part-time',
-  },
-  {
-    title: 'Furniture Maker/Seller',
-    company: 'Self-employed',
-    period: 'Holidays',
-    description: 'Custom furniture creation and sales',
-    type: 'Freelance',
-  },
-];
-
-export const activities = [
-  'Events Manager - School Sports Board',
-];
-
-export const interests = [
-  'Reading',
-  'Music',
-  'Photography',
-  'Sports',
-  'Hiking',
-  'Languages',
-];
-
-export const skills = {
-  languages: [
-    { name: 'Java', level: 85 },
-    { name: 'Python', level: 80 },
-    { name: 'JavaScript', level: 85 },
-    { name: 'TypeScript', level: 75 },
-    { name: 'C++', level: 70 },
-    { name: 'HTML5', level: 90 },
-    { name: 'CSS3', level: 85 },
-  ],
-  frameworks: [
-    { name: 'React', level: 85 },
-    { name: 'Angular', level: 80 },
-    { name: 'Spring Boot', level: 75 },
-    { name: 'Node.js', level: 80 },
-  ],
-  databases: [
-    { name: 'MySQL', level: 85 },
-    { name: 'PostgreSQL', level: 80 },
-    { name: 'MongoDB', level: 75 },
-    { name: 'SQLite', level: 80 },
-    { name: 'NoSQL', level: 70 },
-  ],
-  tools: [
-    { name: 'Git', level: 85 },
-    { name: 'Docker', level: 70 },
-    { name: 'VS Code', level: 90 },
-    { name: 'IntelliJ', level: 80 },
-    { name: 'Eclipse', level: 75 },
-    { name: 'Figma', level: 75 },
-    { name: 'Adobe XD', level: 70 },
-    { name: 'WordPress', level: 80 },
-  ],
-  competencies: [
-    { name: 'Full Stack Development', level: 85 },
-    { name: 'Web Development', level: 85 },
-    { name: 'Mobile Development', level: 75 },
-    { name: 'Database Management', level: 80 },
-    { name: 'Networking', level: 75 },
-    { name: 'IT Support', level: 80 },
-    { name: 'Problem Solving', level: 90 },
-    { name: 'Trello', level: 85 },
-  ],
+const EXPERIENCE_TYPE_LABELS = {
+  internship: 'Internship',
+  freelance: 'Freelance',
 };
 
-export const spokenLanguages = [
-  { name: 'French', level: 'Native' },
-  { name: 'English', level: 'Fluent' },
+export const experience = cvData.experience[EN].map((exp) => {
+  const responsibilities = resolveByProfile(exp.responsibilities, SITE_PROFILE);
+  return {
+    title: exp.title,
+    company: exp.company,
+    period: exp.period,
+    description: responsibilities[0],
+    type: EXPERIENCE_TYPE_LABELS[exp.type] || 'Internship',
+  };
+});
+
+export const activities = cvData.extracurricular[EN].map(
+  (a) => `${a.role} - ${a.organization}`
+);
+
+export const interests = cvData.interests[EN];
+
+// General site skill set — identical shape/content to the CV's general skills.
+export const skills = cvData.skills;
+
+const SHORT_LANGUAGE_LEVELS = {
+  French: 'Native',
+  English: 'Fluent',
+};
+
+export const spokenLanguages = cvData.languagesSpoken[EN].map((lang) => ({
+  name: lang.name,
+  level: SHORT_LANGUAGE_LEVELS[lang.name] || lang.level,
+}));
+
+// Presentational-only category label per project id — not a CV fact, so it
+// isn't part of cvData.js.
+const PROJECT_TYPE_LABELS = {
+  'basic-cv': 'Computer Vision',
+  'task-management': 'Full Stack',
+  immunization: 'Full Stack',
+  'ticket-tracker': 'Full Stack',
+  dijkstra: 'Algorithm',
+  banking: 'Full Stack',
+  'online-shopping': 'Full Stack',
+  'football-uml': 'Modelling',
+  seruca: 'AI / Full Stack',
+  retailcloud: 'Full Stack / DevOps',
+  'sji-btp-g7': 'School Project',
+  'sji-web-g3': 'School Project',
+  tictactoe: 'Game',
+  'portfolio-site': 'Full Stack',
+  daj: 'Personal',
+};
+
+// basic_computer_vision and seruca are featured first, per the UTBM positioning.
+const FEATURED_PROJECT_IDS = [
+  'basic-cv',
+  'seruca',
+  'task-management',
+  'immunization',
+  'tictactoe',
+  'dijkstra',
+  'portfolio-site',
 ];
 
-export const featuredProjects = [
-  {
-    title: 'Task Management App',
-    description: 'Enterprise task management application with task creation, assignment, follow-up, and delivery confirmation workflows',
-    technologies: ['HTML', 'CSS', 'JavaScript'],
-    type: 'Full Stack',
-    featured: true,
-    github: 'https://github.com/donjunior01/taskManagement-',
-  },
-  {
-    title: 'Immunization Management System',
-    description: 'Group healthcare application for disease and vaccination management, tracking immunization records and patient schedules',
-    technologies: ['SCSS', 'Angular', 'Java'],
-    type: 'Full Stack',
-    featured: true,
-    github: 'https://github.com/donjunior01/Immunization-Management-Sytem-group5-project-',
-  },
-  {
-    title: 'Ticket Tracker',
-    description: 'Single-screen application to manage and track support tickets efficiently',
-    technologies: ['JavaScript', 'HTML', 'CSS'],
-    type: 'Full Stack',
-    featured: true,
-    github: 'https://github.com/donjunior01/TicketTracker',
-  },
-  {
-    title: 'Dijkstra Visualisation',
-    description: "Interactive visualisation of Dijkstra's shortest-path algorithm on weighted graphs",
-    technologies: ['Python'],
-    type: 'Algorithm',
-    featured: true,
-    github: 'https://github.com/donjunior01/dijkstra_virsualisation',
-  },
-  {
-    title: 'Football Management System (UML)',
-    description: 'UML design diagrams and information system modelling for a football management system',
-    technologies: ['UML', 'System Design'],
-    type: 'Modelling',
-    featured: true,
-    github: 'https://github.com/DONJUNIOR916/Information-System-Modelling-projects',
-  },
-  {
-    title: 'SERUCA — Smart Event Recommendation',
-    description: 'AI-powered microservices platform for personalized university campus event recommendations, using machine learning on student preferences and interaction patterns',
-    technologies: ['Java', 'Spring Boot', 'TypeScript', 'PostgreSQL', 'Docker', 'AI/ML'],
-    type: 'AI / Full Stack',
-    featured: true,
-    github: 'https://gitlab.com/AkongaManuel/seruca',
-  },
-  {
-    title: 'RetailCloud — Billing Management System',
-    description: 'Full-stack retail billing platform with automated VAT, discount and shipping calculations, microservices architecture, Angular frontend, and GitLab CI/CD pipeline on VPS',
-    technologies: ['Java', 'Spring Boot', 'Angular', 'PostgreSQL', 'Docker', 'CI/CD'],
-    type: 'Full Stack / DevOps',
-    featured: true,
-    github: 'https://gitlab.com/elsa-web/retail-cloud_ci-cd_kana_mbakop_leonce_elsa-donfack_assobjio_junior',
-  },
-];
+const mapProject = (p) => ({
+  title: p.name,
+  description: resolveByProfile(p.highlights, SITE_PROFILE).join(' '),
+  technologies: p.tech,
+  type: PROJECT_TYPE_LABELS[p.id] || 'Project',
+  featured: FEATURED_PROJECT_IDS.includes(p.id) || undefined,
+  github: p.github,
+});
+
+const projectsById = Object.fromEntries(cvData.projects[EN].map((p) => [p.id, p]));
+
+export const featuredProjects = FEATURED_PROJECT_IDS.map((id) => mapProject(projectsById[id]));
 
 export const allProjects = [
   ...featuredProjects,
-  {
-    title: 'Banking System (Java)',
-    description: 'Standalone application simulating a full banking system with account management and transactions',
-    technologies: ['Java'],
-    type: 'Full Stack',
-    github: 'https://github.com/NinjaShadowBoy/BankingSystemWithJava',
-  },
-  {
-    title: 'Online Shopping App',
-    description: 'Group project: Java web-based online shopping platform with product catalog and order management',
-    technologies: ['Java', 'HTML', 'CSS'],
-    type: 'Full Stack',
-    github: 'https://github.com/Astera-Lainey/OnlineShoppingApp-ISJ_Inge3_ISI_Group_3-Java_Web',
-  },
-  {
-    title: 'SJI BTP 2025 ISI3 Group 7',
-    description: 'School Java project — SJI BTP 2025 ISI3 English-speaking group 7',
-    technologies: ['Java'],
-    type: 'School Project',
-    github: 'https://github.com/DONJUNIOR916/Sji_btp_2025_isi3_en_g7',
-  },
-  {
-    title: 'SJI ISI3 Group 3 Web',
-    description: 'Group web project — SJI ISI3 English-speaking group 3',
-    technologies: ['HTML', 'CSS'],
-    type: 'School Project',
-    github: 'https://github.com/Aichatou18/sji_ing3isi_-group3-_web_-English-speaking-',
-  },
-  {
-    title: 'D.A.J',
-    description: 'Personal HTML project',
-    technologies: ['HTML'],
-    type: 'Personal',
-    github: 'https://github.com/DONJUNIOR916/D.A.J',
-  },
-  {
-    title: 'Tic-Tac-Toe (SDL2)',
-    description: 'Advanced SDL2 Tic-Tac-Toe game with multiple board sizes and AI opponents',
-    technologies: ['C++', 'SDL2'],
-    type: 'Game',
-    github: 'https://github.com/donjunior01/dl2-tic-tac-toe',
-  },
+  ...cvData.projects[EN]
+    .filter((p) => !FEATURED_PROJECT_IDS.includes(p.id))
+    .map(mapProject),
 ];
 
 export const services = [
