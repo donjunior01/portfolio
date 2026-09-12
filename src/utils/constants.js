@@ -140,10 +140,10 @@ export const services = [
     icon: '💻',
   },
   {
-    title: 'Web & Mobile Development',
-    description: 'Responsive and cross-platform applications for web and mobile devices',
-    technologies: ['React', 'Angular', 'HTML5', 'CSS3', 'JavaScript'],
-    icon: '📱',
+    title: 'Computer Vision & Image Processing',
+    description: 'Image and video processing pipelines, from color-space transforms and filtering to edge detection and real-time tracking',
+    technologies: ['Python', 'OpenCV', 'NumPy', 'Matplotlib'],
+    icon: '📷',
   },
   {
     title: 'Database Design & Management',
@@ -152,10 +152,10 @@ export const services = [
     icon: '🗄️',
   },
   {
-    title: 'IT Support & Network Administration',
-    description: 'Technical support, network setup, and system administration services',
-    technologies: ['Networking', 'System Administration', 'Troubleshooting'],
-    icon: '🔧',
+    title: 'Secure Backend & API Architecture',
+    description: 'Secure, multi-tenant REST APIs with modern authentication and role-based access control',
+    technologies: ['Spring Boot', 'JWT', 'Argon2id', 'RBAC'],
+    icon: '🔐',
   },
   {
     title: 'Code Review & Consultation',
