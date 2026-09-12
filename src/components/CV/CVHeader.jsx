@@ -1,16 +1,23 @@
 import React from 'react';
-import { View, Text, StyleSheet } from '@react-pdf/renderer';
+import { View, Text, Image, StyleSheet } from '@react-pdf/renderer';
 
 const CVHeader = ({ personalInfo, theme, translations }) => {
-  const styles = createStyles(theme);
+  const hasPhoto = Boolean(personalInfo.photoUrl);
+  const styles = createStyles(theme, hasPhoto);
 
   return (
     <View style={styles.header}>
-      <View style={styles.nameSection}>
-        <Text style={styles.name}>{personalInfo.name}</Text>
-        <Text style={styles.title}>{personalInfo.title}</Text>
+      <View style={styles.topRow}>
+        <View style={styles.nameSection}>
+          <Text style={styles.name}>{personalInfo.name}</Text>
+          <Text style={styles.title}>{personalInfo.title}</Text>
+        </View>
+
+        {hasPhoto && (
+          <Image style={styles.photo} src={personalInfo.photoUrl} />
+        )}
       </View>
-      
+
       <View style={styles.contactSection}>
         <View style={styles.contactRow}>
           <Text style={styles.contactItem}>{personalInfo.email}</Text>
@@ -29,7 +36,7 @@ const CVHeader = ({ personalInfo, theme, translations }) => {
   );
 };
 
-const createStyles = (theme) => {
+const createStyles = (theme, hasPhoto) => {
   const isDark = theme === 'dark';
   const primaryColor = isDark ? '#06b6d4' : '#2563eb';
   const textColor = isDark ? '#ffffff' : '#1e293b';
@@ -41,8 +48,21 @@ const createStyles = (theme) => {
       padding: 15,
       borderBottom: `2px solid ${primaryColor}`,
     },
+    topRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+    },
     nameSection: {
+      flex: 1,
       marginBottom: 8,
+      paddingRight: hasPhoto ? 15 : 0,
+    },
+    photo: {
+      width: 60,
+      height: 75,
+      borderRadius: 4,
+      objectFit: 'cover',
     },
     name: {
       fontSize: 22,
