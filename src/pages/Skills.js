@@ -73,8 +73,32 @@ const Skills = () => {
         </div>
       </section>
 
-      {/* Databases */}
+      {/* Computer Vision */}
       <section className="section-padding">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3 text-center">
+              Computer Vision
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 text-center mb-8">
+              Skills built through the UTBM Computer Vision & Robotics specialization
+            </p>
+          </motion.div>
+          <div className="max-w-4xl mx-auto">
+            {skills.vision.map((skill, index) => (
+              <SkillBar key={index} skill={skill} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Databases */}
+      <section className="section-padding bg-gray-50 dark:bg-dark-800">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -98,7 +122,7 @@ const Skills = () => {
       </section>
 
       {/* Tools */}
-      <section className="section-padding bg-gray-50 dark:bg-dark-800">
+      <section className="section-padding">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -122,7 +146,7 @@ const Skills = () => {
       </section>
 
       {/* Competencies */}
-      <section className="section-padding">
+      <section className="section-padding bg-gray-50 dark:bg-dark-800">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

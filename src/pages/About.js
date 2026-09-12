@@ -19,7 +19,7 @@ const About = () => {
               About Me
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Get to know more about my journey, experience, and passion for software development
+              Get to know more about my journey, experience, and passion for software development and computer vision
             </p>
           </motion.div>
         </div>
@@ -60,18 +60,18 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-gray-600 dark:text-gray-400">
                 <p>
-                  I'm a passionate 4th-year Software Engineering student at {personalInfo.school}, 
-                  with a strong foundation in full-stack development and a keen interest in emerging technologies.
+                  I'm a computer science engineering student at Institut Saint Jean (Yaoundé, Cameroon),
+                  where I built a full-stack foundation across Java/Spring Boot and Angular/React.
                 </p>
                 <p>
-                  My journey in software development has been driven by curiosity and a desire to create 
-                  impactful solutions. With hands-on experience in IT support and commercial operations, 
-                  I bring a unique perspective that combines technical expertise with business understanding.
+                  During a back-end internship at Axe-Tech, I was the sole developer behind Kamba, a
+                  multi-tenant, OHADA-compliant SaaS for Cameroonian SMEs — designing the API,
+                  authentication, and compliance logic from the ground up.
                 </p>
                 <p>
-                  I'm particularly interested in machine learning, robotics, and cryptography, and I'm 
-                  constantly expanding my knowledge in these areas. My goal is to leverage technology to 
-                  solve real-world problems and contribute to innovative projects that make a difference.
+                  I'm now on exchange at UTBM (Belfort, France), specializing in Computer Vision and
+                  Robotics with an eye toward perception and autonomous systems. I'm currently seeking a
+                  2027 internship in France.
                 </p>
               </div>
               <Link to="/contact">

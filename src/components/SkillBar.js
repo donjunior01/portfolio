@@ -8,11 +8,16 @@ const SkillBar = ({ skill, index }) => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="mb-6"
+      className={`mb-6 ${skill.inProgress ? 'opacity-70' : ''}`}
     >
       <div className="flex justify-between mb-2">
-        <span className="text-gray-700 dark:text-gray-300 font-medium">
+        <span className="text-gray-700 dark:text-gray-300 font-medium flex items-center gap-2">
           {skill.name}
+          {skill.inProgress && (
+            <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/30">
+              In Progress
+            </span>
+          )}
         </span>
         <span className="text-cyan-500 font-semibold">{skill.level}%</span>
       </div>
@@ -22,7 +27,11 @@ const SkillBar = ({ skill, index }) => {
           whileInView={{ width: `${skill.level}%` }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: index * 0.1 + 0.2, ease: 'easeOut' }}
-          className="h-full bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full"
+          className={`h-full rounded-full ${
+            skill.inProgress
+              ? 'bg-gradient-to-r from-amber-400 to-amber-500'
+              : 'bg-gradient-to-r from-cyan-500 to-blue-600'
+          }`}
         />
       </div>
     </motion.div>

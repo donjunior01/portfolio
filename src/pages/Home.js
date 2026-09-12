@@ -5,7 +5,7 @@ import { personalInfo, stats, featuredProjects } from '../utils/constants';
 
 const Home = () => {
   const [currentRole, setCurrentRole] = useState(0);
-  const roles = ['Full Stack Developer', 'Software Engineer', 'Problem Solver'];
+  const roles = ['Full Stack Developer', 'Computer Vision & Robotics', 'Seeking a 2027 Internship'];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -89,9 +89,9 @@ const Home = () => {
                   <div className="text-center">
                     <div className="text-6xl mb-4">👨‍💻</div>
                     <p className="text-xl font-semibold text-gray-900 dark:text-white">
-                      Software Engineer
+                      Computer Vision Student
                     </p>
-                    <p className="text-gray-600 dark:text-gray-400">Year 4 Student</p>
+                    <p className="text-gray-600 dark:text-gray-400">UTBM Exchange 2026-2027</p>
                   </div>
                 </div>
               </div>
@@ -138,7 +138,7 @@ const Home = () => {
               Featured Projects
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Here are some of my recent projects showcasing my skills in full-stack development
+              Here are some of my recent projects, spanning computer vision, robotics, and full-stack development
             </p>
           </motion.div>
 
