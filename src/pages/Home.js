@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { personalInfo, stats, featuredProjects } from '../utils/constants';
+import homePhoto from '../assets/images/home-photo.png';
 
 const Home = () => {
   const [currentRole, setCurrentRole] = useState(0);
@@ -21,9 +22,28 @@ const Home = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, scale: 0.85, x: -30 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative order-1"
+            >
+              <div className="relative w-full aspect-square max-w-md mx-auto">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
+                <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20 dark:border-white/10 shadow-2xl">
+                  <img
+                    src={homePhoto}
+                    alt={personalInfo.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
+              className="order-2"
             >
               <motion.p
                 initial={{ opacity: 0 }}
@@ -84,25 +104,6 @@ const Home = () => {
                   View Projects
                 </Link>
               </motion.div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative"
-            >
-              <div className="relative w-full aspect-square max-w-md mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
-                <div className="relative glass-card rounded-full p-8 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">👨‍💻</div>
-                    <p className="text-xl font-semibold text-gray-900 dark:text-white">
-                      Computer Vision Student
-                    </p>
-                  </div>
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
