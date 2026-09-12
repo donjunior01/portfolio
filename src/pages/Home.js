@@ -91,7 +91,6 @@ const Home = () => {
                     <p className="text-xl font-semibold text-gray-900 dark:text-white">
                       Computer Vision Student
                     </p>
-                    <p className="text-gray-600 dark:text-gray-400">UTBM Exchange 2026-2027</p>
                   </div>
                 </div>
               </div>
