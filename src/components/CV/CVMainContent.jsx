@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from '@react-pdf/renderer';
 import CVSection from './CVSection';
 import ExperienceItem from './ExperienceItem';
 import ProjectItem from './ProjectItem';
+import { resolveByProfile } from '../../utils/cvSectionOrder';
 
 const CVMainContent = ({
   summary,
@@ -12,36 +13,40 @@ const CVMainContent = ({
   visibleSections,
   translations,
   sectionOrder,
+  profile,
 }) => {
   const styles = createStyles(theme);
 
   const sections = {
     education: (
       <CVSection key="education" title={translations.education} theme={theme}>
-        {education.map((edu, index) => (
-          <View key={index} style={styles.educationItem}>
-            <View style={styles.eduHeader}>
-              <Text style={styles.eduTitle}>{edu.title}</Text>
-              <Text style={styles.eduPeriod}>{edu.period}</Text>
-            </View>
-            <View style={styles.eduInstitution}>
-              <Text style={styles.institutionName}>{edu.institution}</Text>
-              {edu.location && (
-                <Text style={styles.eduLocation}> • {edu.location}</Text>
+        {education.map((edu, index) => {
+          const highlights = resolveByProfile(edu.highlights, profile);
+          return (
+            <View key={index} style={styles.educationItem}>
+              <View style={styles.eduHeader}>
+                <Text style={styles.eduTitle}>{edu.title}</Text>
+                <Text style={styles.eduPeriod}>{edu.period}</Text>
+              </View>
+              <View style={styles.eduInstitution}>
+                <Text style={styles.institutionName}>{edu.institution}</Text>
+                {edu.location && (
+                  <Text style={styles.eduLocation}> • {edu.location}</Text>
+                )}
+              </View>
+              {highlights && highlights.length > 0 && (
+                <View style={styles.highlights}>
+                  {highlights.map((highlight, idx) => (
+                    <View key={idx} style={styles.highlightItem}>
+                      <Text style={styles.bullet}>•</Text>
+                      <Text style={styles.highlightText}>{highlight}</Text>
+                    </View>
+                  ))}
+                </View>
               )}
             </View>
-            {edu.highlights && edu.highlights.length > 0 && (
-              <View style={styles.highlights}>
-                {edu.highlights.map((highlight, idx) => (
-                  <View key={idx} style={styles.highlightItem}>
-                    <Text style={styles.bullet}>•</Text>
-                    <Text style={styles.highlightText}>{highlight}</Text>
-                  </View>
-                ))}
-              </View>
-            )}
-          </View>
-        ))}
+          );
+        })}
       </CVSection>
     ),
     experience: (
@@ -52,6 +57,7 @@ const CVMainContent = ({
             experience={exp}
             theme={theme}
             translations={translations}
+            profile={profile}
           />
         ))}
       </CVSection>
@@ -64,6 +70,7 @@ const CVMainContent = ({
             project={project}
             theme={theme}
             translations={translations}
+            profile={profile}
           />
         ))}
       </CVSection>
@@ -91,64 +98,65 @@ const createStyles = (theme) => {
   return StyleSheet.create({
     mainContent: {
       width: '65%',
-      padding: 12,
-      paddingLeft: 15,
+      padding: 8,
+      paddingLeft: 11,
     },
     summaryText: {
-      fontSize: 9,
+      fontSize: 8.5,
       color: textColor,
-      lineHeight: 1.4,
+      lineHeight: 1.12,
       textAlign: 'justify',
     },
     educationItem: {
-      marginBottom: 6,
+      marginBottom: 3,
     },
     eduHeader: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginBottom: 2,
+      marginBottom: 1,
     },
     eduTitle: {
-      fontSize: 10,
+      fontSize: 9.5,
       fontWeight: 'bold',
       color: textColor,
       flex: 1,
     },
     eduPeriod: {
-      fontSize: 8,
+      fontSize: 7.5,
       color: secondaryColor,
       fontStyle: 'italic',
     },
     eduInstitution: {
       flexDirection: 'row',
-      marginBottom: 2,
+      marginBottom: 1,
     },
     institutionName: {
-      fontSize: 9,
+      fontSize: 8.5,
       color: accentColor,
       fontWeight: 'bold',
     },
     eduLocation: {
-      fontSize: 8,
+      fontSize: 7.5,
       color: secondaryColor,
     },
     highlights: {
-      marginTop: 2,
+      marginTop: 1,
     },
     highlightItem: {
       flexDirection: 'row',
-      marginBottom: 2,
+      marginBottom: 0.5,
     },
     bullet: {
-      fontSize: 8,
+      fontSize: 7.5,
       color: accentColor,
       marginRight: 4,
-      marginTop: 1,
+      marginTop: 0.5,
     },
     highlightText: {
-      fontSize: 8,
+      fontSize: 7.5,
       color: textColor,
       flex: 1,
+      lineHeight: 1.15,
     },
   });
 };

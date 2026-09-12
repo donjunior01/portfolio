@@ -19,4 +19,18 @@ export const getSectionOrder = (profile, language) => {
     : ['education', 'projects', 'experience'];
 };
 
+/**
+ * Resolves a field that may either be a flat value (profile-independent)
+ * or an object keyed by profile ({ vision: ..., software: ... }).
+ *
+ * @param {*} value
+ * @param {'vision'|'software'} profile
+ */
+export const resolveByProfile = (value, profile) => {
+  if (Array.isArray(value) || value == null || typeof value !== 'object') {
+    return value;
+  }
+  return value[profile] ?? value.software ?? value.vision;
+};
+
 export default getSectionOrder;

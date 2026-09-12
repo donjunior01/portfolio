@@ -45,7 +45,7 @@ const createStyles = (theme, hasPhoto) => {
   return StyleSheet.create({
     header: {
       backgroundColor: isDark ? '#1e293b' : '#f8fafc',
-      padding: 15,
+      padding: 10,
       borderBottom: `2px solid ${primaryColor}`,
     },
     topRow: {
@@ -55,28 +55,28 @@ const createStyles = (theme, hasPhoto) => {
     },
     nameSection: {
       flex: 1,
-      marginBottom: 8,
+      marginBottom: 4,
       paddingRight: hasPhoto ? 15 : 0,
     },
     photo: {
-      width: 60,
-      height: 75,
+      width: 55,
+      height: 68,
       borderRadius: 4,
       objectFit: 'cover',
     },
     name: {
-      fontSize: 22,
+      fontSize: 18,
       fontWeight: 'bold',
       color: primaryColor,
-      marginBottom: 3,
+      marginBottom: 2,
     },
     title: {
-      fontSize: 12,
+      fontSize: 10.5,
       color: textColor,
       fontWeight: 'bold',
     },
     contactSection: {
-      marginTop: 5,
+      marginTop: 3,
     },
     contactRow: {
       flexDirection: 'row',

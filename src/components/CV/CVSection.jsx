@@ -22,20 +22,20 @@ const createStyles = (theme, sidebar) => {
 
   return StyleSheet.create({
     section: {
-      marginBottom: 6,
+      marginBottom: 3,
     },
     title: {
-      fontSize: 11,
+      fontSize: 10,
       fontWeight: 'bold',
       color: titleColor,
-      marginBottom: 3,
-      paddingBottom: 2,
-      borderBottom: `1.5px solid ${borderColor}`,
+      marginBottom: 2,
+      paddingBottom: 1,
+      borderBottom: `1px solid ${borderColor}`,
       textTransform: 'uppercase',
       letterSpacing: 0.5,
     },
     content: {
-      marginTop: 2,
+      marginTop: 1,
     },
   });
 };

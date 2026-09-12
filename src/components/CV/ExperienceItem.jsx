@@ -1,7 +1,9 @@
 import { View, Text, StyleSheet } from '@react-pdf/renderer';
+import { resolveByProfile } from '../../utils/cvSectionOrder';
 
-const ExperienceItem = ({ experience, theme, translations }) => {
+const ExperienceItem = ({ experience, theme, translations, profile }) => {
   const styles = createStyles(theme);
+  const responsibilities = resolveByProfile(experience.responsibilities, profile);
 
   return (
     <View style={styles.item}>
@@ -15,9 +17,12 @@ const ExperienceItem = ({ experience, theme, translations }) => {
           <Text style={styles.location}> • {experience.location}</Text>
         )}
       </View>
-      {experience.responsibilities && experience.responsibilities.length > 0 && (
+      {experience.project && (
+        <Text style={styles.project}>{experience.project}</Text>
+      )}
+      {responsibilities && responsibilities.length > 0 && (
         <View style={styles.responsibilities}>
-          {experience.responsibilities.map((resp, index) => (
+          {responsibilities.map((resp, index) => (
             <View key={index} style={styles.responsibilityItem}>
               <Text style={styles.bullet}>•</Text>
               <Text style={styles.responsibilityText}>{resp}</Text>
@@ -37,56 +42,62 @@ const createStyles = (theme) => {
 
   return StyleSheet.create({
     item: {
-      marginBottom: 6,
+      marginBottom: 3,
     },
     header: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'flex-start',
-      marginBottom: 2,
+      marginBottom: 1,
     },
     title: {
-      fontSize: 10,
+      fontSize: 9.5,
       fontWeight: 'bold',
       color: textColor,
       flex: 1,
     },
     period: {
-      fontSize: 8,
+      fontSize: 7.5,
       color: secondaryColor,
       fontStyle: 'italic',
     },
     company: {
       flexDirection: 'row',
-      marginBottom: 2,
+      marginBottom: 1,
     },
     companyName: {
-      fontSize: 9,
+      fontSize: 8.5,
       color: accentColor,
       fontWeight: 'bold',
     },
     location: {
-      fontSize: 8,
+      fontSize: 7.5,
       color: secondaryColor,
     },
+    project: {
+      fontSize: 7.5,
+      color: textColor,
+      fontStyle: 'italic',
+      marginBottom: 1,
+    },
     responsibilities: {
-      marginTop: 2,
+      marginTop: 1,
     },
     responsibilityItem: {
       flexDirection: 'row',
-      marginBottom: 1.5,
+      marginBottom: 0.5,
     },
     bullet: {
-      fontSize: 8,
+      fontSize: 7.5,
       color: accentColor,
       marginRight: 4,
-      marginTop: 1,
+      marginTop: 0.5,
     },
     responsibilityText: {
-      fontSize: 8,
+      fontSize: 7.5,
       color: textColor,
       flex: 1,
-      lineHeight: 1.3,
+      lineHeight: 1.08,
     },
   });
 };

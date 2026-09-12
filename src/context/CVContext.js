@@ -31,8 +31,8 @@ export const CVProvider = ({ children }) => {
   const [cvVersion, setCvVersion] = useState('full'); // 'full' or 'short'
   const [visibleSections, setVisibleSections] = useState({
     interests: true,
-    certifications: true,
-    extracurricular: true,
+    certifications: false,
+    extracurricular: false,
   });
   const [isGenerating, setIsGenerating] = useState(false);
   const [githubProjects, setGithubProjects] = useState([]);
@@ -103,8 +103,8 @@ export const CVProvider = ({ children }) => {
     setCvVersion('full');
     setVisibleSections({
       interests: true,
-      certifications: true,
-      extracurricular: true,
+      certifications: false,
+      extracurricular: false,
     });
   };
 

@@ -1,26 +1,33 @@
 import { View, Text, StyleSheet } from '@react-pdf/renderer';
+import { resolveByProfile } from '../../utils/cvSectionOrder';
 
-const ProjectItem = ({ project, theme, translations }) => {
+const ProjectItem = ({ project, theme, translations, profile }) => {
   const styles = createStyles(theme);
+  const highlights = resolveByProfile(project.highlights, profile);
 
   return (
     <View style={styles.item}>
       <View style={styles.header}>
         <Text style={styles.name}>{project.name}</Text>
-        {project.role && (
-          <Text style={styles.role}>{project.role}</Text>
+        {project.period && (
+          <Text style={styles.period}>{project.period}</Text>
         )}
       </View>
-      {project.description && (
-        <Text style={styles.description}>{project.description}</Text>
+      {(project.role || (project.tech && project.tech.length > 0)) && (
+        <View style={styles.subHeader}>
+          {project.role && <Text style={styles.role}>{project.role}</Text>}
+          {project.tech && project.tech.length > 0 && (
+            <Text style={styles.techBadge}>{project.tech.join(' • ')}</Text>
+          )}
+        </View>
       )}
-      {project.tech && project.tech.length > 0 && (
-        <View style={styles.techContainer}>
-          {project.tech.map((tech, index) => (
-            <Text key={index} style={styles.techBadge}>
-              {tech}
-              {index < project.tech.length - 1 ? ' • ' : ''}
-            </Text>
+      {highlights && highlights.length > 0 && (
+        <View style={styles.highlights}>
+          {highlights.map((highlight, index) => (
+            <View key={index} style={styles.highlightItem}>
+              <Text style={styles.bullet}>•</Text>
+              <Text style={styles.highlightText}>{highlight}</Text>
+            </View>
           ))}
         </View>
       )}
@@ -36,39 +43,59 @@ const createStyles = (theme) => {
 
   return StyleSheet.create({
     item: {
-      marginBottom: 5,
+      marginBottom: 3,
     },
     header: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'flex-start',
-      marginBottom: 2,
+      marginBottom: 1,
     },
     name: {
-      fontSize: 9,
+      fontSize: 8.5,
       fontWeight: 'bold',
       color: textColor,
       flex: 1,
+    },
+    period: {
+      fontSize: 7.5,
+      color: secondaryColor,
+      fontStyle: 'italic',
+      whiteSpace: 'nowrap',
+    },
+    subHeader: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginBottom: 1,
     },
     role: {
       fontSize: 7,
       color: secondaryColor,
       fontStyle: 'italic',
     },
-    description: {
-      fontSize: 8,
-      color: textColor,
-      marginBottom: 2,
-      lineHeight: 1.3,
-    },
-    techContainer: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-    },
     techBadge: {
       fontSize: 7,
       color: accentColor,
       fontWeight: 'bold',
+    },
+    highlights: {
+      marginTop: 0.5,
+    },
+    highlightItem: {
+      flexDirection: 'row',
+      marginBottom: 0.5,
+    },
+    bullet: {
+      fontSize: 7.5,
+      color: accentColor,
+      marginRight: 4,
+      marginTop: 0.5,
+    },
+    highlightText: {
+      fontSize: 7.5,
+      color: textColor,
+      flex: 1,
+      lineHeight: 1.15,
     },
   });
 };

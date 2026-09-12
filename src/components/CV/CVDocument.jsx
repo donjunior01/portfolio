@@ -10,24 +10,34 @@ const CVDocument = ({ data, theme, selectedProjects, language, version, visibleS
 
   const sectionOrder = getSectionOrder(profile, language);
 
-  // Filter selected projects with language support
-  const projects = data.projects[language].filter(p => selectedProjects.includes(p.id));
-  
+  // Filter selected projects with language support, then order per profile
+  const projectOrder = data.projectOrder?.[profile] || [];
+  const projects = data.projects[language]
+    .filter(p => selectedProjects.includes(p.id))
+    .sort((a, b) => {
+      const ia = projectOrder.indexOf(a.id);
+      const ib = projectOrder.indexOf(b.id);
+      return (ia === -1 ? Infinity : ia) - (ib === -1 ? Infinity : ib);
+    });
+
   // Filter experience for short version with language support
-  const experience = version === 'short' 
-    ? data.experience[language].slice(0, 2) 
+  const experience = version === 'short'
+    ? data.experience[language].slice(0, 2)
     : data.experience[language];
 
   // Get language-specific data
+  const rawPersonalInfo = data.personalInfo[language][0];
   const personalInfo = {
-    ...data.personalInfo[language][0], // Get the first (and only) item from the language array
+    ...rawPersonalInfo,
+    title: rawPersonalInfo.titles[profile],
     linkedin: data.personalInfo.linkedin,
     github: data.personalInfo.github,
     gitlab: data.personalInfo.gitlab,
     website: data.personalInfo.website,
     photoUrl: data.personalInfo.photoUrl,
   };
-  const education = data.education[language];
+  // The exact reference CV shows only the UTBM + Institut Saint Jean entries
+  const education = data.education[language].filter(e => e.includeInCV !== false);
   const languagesSpoken = data.languagesSpoken[language];
   const certifications = data.certifications[language];
   const interests = data.interests[language];
@@ -46,6 +56,7 @@ const CVDocument = ({ data, theme, selectedProjects, language, version, visibleS
           <CVSidebar
             personalInfo={personalInfo}
             skills={data.skills}
+            skillsByProfile={data.skillsByProfile?.[profile]?.[language]}
             languagesSpoken={languagesSpoken}
             certifications={certifications}
             interests={interests}
@@ -55,7 +66,7 @@ const CVDocument = ({ data, theme, selectedProjects, language, version, visibleS
             translations={translations}
             version={version}
           />
-          
+
           <CVMainContent
             summary={data.summary[language]}
             education={education}
@@ -65,6 +76,7 @@ const CVDocument = ({ data, theme, selectedProjects, language, version, visibleS
             visibleSections={visibleSections}
             translations={translations}
             sectionOrder={sectionOrder}
+            profile={profile}
           />
         </View>
       </Page>

@@ -1,30 +1,25 @@
 import React from 'react';
 import { View, Text, StyleSheet } from '@react-pdf/renderer';
 import CVSection from './CVSection';
-import SkillBar from './SkillBar';
 
-const CVSidebar = ({ 
-  personalInfo, 
-  skills, 
-  languagesSpoken, 
-  certifications, 
-  interests, 
+const CVSidebar = ({
+  personalInfo,
+  skillsByProfile,
+  languagesSpoken,
+  certifications,
+  interests,
   extracurricular,
-  theme, 
+  theme,
   visibleSections,
   translations,
-  version 
+  version,
 }) => {
   const styles = createStyles(theme);
-  
-  // Condense skills for short version
-  const displaySkills = version === 'short' 
-    ? {
-        languages: skills.languages.slice(0, 5),
-        frameworks: skills.frameworks.slice(0, 3),
-        databases: skills.databases.slice(0, 3),
-      }
-    : skills;
+
+  // Condense to the first three categories for the short version
+  const displayCategories = version === 'short'
+    ? (skillsByProfile || []).slice(0, 3)
+    : (skillsByProfile || []);
 
   return (
     <View style={styles.sidebar}>
@@ -33,44 +28,19 @@ const CVSidebar = ({
         {languagesSpoken.map((lang, index) => (
           <View key={index} style={styles.languageItem}>
             <Text style={styles.languageName}>{lang.name}</Text>
-            <Text style={styles.languageLevel}>{lang.level}</Text>
+            <Text style={styles.languageLevel}> — {lang.level}</Text>
           </View>
         ))}
       </CVSection>
 
       {/* Technical Skills */}
       <CVSection title={translations.skills} theme={theme} sidebar>
-        <View style={styles.skillCategory}>
-          <Text style={styles.skillCategoryTitle}>Languages</Text>
-          {displaySkills.languages.map((skill, index) => (
-            <SkillBar key={index} skill={skill} theme={theme} translations={translations} />
-          ))}
-        </View>
-
-        <View style={styles.skillCategory}>
-          <Text style={styles.skillCategoryTitle}>Frameworks</Text>
-          {displaySkills.frameworks.map((skill, index) => (
-            <SkillBar key={index} skill={skill} theme={theme} translations={translations} />
-          ))}
-        </View>
-
-        {skills.vision && skills.vision.length > 0 && (
-          <View style={styles.skillCategory}>
-            <Text style={styles.skillCategoryTitle}>Vision</Text>
-            {skills.vision.map((skill, index) => (
-              <SkillBar key={index} skill={skill} theme={theme} translations={translations} />
-            ))}
+        {displayCategories.map((group, index) => (
+          <View key={index} style={styles.skillCategory}>
+            <Text style={styles.skillCategoryTitle}>{group.category}</Text>
+            <Text style={styles.skillItemsList}>{group.items.join(' • ')}</Text>
           </View>
-        )}
-
-        {version === 'full' && (
-          <View style={styles.skillCategory}>
-            <Text style={styles.skillCategoryTitle}>Databases</Text>
-            {displaySkills.databases.map((skill, index) => (
-              <SkillBar key={index} skill={skill} theme={theme} translations={translations} />
-            ))}
-          </View>
-        )}
+        ))}
       </CVSection>
 
       {/* Certifications */}
@@ -121,32 +91,36 @@ const createStyles = (theme) => {
     sidebar: {
       width: '35%',
       backgroundColor: sidebarBg,
-      padding: 12,
+      padding: 8,
       color: textColor,
     },
     languageItem: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginBottom: 4,
+      marginBottom: 3,
     },
     languageName: {
-      fontSize: 9,
+      fontSize: 8.5,
+      fontWeight: 'bold',
       color: textColor,
     },
     languageLevel: {
-      fontSize: 8,
+      fontSize: 7.5,
       color: '#cbd5e1',
-      fontStyle: 'italic',
+      lineHeight: 1.15,
     },
     skillCategory: {
-      marginBottom: 6,
+      marginBottom: 3,
     },
     skillCategoryTitle: {
-      fontSize: 8,
+      fontSize: 7.5,
       fontWeight: 'bold',
       color: '#cbd5e1',
-      marginBottom: 3,
+      marginBottom: 1.5,
       textTransform: 'uppercase',
+    },
+    skillItemsList: {
+      fontSize: 7.5,
+      color: textColor,
+      lineHeight: 1.2,
     },
     certItem: {
       marginBottom: 4,
