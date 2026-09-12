@@ -57,7 +57,7 @@ const CVMainContent = ({
         })}
       </CVSection>
     ),
-    experience: (
+    experience: experience && experience.length > 0 && (
       <CVSection key="experience" title={translations.experience}>
         {experience.map((exp, index) => (
           <ExperienceItem key={index} experience={exp} profile={profile} />

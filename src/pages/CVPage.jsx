@@ -8,16 +8,16 @@ import { cvTranslations } from '../translations/cvTranslations';
 
 const CVPage = () => {
   const {
-    cvTheme,
     cvProfile,
     selectedProjects,
+    selectedExperience,
     cvLanguage,
     cvVersion,
     visibleSections,
     isGenerating,
-    updateTheme,
     setProfile,
     toggleProject,
+    toggleExperience,
     setLanguage,
     setVersion,
     toggleSection,
@@ -45,8 +45,8 @@ const CVPage = () => {
       setIsLoadingPreview(true);
       try {
         const url = await generateCVDataURL({
-          theme: cvTheme,
           selectedProjects,
+          selectedExperience,
           language: cvLanguage,
           version: cvVersion,
           profile: cvProfile,
@@ -63,15 +63,15 @@ const CVPage = () => {
     // Debounce preview generation
     const timer = setTimeout(generatePreview, 500);
     return () => clearTimeout(timer);
-  }, [cvTheme, selectedProjects, cvLanguage, cvVersion, cvProfile, visibleSections]);
+  }, [selectedProjects, selectedExperience, cvLanguage, cvVersion, cvProfile, visibleSections]);
 
   const handleDownload = async () => {
     setIsGenerating(true);
     setProgress('');
     try {
       await generateAndDownloadCV({
-        theme: cvTheme,
         selectedProjects,
+        selectedExperience,
         language: cvLanguage,
         version: cvVersion,
         profile: cvProfile,
@@ -97,8 +97,8 @@ const CVPage = () => {
         recipientName: emailForm.name,
         message: emailForm.message,
         cvOptions: {
-          theme: cvTheme,
           selectedProjects,
+          selectedExperience,
           language: cvLanguage,
           version: cvVersion,
           profile: cvProfile,
@@ -151,35 +151,6 @@ const CVPage = () => {
             animate={{ opacity: 1, x: 0 }}
             className="lg:col-span-1 space-y-6"
           >
-            {/* Theme Selection */}
-            <div className="card p-6">
-              <h3 className="text-xl font-bold mb-4">{t.theme}</h3>
-              <div className="grid grid-cols-2 gap-3">
-                <button
-                  onClick={() => updateTheme('light')}
-                  className={`p-4 rounded-lg border-2 transition-all ${
-                    cvTheme === 'light'
-                      ? 'border-cyan-500 bg-cyan-50 dark:bg-cyan-900/20'
-                      : 'border-gray-300 dark:border-gray-700'
-                  }`}
-                >
-                  <div className="w-full h-12 bg-white rounded mb-2 border"></div>
-                  <p className="text-sm font-medium">{t.themeLight}</p>
-                </button>
-                <button
-                  onClick={() => updateTheme('dark')}
-                  className={`p-4 rounded-lg border-2 transition-all ${
-                    cvTheme === 'dark'
-                      ? 'border-cyan-500 bg-cyan-50 dark:bg-cyan-900/20'
-                      : 'border-gray-300 dark:border-gray-700'
-                  }`}
-                >
-                  <div className="w-full h-12 bg-gray-900 rounded mb-2"></div>
-                  <p className="text-sm font-medium">{t.themeDark}</p>
-                </button>
-              </div>
-            </div>
-
             {/* Language Selection */}
             <div className="card p-6">
               <h3 className="text-xl font-bold mb-4">{t.language}</h3>
@@ -307,6 +278,34 @@ const CVPage = () => {
               </div>
             </div>
 
+            {/* Experience Selection */}
+            <div className="card p-6">
+              <h3 className="text-xl font-bold mb-4">
+                {t.experienceTitle} ({selectedExperience.length}/{cvData.experience[cvLanguage].length})
+              </h3>
+              <div className="space-y-2 max-h-64 overflow-y-auto">
+                {cvData.experience[cvLanguage].map((exp) => (
+                  <label
+                    key={exp.id}
+                    className="flex items-start space-x-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedExperience.includes(exp.id)}
+                      onChange={() => toggleExperience(exp.id)}
+                      className="mt-1"
+                    />
+                    <div className="flex-1">
+                      <p className="text-sm font-medium">{exp.title}</p>
+                      <p className="text-xs text-gray-600 dark:text-gray-400">
+                        {exp.company}
+                      </p>
+                    </div>
+                  </label>
+                ))}
+              </div>
+            </div>
+
             {/* Optional Sections */}
             {cvVersion === 'full' && (
               <div className="card p-6">
@@ -380,7 +379,7 @@ const CVPage = () => {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="lg:col-span-2"
+            className="lg:col-span-2 lg:self-start lg:sticky lg:top-24"
           >
             <div className="card p-6">
               <h3 className="text-xl font-bold mb-4">{t.preview}</h3>

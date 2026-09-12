@@ -1,6 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { cvData } from '../data/cvData';
-import { useTheme } from './ThemeContext';
 
 const CVContext = createContext();
 
@@ -9,6 +8,8 @@ const getDefaultProjectsForProfile = (profile) =>
     .filter((p) => p.profiles && p.profiles.includes(profile))
     .slice(0, 5)
     .map((p) => p.id);
+
+const getAllExperienceIds = () => cvData.experience.en.map((e) => e.id);
 
 export const useCVContext = () => {
   const context = useContext(CVContext);
@@ -19,14 +20,12 @@ export const useCVContext = () => {
 };
 
 export const CVProvider = ({ children }) => {
-  const { isDark } = useTheme();
-  
   // CV Configuration State
-  const [cvTheme, setCvTheme] = useState(isDark ? 'dark' : 'light');
   const [cvProfile, setCvProfile] = useState('vision'); // 'vision' or 'software'
   const [selectedProjects, setSelectedProjects] = useState(
     getDefaultProjectsForProfile('vision')
   );
+  const [selectedExperience, setSelectedExperience] = useState(getAllExperienceIds());
   const [cvLanguage, setCvLanguage] = useState('en');
   const [cvVersion, setCvVersion] = useState('full'); // 'full' or 'short'
   const [visibleSections, setVisibleSections] = useState({
@@ -38,16 +37,7 @@ export const CVProvider = ({ children }) => {
   const [githubProjects, setGithubProjects] = useState([]);
   const [gitlabProjects, setGitlabProjects] = useState([]);
 
-  // Sync theme with portfolio theme
-  useEffect(() => {
-    setCvTheme(isDark ? 'dark' : 'light');
-  }, [isDark]);
-
   // Actions
-  const updateTheme = (theme) => {
-    setCvTheme(theme);
-  };
-
   const toggleProject = (projectId) => {
     setSelectedProjects(prev => {
       if (prev.includes(projectId)) {
@@ -60,6 +50,14 @@ export const CVProvider = ({ children }) => {
         return [...prev, projectId];
       }
     });
+  };
+
+  const toggleExperience = (experienceId) => {
+    setSelectedExperience(prev => (
+      prev.includes(experienceId)
+        ? prev.filter(id => id !== experienceId)
+        : [...prev, experienceId]
+    ));
   };
 
   const setLanguage = (lang) => {
@@ -76,7 +74,7 @@ export const CVProvider = ({ children }) => {
 
   const setVersion = (version) => {
     setCvVersion(version);
-    
+
     // Adjust settings for short version
     if (version === 'short') {
       setSelectedProjects(getDefaultProjectsForProfile(cvProfile).slice(0, 3));
@@ -96,9 +94,9 @@ export const CVProvider = ({ children }) => {
   };
 
   const resetToDefaults = () => {
-    setCvTheme(isDark ? 'dark' : 'light');
     setCvProfile('vision');
     setSelectedProjects(getDefaultProjectsForProfile('vision'));
+    setSelectedExperience(getAllExperienceIds());
     setCvLanguage('en');
     setCvVersion('full');
     setVisibleSections({
@@ -133,18 +131,18 @@ export const CVProvider = ({ children }) => {
   };
 
   const value = {
-    cvTheme,
     cvProfile,
     selectedProjects,
+    selectedExperience,
     cvLanguage,
     cvVersion,
     visibleSections,
     isGenerating,
     githubProjects,
     gitlabProjects,
-    updateTheme,
     setProfile,
     toggleProject,
+    toggleExperience,
     setLanguage,
     setVersion,
     toggleSection,

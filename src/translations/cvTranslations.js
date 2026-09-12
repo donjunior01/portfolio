@@ -18,9 +18,6 @@ export const cvTranslations = {
     extracurricular: 'Extracurricular Activities',
     
     // Customization Panel
-    theme: 'Theme',
-    themeLight: 'Light',
-    themeDark: 'Dark',
     language: 'Language',
     languageEnglish: 'English',
     languageFrench: 'Français',
@@ -35,6 +32,7 @@ export const cvTranslations = {
     versionShort: 'Short CV',
     versionShortDesc: 'Condensed version',
     projectsTitle: 'Projects',
+    experienceTitle: 'Experience',
     optionalSections: 'Optional Sections',
     
     // Actions
@@ -94,9 +92,6 @@ export const cvTranslations = {
     extracurricular: 'Activités Extrascolaires',
     
     // Customization Panel
-    theme: 'Thème',
-    themeLight: 'Clair',
-    themeDark: 'Sombre',
     language: 'Langue',
     languageEnglish: 'English',
     languageFrench: 'Français',
@@ -111,6 +106,7 @@ export const cvTranslations = {
     versionShort: 'CV Court',
     versionShortDesc: 'Version condensée',
     projectsTitle: 'Projets',
+    experienceTitle: 'Expérience',
     optionalSections: 'Sections Optionnelles',
     
     // Actions

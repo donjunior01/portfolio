@@ -16,7 +16,7 @@ Font.register({
   ],
 });
 
-const CVDocument = ({ data, selectedProjects, language, visibleSections, translations, profile = 'vision' }) => {
+const CVDocument = ({ data, selectedProjects, selectedExperience, language, visibleSections, translations, profile = 'vision' }) => {
   const sectionOrder = getSectionOrder(profile, language);
 
   // Filter selected projects with language support, then order per profile
@@ -29,7 +29,7 @@ const CVDocument = ({ data, selectedProjects, language, visibleSections, transla
       return (ia === -1 ? Infinity : ia) - (ib === -1 ? Infinity : ib);
     });
 
-  const experience = data.experience[language];
+  const experience = data.experience[language].filter((e) => selectedExperience.includes(e.id));
 
   const rawPersonalInfo = data.personalInfo[language][0];
   const personalInfo = {

@@ -4,11 +4,13 @@ import CVDocument from '../components/CV/CVDocument';
 import { cvData } from '../data/cvData';
 import { cvTranslations } from '../translations/cvTranslations';
 
+const defaultSelectedExperience = () => cvData.experience.en.map((e) => e.id);
+
 /**
  * Generate and download CV as PDF
  * @param {Object} options - CV generation options
- * @param {string} options.theme - 'dark' or 'light'
  * @param {Array} options.selectedProjects - Array of project IDs to include
+ * @param {Array} options.selectedExperience - Array of experience IDs to include
  * @param {string} options.language - 'en' or 'fr'
  * @param {string} options.version - 'full' or 'short'
  * @param {string} options.profile - 'vision' or 'software'
@@ -17,8 +19,8 @@ import { cvTranslations } from '../translations/cvTranslations';
  */
 export const generateAndDownloadCV = async (options) => {
   const {
-    theme = 'light',
     selectedProjects = cvData.projects.en.slice(0, 5).map(p => p.id),
+    selectedExperience = defaultSelectedExperience(),
     language = 'en',
     version = 'full',
     profile = 'vision',
@@ -38,10 +40,9 @@ export const generateAndDownloadCV = async (options) => {
     const blob = await pdf(
       CVDocument({
         data: cvData,
-        theme,
         selectedProjects,
+        selectedExperience,
         language,
-        version,
         profile,
         visibleSections,
         translations,
@@ -51,8 +52,7 @@ export const generateAndDownloadCV = async (options) => {
     // Generate filename
     const versionSuffix = version === 'short' ? '_Short' : '';
     const langSuffix = language === 'fr' ? '_FR' : '_EN';
-    const themeSuffix = theme === 'dark' ? '_Dark' : '';
-    const filename = `Junior_Donfack_CV${versionSuffix}${langSuffix}${themeSuffix}.pdf`;
+    const filename = `Junior_Donfack_CV${versionSuffix}${langSuffix}.pdf`;
 
     if (onProgress) onProgress('Downloading...');
 
@@ -75,10 +75,9 @@ export const generateAndDownloadCV = async (options) => {
  */
 export const generateCVBlob = async (options) => {
   const {
-    theme = 'light',
     selectedProjects = cvData.projects.en.slice(0, 5).map(p => p.id),
+    selectedExperience = defaultSelectedExperience(),
     language = 'en',
-    version = 'full',
     profile = 'vision',
     visibleSections = { interests: true, certifications: true, extracurricular: true },
   } = options;
@@ -89,10 +88,9 @@ export const generateCVBlob = async (options) => {
     const blob = await pdf(
       CVDocument({
         data: cvData,
-        theme,
         selectedProjects,
+        selectedExperience,
         language,
-        version,
         profile,
         visibleSections,
         translations,

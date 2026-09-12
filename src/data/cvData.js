@@ -121,6 +121,7 @@ export const cvData = {
   experience: {
     en: [
       {
+        id: 'axe-tech',
         title: 'Back-End Developer — Intern',
         company: 'Axe-Tech SARL',
         location: 'Douala, Cameroon (Remote)',
@@ -142,6 +143,7 @@ export const cvData = {
         },
       },
       {
+        id: 'jd-sarl',
         title: 'IT Assistant',
         company: 'JD SARL',
         location: 'Yaoundé, Cameroon',
@@ -155,6 +157,7 @@ export const cvData = {
         ],
       },
       {
+        id: 'soticam',
         title: 'Commercial Assistant',
         company: 'SOTICAM',
         location: 'Yaoundé, Cameroon',
@@ -167,6 +170,7 @@ export const cvData = {
         ],
       },
       {
+        id: 'og-olabs',
         title: 'IT Intern (Support and Maintenance)',
         company: 'OG/OLABS - Octal Academy',
         location: 'Yaoundé, Cameroon',
@@ -180,6 +184,7 @@ export const cvData = {
         ],
       },
       {
+        id: 'furniture',
         title: 'Furniture Craftsman & Sales',
         company: 'Self-Employed',
         location: 'Yaoundé, Cameroon',
@@ -193,6 +198,7 @@ export const cvData = {
     ],
     fr: [
       {
+        id: 'axe-tech',
         title: 'Développeur Back-End — Stagiaire',
         company: 'Axe-Tech SARL',
         location: 'Douala, Cameroun (à distance)',
@@ -214,6 +220,7 @@ export const cvData = {
         },
       },
       {
+        id: 'jd-sarl',
         title: 'Assistant Informatique',
         company: 'JD SARL',
         location: 'Yaoundé, Cameroun',
@@ -227,6 +234,7 @@ export const cvData = {
         ],
       },
       {
+        id: 'soticam',
         title: 'Assistant Commercial',
         company: 'SOTICAM',
         location: 'Yaoundé, Cameroun',
@@ -239,6 +247,7 @@ export const cvData = {
         ],
       },
       {
+        id: 'og-olabs',
         title: 'Stagiaire Informatique (Support et Maintenance)',
         company: 'OG/OLABS - Octal Academy',
         location: 'Yaoundé, Cameroun',
@@ -252,6 +261,7 @@ export const cvData = {
         ],
       },
       {
+        id: 'furniture',
         title: 'Artisan Menuisier & Ventes',
         company: 'Travailleur Indépendant',
         location: 'Yaoundé, Cameroun',
