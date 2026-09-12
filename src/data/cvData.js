@@ -8,7 +8,7 @@ export const cvData = {
           vision: 'Computer Science Engineering Student — Computer Vision & Robotics',
           software: 'Computer Science Engineering Student — Software Engineering & Full-Stack Development',
         },
-        email: 'Juniorasobijo@gmail.com',
+        email: 'junior.donfack-assobjio@utbm.fr',
         phone: '+33 7 58 78 09 26',
         location: 'Belfort, France',
       },
@@ -20,7 +20,7 @@ export const cvData = {
           vision: 'Élève-ingénieur en informatique — Vision artificielle & robotique',
           software: 'Élève-ingénieur en informatique — Génie logiciel & développement full-stack',
         },
-        email: 'Juniorasobijo@gmail.com',
+        email: 'junior.donfack-assobjio@utbm.fr',
         phone: '+33 7 58 78 09 26',
         location: 'Belfort, France',
       },
@@ -269,7 +269,7 @@ export const cvData = {
   // Ids not listed here render after the ordered ones, in their natural array order.
   projectOrder: {
     vision: ['basic-cv', 'tictactoe', 'dijkstra', 'seruca'],
-    software: ['seruca', 'task-management', 'immunization', 'portfolio-site'],
+    software: ['seruca', 'task-management', 'immunization'],
   },
 
   projects: {
@@ -425,27 +425,6 @@ export const cvData = {
         github: 'https://github.com/donjunior01/dl2-tic-tac-toe',
         profiles: ['vision'],
       },
-      {
-        id: 'portfolio-site',
-        name: 'Personal Portfolio',
-        tech: ['React 18', 'React Router', 'Framer Motion', 'react-pdf', 'EmailJS', 'Tailwind CSS'],
-        role: 'Individual Developer',
-        period: '2025 - Ongoing',
-        highlights: [
-          'React Router, Framer Motion, PDF CV generation (react-pdf), EmailJS contact form, multilingual interface',
-        ],
-        github: 'https://github.com/donjunior01/portfolio',
-        profiles: ['software'],
-      },
-      {
-        id: 'daj',
-        name: 'D.A.J',
-        tech: ['HTML'],
-        role: 'Individual Developer',
-        highlights: ['Personal HTML project'],
-        github: 'https://github.com/DONJUNIOR916/D.A.J',
-        profiles: [],
-      },
     ],
     fr: [
       {
@@ -598,27 +577,6 @@ export const cvData = {
         ],
         github: 'https://github.com/donjunior01/dl2-tic-tac-toe',
         profiles: ['vision'],
-      },
-      {
-        id: 'portfolio-site',
-        name: 'Portfolio Personnel',
-        tech: ['React 18', 'React Router', 'Framer Motion', 'react-pdf', 'EmailJS', 'Tailwind CSS'],
-        role: 'Développeur Individuel',
-        period: '2025 - en cours',
-        highlights: [
-          'React Router, Framer Motion, génération de CV en PDF (react-pdf), formulaire de contact EmailJS, interface multilingue',
-        ],
-        github: 'https://github.com/donjunior01/portfolio',
-        profiles: ['software'],
-      },
-      {
-        id: 'daj',
-        name: 'D.A.J',
-        tech: ['HTML'],
-        role: 'Développeur Individuel',
-        highlights: ['Projet HTML personnel'],
-        github: 'https://github.com/DONJUNIOR916/D.A.J',
-        profiles: [],
       },
     ],
   },

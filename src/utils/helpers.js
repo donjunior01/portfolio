@@ -1,13 +1,3 @@
-// Download CV function
-export const downloadCV = () => {
-  const link = document.createElement('a');
-  link.href = process.env.PUBLIC_URL + '/assets/Junior_Donfack_CV.pdf';
-  link.download = 'Junior_Donfack_Assobjio_CV.pdf';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
-
 // Smooth scroll to element
 export const scrollToElement = (elementId) => {
   const element = document.getElementById(elementId);

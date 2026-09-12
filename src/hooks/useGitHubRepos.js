@@ -9,6 +9,7 @@ const GITLAB_USER_IDS = [26455293, 26455308]; // donjunior01, DONJUNIOR916
 const GITHUB_EXCLUDE = new Set([
   'portfolio',
   '-atelierGit1_donfack_assobjio_junior',
+  'D.A.J',
 ]);
 
 // GitLab repo paths to hide (case-insensitive)

@@ -70,7 +70,7 @@ export const sendCVByEmail = async (params) => {
       subject: subject,
       message: message,
       cv_attachment: base64CV,
-      reply_to: 'Juniorasobijo@gmail.com',
+      reply_to: 'junior.donfack-assobjio@utbm.fr',
     };
 
     // Send email using EmailJS (using contact template)
@@ -185,7 +185,7 @@ export const sendContactForm = async (params) => {
       from_email: email,
       subject: subject || 'New Contact Form Submission',
       message: message,
-      to_email: 'Juniorasobijo@gmail.com',
+      to_email: 'junior.donfack-assobjio@utbm.fr',
       reply_to: email,
     };
 
@@ -196,7 +196,7 @@ export const sendContactForm = async (params) => {
       from_name: 'Junior Donfack Assobjio',
       subject: subject || 'Thank you for contacting me',
       message: message,
-      reply_to: 'Juniorasobijo@gmail.com',
+      reply_to: 'junior.donfack-assobjio@utbm.fr',
     };
 
     // Send contact notification to you

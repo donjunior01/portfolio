@@ -447,7 +447,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 **Junior Donfack Assobjio**
 
-- Email: Juniorasobijo@gmail.com
+- Email: junior.donfack-assobjio@utbm.fr
 - LinkedIn: [Junior Donfack Assobjio](https://www.linkedin.com/in/junior-donfack-assobjio-905bb72b5/)
 - GitHub: [@donjunior01](https://github.com/donjunior01)
 - GitLab: [@donjunior01](https://gitlab.com/donjunior01)
@@ -473,7 +473,7 @@ Contributions, issues, and feature requests are welcome!
 
 ## 📞 Support
 
-For support, email Juniorasobijo@gmail.com or create an issue in the repository.
+For support, email junior.donfack-assobjio@utbm.fr or create an issue in the repository.
 
 ## 🗺️ Roadmap
 

@@ -97,8 +97,6 @@ const PROJECT_TYPE_LABELS = {
   'sji-btp-g7': 'School Project',
   'sji-web-g3': 'School Project',
   tictactoe: 'Game',
-  'portfolio-site': 'Full Stack',
-  daj: 'Personal',
 };
 
 // basic_computer_vision and seruca are featured first, per the UTBM positioning.
@@ -109,7 +107,6 @@ const FEATURED_PROJECT_IDS = [
   'immunization',
   'tictactoe',
   'dijkstra',
-  'portfolio-site',
 ];
 
 const mapProject = (p) => ({
